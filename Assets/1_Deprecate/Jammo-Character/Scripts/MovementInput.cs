@@ -1,8 +1,8 @@
 
+using nostra.input;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 //This script requires you to have setup your animator with 3 parameters, "InputMagnitude", "InputX", "InputZ"
 //With a blend tree to control the inputmagnitude and allow blending between animations.
 [RequireComponent(typeof(CharacterController))]
@@ -47,7 +47,7 @@ public class MovementInput : MonoBehaviour {
 	
 	void Update () {
 
-		InputMagnitude ();
+		//InputMagnitude ();
 
         isGrounded = controller.isGrounded;
         if (isGrounded)
@@ -104,8 +104,13 @@ public class MovementInput : MonoBehaviour {
 	}
 
 	void InputMagnitude() {
-		//Calculate Input Vectors
-		InputX = Input.GetAxis ("Horizontal");
+        //Calculate Input Vectors
+        if (nostra.input.NostraInput.GetAction("NONAME_Controller", EActionEvent.Down))
+        {
+            Debug.Log("button down..!!");
+        }
+
+        InputX = Input.GetAxis ("Horizontal");
 		InputZ = Input.GetAxis ("Vertical");
 
 		//Calculate the Input Magnitude
@@ -120,6 +125,7 @@ public class MovementInput : MonoBehaviour {
 			anim.SetFloat("X", InputX, StartAnimTime/3, Time.deltaTime);
 			anim.SetFloat("Y", InputZ, StartAnimTime/3, Time.deltaTime);
 			PlayerMoveAndRotation ();
+
 		} else if (Speed < allowPlayerRotation) {
 			anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
 			anim.SetFloat("X", InputX, StopAnimTime/ 3, Time.deltaTime);

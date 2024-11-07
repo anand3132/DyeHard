@@ -516,6 +516,8 @@ namespace nostra.input
             {
                 if ( buttons[i].identifier == buttonName )
                 {
+                    Debug.Log("Button: " + buttonName + ": " + m_Event);
+
                     switch ( m_Event )
                     {
                         case EActionEvent.Down:

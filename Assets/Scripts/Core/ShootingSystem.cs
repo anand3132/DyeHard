@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Cinemachine;
+using nostra.input;
 
 public class ShootingSystem : MonoBehaviour
 {
@@ -23,9 +24,17 @@ public class ShootingSystem : MonoBehaviour
 
     void Update()
     {
+        if(nostra.input.NostraInput.GetAction("ShootButton", EActionEvent.Press))
+        {
+            CheckShooting();
+        }
+    }
+
+    void CheckShooting()
+    {
         Vector3 angle = parentController.localEulerAngles;
         input.blockRotationPlayer = Input.GetMouseButton(0);
-        bool pressing = Input.GetMouseButton(0);
+        bool pressing = nostra.input.NostraInput.GetAction("ShootButton", EActionEvent.Press);// Input.GetMouseButton(0);
 
         if (Input.GetMouseButton(0))
         {
@@ -33,15 +42,15 @@ public class ShootingSystem : MonoBehaviour
             input.RotateToCamera(transform);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (nostra.input.NostraInput.GetAction("ShootButton", EActionEvent.Press))
             inkParticle.Play();
-        else if (Input.GetMouseButtonUp(0))
+
+        else// if (Input.GetMouseButtonUp(0))
             inkParticle.Stop();
 
         parentController.localEulerAngles
             = new Vector3(Mathf.LerpAngle(parentController.localEulerAngles.x, pressing ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0, .3f), angle.y, angle.z);
     }
-
     void VisualPolish()
     {
         if (!DOTween.IsTweening(parentController))

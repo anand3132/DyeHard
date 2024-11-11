@@ -7,14 +7,14 @@ using nostra.input;
 
 public class ShootingSystem : MonoBehaviour
 {
-
     MovementInput input;
-
     [SerializeField] ParticleSystem inkParticle;
     [SerializeField] Transform parentController;
     [SerializeField] Transform splatGunNozzle;
     [SerializeField] CinemachineFreeLook freeLookCamera;
     CinemachineImpulseSource impulseSource;
+    public VariableJoystick leftJoyStick;
+
 
     void Start()
     {
@@ -22,46 +22,52 @@ public class ShootingSystem : MonoBehaviour
         impulseSource = freeLookCamera.GetComponent<CinemachineImpulseSource>();
     }
 
-    void Update()
-    {
-        if(nostra.input.NostraInput.GetAction("ShootButton", EActionEvent.Press))
-        {
-            CheckShooting();
-        }
-    }
+    void Update() => CheckShooting();
 
     void CheckShooting()
     {
-        Vector3 angle = parentController.localEulerAngles;
-        input.blockRotationPlayer = Input.GetMouseButton(0);
-        bool pressing = nostra.input.NostraInput.GetAction("ShootButton", EActionEvent.Press);// Input.GetMouseButton(0);
+        bool pressing = false;
+#if UNITY_EDITOR && !ONTEST_INPUT
+        pressing = Input.GetMouseButton(0);
+#else
+        pressing = leftJoyStick.Direction.magnitude > 0.1;// NostraInput.GetAction("ShootButton", EActionEvent.Press);
 
-        if (Input.GetMouseButton(0))
-        {
-            VisualPolish();
-            input.RotateToCamera(transform);
-        }
+#endif
+        //if (pressing)
+        //{
+        //    VisualPolish();
+        //    input.RotateToCamera(transform);
+        //}
 
-        if (nostra.input.NostraInput.GetAction("ShootButton", EActionEvent.Press))
+#if UNITY_EDITOR && !ONTEST_INPUT
+        if (Input.GetMouseButtonDown(0))
             inkParticle.Play();
-
-        else// if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
             inkParticle.Stop();
+#else
+    if(leftJoyStick.Direction.magnitude>0.1)
+        //if (NostraInput.GetAction("ShootButton", EActionEvent.Down))
+            inkParticle.Play();
+        if (leftJoyStick.Direction.magnitude < 0.1)
 
-        parentController.localEulerAngles
-            = new Vector3(Mathf.LerpAngle(parentController.localEulerAngles.x, pressing ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0, .3f), angle.y, angle.z);
+       // else if (NostraInput.GetAction("ShootButton", EActionEvent.Up))
+            inkParticle.Stop();
+#endif
+
+        Vector3 angle = parentController.localEulerAngles;
+        //parentController.localEulerAngles = new Vector3(Mathf.LerpAngle(angle.x, pressing ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0, .3f), angle.y, angle.z);
     }
+
     void VisualPolish()
     {
         if (!DOTween.IsTweening(parentController))
         {
             parentController.DOComplete();
-            Vector3 forward = -parentController.forward;
             Vector3 localPos = parentController.localPosition;
             parentController.DOLocalMove(localPos - new Vector3(0, 0, .2f), .03f)
                 .OnComplete(() => parentController.DOLocalMove(localPos, .1f).SetEase(Ease.OutSine));
 
-           impulseSource.GenerateImpulse();
+            impulseSource.GenerateImpulse();
         }
 
         if (!DOTween.IsTweening(splatGunNozzle))
@@ -71,8 +77,6 @@ public class ShootingSystem : MonoBehaviour
         }
     }
 
-    float RemapCamera(float value, float from1, float to1, float from2, float to2)
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-    }
+    float RemapCamera(float value, float from1, float to1, float from2, float to2) =>
+        (value - from1) / (to1 - from1) * (to2 - from2) + from2;
 }

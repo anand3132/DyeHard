@@ -1,0 +1,4 @@
+repository "DyeHard3@homenet25@cloud"
+  path "/"
+    br "/main"
+    co "/main"

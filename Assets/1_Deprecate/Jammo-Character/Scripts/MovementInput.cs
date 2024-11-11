@@ -25,7 +25,8 @@ public class MovementInput : MonoBehaviour {
 	public float Speed;
 	public float allowPlayerRotation = 0.1f;
 
-
+    public VariableJoystick RightJoyStick;
+    public VariableJoystick LeftJoyStick;
     [Header("Animation Smoothing")]
     [Range(0, 1f)]
     public float HorizontalAnimSmoothTime = 0.2f;
@@ -47,7 +48,7 @@ public class MovementInput : MonoBehaviour {
 	
 	void Update () {
 
-		//InputMagnitude ();
+		InputMagnitude ();
 
         isGrounded = controller.isGrounded;
         if (isGrounded)
@@ -60,10 +61,16 @@ public class MovementInput : MonoBehaviour {
     }
 
 	void PlayerMoveAndRotation() {
-		InputX = Input.GetAxis("Horizontal");
+#if UNITY_EDITOR && !ONTEST_INPUT
+        InputX = Input.GetAxis("Horizontal");
 		InputZ = Input.GetAxis("Vertical");
-
-		var camera = Camera.main;
+#else
+        //InputX = NostraInput.GetAxis("LeftJoystick").x;
+        //InputZ = NostraInput.GetAxis("LeftJoystick").y;
+        InputX = RightJoyStick.Direction.x;
+        InputZ = RightJoyStick.Direction.y;
+#endif
+        var camera = Camera.main;
 		var forward = cam.transform.forward;
 		var right = cam.transform.right;
 
@@ -87,37 +94,37 @@ public class MovementInput : MonoBehaviour {
 		}
 	}
 
-    public void LookAt(Vector3 pos)
-    {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(pos), desiredRotationSpeed);
-    }
+	public void LookAt(Vector3 pos)
+	{
+		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(pos), desiredRotationSpeed);
+	}
 
-    public void RotateToCamera(Transform t)
+	public void RotateToCamera(Transform t)
     {
         var forward = cam.transform.forward;
-
         desiredMoveDirection = forward;
 		Quaternion lookAtRotation = Quaternion.LookRotation(desiredMoveDirection);
 		Quaternion lookAtRotationOnly_Y = Quaternion.Euler(transform.rotation.eulerAngles.x, lookAtRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-
 		t.rotation = Quaternion.Slerp(transform.rotation, lookAtRotationOnly_Y, desiredRotationSpeed);
+
 	}
 
 	void InputMagnitude() {
         //Calculate Input Vectors
-        if (nostra.input.NostraInput.GetAction("NONAME_Controller", EActionEvent.Down))
-        {
-            Debug.Log("button down..!!");
-        }
+#if UNITY_EDITOR && !ONTEST_INPUT
 
-        InputX = Input.GetAxis ("Horizontal");
-		InputZ = Input.GetAxis ("Vertical");
+        InputX = Input.GetAxis("Horizontal");
+		InputZ = Input.GetAxis("Vertical");
+#else
+		InputX = RightJoyStick.Direction.x;
+        InputZ = RightJoyStick.Direction.y;
+#endif
 
 		//Calculate the Input Magnitude
 		Speed = new Vector2(InputX, InputZ).sqrMagnitude;
 
 		//Change animation mode if rotation is blocked
-		anim.SetBool("shooting", blockRotationPlayer);
+		anim.SetBool("OnShooting", LeftJoyStick.Direction.magnitude>0.1);// NostraInput.GetButtonClick( "ShootButton"));//, blockRotationPlayer);
 
 		//Physically move player
 		if (Speed > allowPlayerRotation) {
@@ -130,6 +137,7 @@ public class MovementInput : MonoBehaviour {
 			anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
 			anim.SetFloat("X", InputX, StopAnimTime/ 3, Time.deltaTime);
 			anim.SetFloat("Y", InputZ, StopAnimTime/ 3, Time.deltaTime);
-		}
-	}
+
+        }
+    }
 }

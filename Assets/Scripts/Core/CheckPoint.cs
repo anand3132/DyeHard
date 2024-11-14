@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+namespace RedGaint
 {
-    public CheckPointType CheckPointType;
+    public class CheckPoint : MonoBehaviour
+    {
+        public GlobalEnums.CheckPointType CheckPointType;
+    }
 }

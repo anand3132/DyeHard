@@ -524,7 +524,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1055978918357817581}
   - component: {fileID: 2201497845530593949}
-  - component: {fileID: 5913182320807231201}
   - component: {fileID: 4609774454169577329}
   - component: {fileID: 8029391321509308775}
   m_Layer: 0
@@ -543,7 +542,7 @@ Transform:
   m_GameObject: {fileID: 2359953345903295471}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09344869, y: 0.90076774, z: -0.24136004, w: 0.34875518}
-  m_LocalPosition: {x: -6.2752447, y: 9.020001, z: 5.936268}
+  m_LocalPosition: {x: -5.831854, y: 8.850001, z: 6.4023046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -600,14 +599,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5913182320807231201
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359953345903295471}
-  m_Enabled: 1
 --- !u!114 &4609774454169577329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10843,9 +10834,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6892138536326314763}
   - component: {fileID: 8330775586101817083}
-  - component: {fileID: 2888945570578703450}
-  - component: {fileID: 4045247821993362751}
-  - component: {fileID: 3895767460490937265}
+  - component: {fileID: 4341841447516703769}
+  - component: {fileID: 2551529816111711841}
+  - component: {fileID: 6147911361348908984}
   m_Layer: 0
   m_Name: BusinessGuyNewPlayer
   m_TagString: Untagged
@@ -10861,7 +10852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4268032363301980763}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.9325434, z: 0, w: 0.36105794}
+  m_LocalRotation: {x: 0, y: -0.9325445, z: 0, w: 0.36105496}
   m_LocalPosition: {x: 29.07838, y: 10.13, z: -32.49595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10873,7 +10864,7 @@ Transform:
   - {fileID: 7809136095113265247}
   - {fileID: 1055978918357817581}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -137.67, z: 0}
 --- !u!95 &8330775586101817083
 Animator:
   serializedVersion: 5
@@ -10895,33 +10886,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &2888945570578703450
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4268032363301980763}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.8
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.98, z: 0}
---- !u!114 &4045247821993362751
+--- !u!114 &4341841447516703769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10930,38 +10895,81 @@ MonoBehaviour:
   m_GameObject: {fileID: 4268032363301980763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caa9f165e2b4f1a4f9522501717c095d, type: 3}
+  m_Script: {fileID: 11500000, guid: dd4d46fff78af084f97315ee6f9de913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: 5
-  blockRotationPlayer: 0
-  desiredRotationSpeed: 0.3
-  Speed: 0
-  allowPlayerRotation: 0.1
-  RightJoyStick: {fileID: 0}
-  LeftJoyStick: {fileID: 0}
-  HorizontalAnimSmoothTime: 0.2
-  VerticalAnimTime: 0.2
-  StartAnimTime: 0.3
-  StopAnimTime: 0.15
-  verticalVel: -33.5
---- !u!114 &3895767460490937265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4268032363301980763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfb06fe47b1efa9418445b7194ad6456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  checkPointHandler: {fileID: 0}
+  attackRange: 2
+  movementSpeed: 3.5
+  horizontalAnimSmoothTime: 0.2
+  verticalAnimTime: 0.2
+  startAnimTime: 0.3
+  stopAnimTime: 0.15
   inkParticle: {fileID: 2086685711620777012}
-  parentController: {fileID: 5596708507319371258}
-  splatGunNozzle: {fileID: 7014209175273281568}
-  freeLookCamera: {fileID: 0}
-  leftJoyStick: {fileID: 0}
+--- !u!114 &2551529816111711841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268032363301980763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(-270.333344,-144.333328)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(9.66665649,245.666672)"},"ID":1,"Name":"log","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject.Find","NodeData":{"Offset":"(-40,150)"},"ID":2,"Name":"Find","Instant":true,"SharedStringgameObjectName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":"CheckPoints","IsShared":true,"IsDynamic":true},"SharedGameObjectstoreValue":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"IsShared":true,"IsDynamic":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(202,156.666687)"},"ID":3,"Name":"Conditional
+        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"BooleangraphLabel":false,"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityDebug.LogValue","NodeData":{"Offset":"(180,150)"},"ID":4,"Name":"Log
+        Value","Instant":true,"SharedGenericVariablevariable":{"Type":"BehaviorDesigner.Runtime.SharedGenericVariable","Name":null,"GenericVariablemValue":{"Stringtype":"SharedString","SharedVariablevalue":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null}}}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(402,156.666687)"},"ID":5,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.11
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
+--- !u!195 &6147911361348908984
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268032363301980763}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4336210410620777797
 GameObject:
   m_ObjectHideFlags: 0
@@ -16180,7 +16188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81a5c75c78d6364ea8c1a6f121e3a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintColor: {r: 0.9433962, g: 0.27945885, b: 0.47586557, a: 1}
+  paintColor: {r: 0.21960784, g: 1, b: 0.29411766, a: 1}
   minRadius: 0.2
   maxRadius: 1.5
   strength: 1
@@ -27078,7 +27086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136215600952350453}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0022362368, y: 0.025205603, z: -0.08834441, w: 0.99576855}
+  m_LocalRotation: {x: 0.043322504, y: 0.6708401, z: 0.0477111, w: 0.73879653}
   m_LocalPosition: {x: -0.178, y: 0.899, z: 0.285}
   m_LocalScale: {x: 1.0283, y: 1.0283, z: 1.0283}
   m_ConstrainProportionsScale: 0
@@ -27091,4 +27099,4 @@ Transform:
   - {fileID: 2572155249467960143}
   - {fileID: 2578331288326001675}
   m_Father: {fileID: 6892138536326314763}
-  m_LocalEulerAnglesHint: {x: 0, y: 2.9, z: -10.14}
+  m_LocalEulerAnglesHint: {x: 0, y: 84.48, z: 7.39}

@@ -7,7 +7,7 @@ using nostra.input;
 
 public class ShootingSystem : MonoBehaviour
 {
-    MovementInput input;
+    //MovementInput input;
     [SerializeField] ParticleSystem inkParticle;
     [SerializeField] Transform parentController;
     [SerializeField] Transform splatGunNozzle;
@@ -15,12 +15,6 @@ public class ShootingSystem : MonoBehaviour
     CinemachineImpulseSource impulseSource;
     public VariableJoystick leftJoyStick;
 
-
-    void Start()
-    {
-        input = GetComponent<MovementInput>();
-        //impulseSource = freeLookCamera.GetComponent<CinemachineImpulseSource>();
-    }
 
     void Update() => CheckShooting();
 

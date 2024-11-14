@@ -37,15 +37,8 @@ public class MovementInput : MonoBehaviour
 
     void PlayerMoveAndRotation()
     {
-#if UNITY_EDITOR && !ONTEST_INPUT
-
-        inputX = Input.GetAxis("Horizontal");
-        inputZ = Input.GetAxis("Vertical");
-
-#else
         inputX = InputHandler.instance.GetRightJoystickDirection.x;
         inputZ = InputHandler.instance.GetRightJoystickDirection.y;
-#endif
         var forward = cam.transform.forward;
         var right = cam.transform.right;
 
@@ -70,16 +63,8 @@ public class MovementInput : MonoBehaviour
 
     void InputMagnitude()
     {
-#if UNITY_EDITOR && !ONTEST_INPUT
-
-        inputX = Input.GetAxis("Horizontal");
-        inputZ = Input.GetAxis("Vertical");
-
-#else
         inputX = InputHandler.instance.GetRightJoystickDirection.x;
         inputZ = InputHandler.instance.GetRightJoystickDirection.y;
-#endif
-
         float speed = new Vector2(inputX, inputZ).sqrMagnitude;
 
 #if UNITY_EDITOR && !ONTEST_INPUT

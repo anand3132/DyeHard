@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: MovementInputSettings
-  m_EditorClassIdentifier: Assembly-CSharp::MovementInputSettings
+  m_Script: {fileID: 11500000, guid: cbf3921875424b749ae387cab60d263a, type: 3}
+  m_Name: MovementInputSettings 1
+  m_EditorClassIdentifier: 
   velocity: 5
   desiredRotationSpeed: 0.1
   speed: 3.5

@@ -17,4 +17,11 @@ public class InputHandler : Singleton<InputHandler>
         { "RightJoystick", GetRightJoystickDirection },
         { "LeftJoystick", GetLeftJoystickDirection }
     };
+//    //#if UNITY_EDITOR && !ONTEST_INPUT
+
+//    inputX = Input.GetAxis("Horizontal");
+//        inputZ = Input.GetAxis("Vertical");
+
+//#else
+
 }

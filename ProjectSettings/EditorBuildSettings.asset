@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DYEHARD.unity
+    path: Assets/2_Scenes/DYEHARD.unity
     guid: ea4cc66b96ef2db45bc8727156e5af45
   m_configObjects: {}

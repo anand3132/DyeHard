@@ -15,6 +15,8 @@ namespace RedGaint {
         private bool IsGeneratorActive = false;
 
         public List<GameObject> BotPrefab;
+
+        public List<GameObject> BotList=new List<GameObject>();
         private void Start()
         {
 
@@ -27,7 +29,14 @@ namespace RedGaint {
             {
                 UpdateAllSpawnPoints();
                 InitializeMode();
-                IsGeneratorActive=true;
+                IsGeneratorActive = true;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                if (GetNewSpawnPosition(out Vector3 posiion)) {
+                    GenerateNewBot(posiion,out GameObject bot);
+                    BotList.Add(bot);
+                        }
             }
         }
 
@@ -38,7 +47,7 @@ namespace RedGaint {
             foreach (Transform t in itemList)
             {
                 allSpawnPositions.Add(t.position);
-            }    
+            }
         }
 
         public void ResetGenerator()
@@ -147,15 +156,19 @@ namespace RedGaint {
             }
         }
 
-        public bool GenerateNewBot()
-        {
-            return false;
-        }
 
-        public bool GenerateNewBot(Vector3 positrion, out GameObject bot)
+        public bool GenerateNewBot(Vector3 position, out GameObject bot)
         {
-            bot = new GameObject();
+            bot = GameObject.Instantiate(BotPrefab[0], transform);
+            bot.SetActive(true);
+            if (bot == null)
                 return false;
+
+            bot.transform.position = position;
+            var currentBotcontroller = bot.GetComponent<BotController>();
+            currentBotcontroller.checkpointHandler = checkpointHandler;
+            currentBotcontroller.ActivateBot();
+            return true;
         }
     }
 

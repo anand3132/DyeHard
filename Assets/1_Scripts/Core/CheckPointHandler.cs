@@ -9,7 +9,7 @@ namespace RedGaint
         private List<Transform> defendPoints = new List<Transform>();
         public List<Transform> destinationPoints = new List<Transform>();
         private List<Transform> spawnPoints = new List<Transform>();
-
+        bool isHandlerInitialised = false;
         private void Start()
         {
             InitializeCheckPoints();
@@ -17,10 +17,12 @@ namespace RedGaint
 
         public List<Transform> GetSpawnList()
         {
+            if (!isHandlerInitialised) InitializeCheckPoints();
             return spawnPoints;
         }
         public List<Transform> GetWayPointList()
         {
+            if (!isHandlerInitialised) InitializeCheckPoints();
             return wayPoints;
         }
 
@@ -55,6 +57,15 @@ namespace RedGaint
                 }
 
             }
+            isHandlerInitialised = true;
+
+        }
+        private void Reset()
+        {
+            wayPoints.Clear();
+            defendPoints.Clear();
+            destinationPoints.Clear();
+            spawnPoints.Clear();
         }
     }
 }

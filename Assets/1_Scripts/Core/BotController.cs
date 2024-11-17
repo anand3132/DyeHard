@@ -7,7 +7,8 @@ namespace RedGaint
     {
         public BotSettings botSettings; // Reference to the ScriptableObject
         private NavMeshAgent currentBotAgent;
-        public CheckPointHandler checkPointHandler;
+        [HideInInspector]
+        public CheckPointHandler checkpointHandler;
         private Animator currentAnimtor;
         private int currentDestinationIndex = 0;
 
@@ -21,6 +22,7 @@ namespace RedGaint
         private float verticalAnimSmoothTime;
         private float startAnimTime;
         private float stopAnimTime;
+        public bool isBotActive=false;
 
         [SerializeField] private ParticleSystem inkParticle;
 
@@ -40,10 +42,16 @@ namespace RedGaint
             currentBotAgent.speed = botSettings.movementSpeed;
             InitializeAnimationSmoothing(botSettings);
 
-            if (checkPointHandler != null && checkPointHandler.destinationPoints.Count > 0)
+        }
+        public bool ActivateBot()
+        {
+            if (checkpointHandler != null && checkpointHandler.destinationPoints.Count > 0)
             {
                 MoveToNextCheckpoint();
+                isBotActive = true;
+                return true;
             }
+            return false;
         }
 
         private void InitializeAnimationSmoothing(BotSettings settings)
@@ -57,6 +65,8 @@ namespace RedGaint
 
         void Update()
         {
+            if (!isBotActive)
+                return;
             // Move to the next checkpoint if close enough to the current one
             if (isMoving && currentBotAgent.remainingDistance < currentBotAgent.stoppingDistance)
             {
@@ -82,7 +92,7 @@ namespace RedGaint
         private void MoveToNextCheckpoint()
         {
             // Check if there are any checkpoints in the handler
-            if (checkPointHandler.destinationPoints.Count == 0)
+            if (checkpointHandler.destinationPoints.Count == 0)
             {
                 Debug.LogWarning("No destination points set in CheckPointHandler.");
                 return;
@@ -92,8 +102,8 @@ namespace RedGaint
             if (isPathComplete())
             {
                 Debug.Log("Bot reached destination.");
-                currentDestinationIndex = (currentDestinationIndex + 1) % checkPointHandler.destinationPoints.Count;
-                currentBotAgent.destination = checkPointHandler.destinationPoints[currentDestinationIndex].position;
+                currentDestinationIndex = (currentDestinationIndex + 1) % checkpointHandler.destinationPoints.Count;
+                currentBotAgent.destination = checkpointHandler.destinationPoints[currentDestinationIndex].position;
                 BotMove(currentBotAgent.destination);
                 isMoving = true;
             }
@@ -106,6 +116,7 @@ namespace RedGaint
                 currentAnimtor.SetFloat("Blend", 0); // Set animation to idle
                 Debug.Log("Bot has reached the final destination and stopped.");
             }
+
         }
 
         private bool HasReachedDestination()

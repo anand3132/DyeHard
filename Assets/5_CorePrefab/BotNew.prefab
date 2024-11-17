@@ -93,15 +93,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2349578881730560047}
   - component: {fileID: 2548399074257333876}
-  - component: {fileID: 4928722668947712444}
   - component: {fileID: 3997826829955345352}
+  - component: {fileID: 4928722668947712444}
   m_Layer: 0
   m_Name: BotNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2349578881730560047
 Transform:
   m_ObjectHideFlags: 0
@@ -144,21 +144,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4928722668947712444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301680609491423985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd4d46fff78af084f97315ee6f9de913, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  botSettings: {fileID: 0}
-  checkPointHandler: {fileID: 0}
-  inkParticle: {fileID: 4818195145417484732}
 --- !u!195 &3997826829955345352
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -181,6 +166,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4928722668947712444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301680609491423985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4d46fff78af084f97315ee6f9de913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
+  checkpointHandler: {fileID: 0}
+  isBotActive: 0
+  inkParticle: {fileID: 4818195145417484732}
 --- !u!1 &347825275340732708
 GameObject:
   m_ObjectHideFlags: 0
@@ -6089,7 +6090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7746676762323161628
 Transform:
   m_ObjectHideFlags: 0
@@ -6099,7 +6100,7 @@ Transform:
   m_GameObject: {fileID: 3677396314352282995}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09344869, y: 0.90076774, z: -0.24136004, w: 0.34875518}
-  m_LocalPosition: {x: -5.831854, y: 8.850001, z: 6.4023046}
+  m_LocalPosition: {x: -5.831854, y: 5.000002, z: 6.4023046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

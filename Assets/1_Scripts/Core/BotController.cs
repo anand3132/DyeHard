@@ -7,45 +7,57 @@ namespace RedGaint
     {
         public BotSettings botSettings; // Reference to the ScriptableObject
         private NavMeshAgent currentBotAgent;
-        [HideInInspector]
-        public CheckPointHandler checkpointHandler;
-        private Animator currentAnimtor;
+        public Transform BotRoot;
+        private CheckPointHandler checkpointHandler;
+
+        //Position Parameter
         private int currentDestinationIndex = 0;
+        private Vector3 NextDestination;
 
         // Movement parameters
         private bool isMoving = true;
         private float inputX;
         private float inputZ;
 
+        //Animation Parameter
         [Header("Animation Smoothing")]
         private float horizontalAnimSmoothTime;
         private float verticalAnimSmoothTime;
         private float startAnimTime;
         private float stopAnimTime;
         public bool isBotActive=false;
+        private Animator currentAnimtor;
 
         [SerializeField] private ParticleSystem inkParticle;
 
-        void Start()
+        public void InitialiseBot(Vector3 position,CheckPointHandler checkPointHandler)
         {
-            if (botSettings == null)
-            {
-                Debug.LogError("BotSettings is not assigned!");
-                return;
-            }
-
-            // Initialize NavMeshAgent and Animator
+            if (BotRoot == null)
+                BotRoot = gameObject.transform;
+            BotRoot.transform.position = position;
             currentBotAgent = GetComponent<NavMeshAgent>();
             currentAnimtor = GetComponent<Animator>();
-
-            // Load settings from BotSettings ScriptableObject
             currentBotAgent.speed = botSettings.movementSpeed;
+            checkpointHandler= checkPointHandler;
             InitializeAnimationSmoothing(botSettings);
 
         }
+        private void InitializeAnimationSmoothing(BotSettings settings)
+        {
+            // Assign settings values for animation smoothing
+            horizontalAnimSmoothTime = settings.horizontalAnimSmoothTime;
+            verticalAnimSmoothTime = settings.verticalAnimSmoothTime;
+            startAnimTime = settings.startAnimTime;
+            stopAnimTime = settings.stopAnimTime;
+
+        }
+//-------------------------------------------------------------------------------------------------
+  
         public bool ActivateBot()
         {
-            if (checkpointHandler != null && checkpointHandler.destinationPoints.Count > 0)
+            if (isBotActive) { return false; } 
+            
+            if (checkpointHandler != null)// && checkpointHandler.destinationPoints.Count > 0)
             {
                 MoveToNextCheckpoint();
                 isBotActive = true;
@@ -54,36 +66,35 @@ namespace RedGaint
             return false;
         }
 
-        private void InitializeAnimationSmoothing(BotSettings settings)
-        {
-            // Assign settings values for animation smoothing
-            horizontalAnimSmoothTime = settings.horizontalAnimSmoothTime;
-            verticalAnimSmoothTime = settings.verticalAnimSmoothTime;
-            startAnimTime = settings.startAnimTime;
-            stopAnimTime = settings.stopAnimTime;
-        }
 
         void Update()
         {
             if (!isBotActive)
                 return;
+            RunBotEngine();
+        }
+
+        private void RunBotEngine()
+        {
+            MoveBotTo(currentBotAgent.destination);
+
             // Move to the next checkpoint if close enough to the current one
-            if (isMoving && currentBotAgent.remainingDistance < currentBotAgent.stoppingDistance)
-            {
-                MoveToNextCheckpoint();
-            }
+            //if (isMoving && currentBotAgent.remainingDistance < currentBotAgent.stoppingDistance)
+            //{
+            //    MoveToNextCheckpoint();
+            //}
 
             UpdateAnimationParameters();
         }
 
-        private bool isPathComplete()
+        private bool IsPathComplete()
         {
             if (Vector3.Distance(currentBotAgent.destination, currentBotAgent.transform.position) <= currentBotAgent.stoppingDistance)
             {
-                if (!currentBotAgent.hasPath || currentBotAgent.velocity.sqrMagnitude == 0f)
-                {
-                    return true;
-                }
+                //if (!currentBotAgent.hasPath || currentBotAgent.velocity.sqrMagnitude == 0f)
+                //{
+                return true;
+                //}
             }
 
             return false;
@@ -92,24 +103,37 @@ namespace RedGaint
         private void MoveToNextCheckpoint()
         {
             // Check if there are any checkpoints in the handler
-            if (checkpointHandler.destinationPoints.Count == 0)
+            if (checkpointHandler.GetWayPointList().Count == 0)
             {
-                Debug.LogWarning("No destination points set in CheckPointHandler.");
+                Debug.LogWarning("No Way points Avilable.");
+                return;
+            }
+
+            if(!isBotActive)
+            {
+                currentDestinationIndex = 0;
+                currentBotAgent = GetComponent<NavMeshAgent>();
+                var item = checkpointHandler.GetWayPointList();
+                currentBotAgent.destination = item[currentDestinationIndex].position;
+                MoveBotTo(currentBotAgent.destination);
+                isMoving = true;
                 return;
             }
 
             // Set the bot's destination if it has reached the previous checkpoint
-            if (isPathComplete())
+            if (IsPathComplete())
             {
                 Debug.Log("Bot reached destination.");
-                currentDestinationIndex = (currentDestinationIndex + 1) % checkpointHandler.destinationPoints.Count;
-                currentBotAgent.destination = checkpointHandler.destinationPoints[currentDestinationIndex].position;
-                BotMove(currentBotAgent.destination);
-                isMoving = true;
+                currentDestinationIndex = (currentDestinationIndex + 1) % checkpointHandler.GetWayPointList().Count;
+                var item = checkpointHandler.GetWayPointList();
+                currentBotAgent.destination = item[currentDestinationIndex].position;
+                MoveBotTo(currentBotAgent.destination);
+                //isMoving = false;
+                return;
             }
 
             // Check if bot has arrived at the current destination
-            if (HasReachedDestination())
+            if (HasReachedDestination()|| !isMoving)
             {
                 isMoving = false;
                 currentBotAgent.isStopped = true;
@@ -128,7 +152,7 @@ namespace RedGaint
             return false;
         }
 
-        private void BotMove(Vector4 direction)
+        private void MoveBotTo(Vector4 direction)
         {
             Vector3 moveDirection = Vector3.zero;
 
@@ -143,7 +167,23 @@ namespace RedGaint
             // Update NavMeshAgent to move based on direction
             currentBotAgent.Move(moveDirection.normalized * botSettings.movementSpeed * Time.deltaTime);
         }
-
+        private void UpdateAnimationParameters()
+        {
+            float speed = new Vector2(inputX, inputZ).sqrMagnitude;
+            GunState(true);
+            if (speed > 0.1f)
+            {
+                currentAnimtor.SetFloat("Blend", speed, startAnimTime, Time.deltaTime);
+                currentAnimtor.SetFloat("X", inputX, startAnimTime / 3, Time.deltaTime);
+                currentAnimtor.SetFloat("Y", inputZ, startAnimTime / 3, Time.deltaTime);
+            }
+            else
+            {
+                currentAnimtor.SetFloat("Blend", speed, stopAnimTime, Time.deltaTime);
+                currentAnimtor.SetFloat("X", inputX, stopAnimTime / 3, Time.deltaTime);
+                currentAnimtor.SetFloat("Y", inputZ, stopAnimTime / 3, Time.deltaTime);
+            }
+        }
         public void BotAttack(Vector4 direction)
         {
             Vector3 attackDirection = new Vector3(direction.x, 0, direction.z).normalized;
@@ -170,23 +210,24 @@ namespace RedGaint
                 inkParticle.Stop();
             }
         }
-
-        private void UpdateAnimationParameters()
+        public void OnTriggerEnter(Collider other)
         {
-            float speed = new Vector2(inputX, inputZ).sqrMagnitude;
-            GunState(true);
-            if (speed > 0.1f)
-            {
-                currentAnimtor.SetFloat("Blend", speed, startAnimTime, Time.deltaTime);
-                currentAnimtor.SetFloat("X", inputX, startAnimTime / 3, Time.deltaTime);
-                currentAnimtor.SetFloat("Y", inputZ, startAnimTime / 3, Time.deltaTime);
+            if(other.GetComponent<CheckPoint>() != null) {
+                CheckPoint currentWayPoint = other.GetComponent<CheckPoint>();
+               if(currentWayPoint.CheckPointType == GlobalEnums.CheckPointType.WayPoint)
+                {
+                    currentBotAgent.isStopped = true;
+                }
+
             }
-            else
-            {
-                currentAnimtor.SetFloat("Blend", speed, stopAnimTime, Time.deltaTime);
-                currentAnimtor.SetFloat("X", inputX, stopAnimTime / 3, Time.deltaTime);
-                currentAnimtor.SetFloat("Y", inputZ, stopAnimTime / 3, Time.deltaTime);
-            }
+
+            Debug.Log("triggered with : "+other.gameObject.name);
         }
+        public void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("on collition with : "+collision.gameObject.name);
+
+        }
+
     }
 }

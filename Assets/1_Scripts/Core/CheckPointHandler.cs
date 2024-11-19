@@ -7,9 +7,10 @@ namespace RedGaint
     {
         private List<Transform> wayPoints = new List<Transform>();
         private List<Transform> defendPoints = new List<Transform>();
-        public List<Transform> destinationPoints = new List<Transform>();
+        private List<Transform> destinationPoints = new List<Transform>();
         private List<Transform> spawnPoints = new List<Transform>();
         bool isHandlerInitialised = false;
+
         private void Start()
         {
             InitializeCheckPoints();
@@ -20,10 +21,23 @@ namespace RedGaint
             if (!isHandlerInitialised) InitializeCheckPoints();
             return spawnPoints;
         }
+
+        public List<Transform> GetdefendPointsList()
+        {
+            if (!isHandlerInitialised) InitializeCheckPoints();
+            return defendPoints;
+        }
+
         public List<Transform> GetWayPointList()
         {
             if (!isHandlerInitialised) InitializeCheckPoints();
             return wayPoints;
+        }
+
+        public List<Transform> GetDestinationPointsList()
+        {
+            if (!isHandlerInitialised) InitializeCheckPoints();
+            return destinationPoints;
         }
 
         private void InitializeCheckPoints()

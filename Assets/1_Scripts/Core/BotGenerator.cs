@@ -6,13 +6,14 @@ namespace RedGaint {
     public class BotGenerator : MonoBehaviour
     {
         private CheckPointHandler checkpointHandler;
-        private GlobalEnums.Mode spawnMode = GlobalEnums.Mode.Random;
+        private GlobalEnums.Mode spawnMode = GlobalEnums.Mode.Sequence;
         private List<Vector3> allSpawnPositions = new List<Vector3>();
         private int sequenceIndex = 0;
         private List<Vector3> shuffleList;
         private int roundRobinIndex = 0;
         private int reverseIndex;
         private bool IsGeneratorActive = false;
+        public int createBot = 1;
 
         public List<GameObject> BotPrefab;
 
@@ -31,7 +32,7 @@ namespace RedGaint {
                 InitializeMode();
                 IsGeneratorActive = true;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < createBot; i++)
             {
                 if (GetNewSpawnPosition(out Vector3 posiion)) {
                     GenerateNewBot(posiion,out GameObject bot);
@@ -156,17 +157,14 @@ namespace RedGaint {
             }
         }
 
-
         public bool GenerateNewBot(Vector3 position, out GameObject bot)
         {
             bot = GameObject.Instantiate(BotPrefab[0], transform);
             bot.SetActive(true);
             if (bot == null)
                 return false;
-
-            bot.transform.position = position;
             var currentBotcontroller = bot.GetComponent<BotController>();
-            currentBotcontroller.checkpointHandler = checkpointHandler;
+            currentBotcontroller.InitialiseBot(position, checkpointHandler);
             currentBotcontroller.ActivateBot();
             return true;
         }

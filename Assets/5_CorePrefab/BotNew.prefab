@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 2548399074257333876}
   - component: {fileID: 3997826829955345352}
   - component: {fileID: 4928722668947712444}
+  - component: {fileID: 4863301018360627485}
+  - component: {fileID: 8321920013357744656}
   m_Layer: 0
   m_Name: BotNew
   m_TagString: Untagged
@@ -179,9 +181,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
-  checkpointHandler: {fileID: 0}
+  BotRoot: {fileID: 0}
   isBotActive: 0
   inkParticle: {fileID: 4818195145417484732}
+--- !u!136 &4863301018360627485
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301680609491423985}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6622782
+  m_Height: 1.8087635
+  m_Direction: 1
+  m_Center: {x: 0.036065515, y: 1.1644278, z: 0.12621284}
+--- !u!54 &8321920013357744656
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301680609491423985}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &347825275340732708
 GameObject:
   m_ObjectHideFlags: 0

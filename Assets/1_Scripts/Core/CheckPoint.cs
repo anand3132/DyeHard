@@ -7,5 +7,6 @@ namespace RedGaint
     public class CheckPoint : MonoBehaviour
     {
         public GlobalEnums.CheckPointType CheckPointType;
+        public string CheckPointID;
     }
 }

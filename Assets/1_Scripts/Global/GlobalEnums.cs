@@ -14,7 +14,15 @@ namespace RedGaint
             ReverseSequence,
             Cluster,
         }
-
+        public enum BotType
+        {
+            Max,
+            Attacker,
+            Defender,
+            Runner,
+            Random,
+            Balanced
+        }
         public enum LogLevel
         {
             FullLog,
@@ -37,6 +45,12 @@ namespace RedGaint
             DefendPoint,
             Destination,
             SpawnPoint
+        }
+        public enum DifficultyTiers
+        {
+            Easy,
+            Normal,
+            Hard
         }
     }
 }

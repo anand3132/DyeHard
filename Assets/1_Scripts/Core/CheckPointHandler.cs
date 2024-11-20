@@ -13,6 +13,7 @@ namespace RedGaint
 
         private void Start()
         {
+            Reset();
             InitializeCheckPoints();
         }
 
@@ -57,15 +58,19 @@ namespace RedGaint
                 switch (checkPoint.CheckPointType)
                 {
                     case GlobalEnums.CheckPointType.WayPoint:
+                        checkPoint.CheckPointID = "WAY_" + wayPoints.Count;
                         wayPoints.Add(child);
                         break;
                     case GlobalEnums.CheckPointType.DefendPoint:
+                        checkPoint.CheckPointID = "DEF_" + defendPoints.Count;
                         defendPoints.Add(child);
                         break;
                     case GlobalEnums.CheckPointType.Destination:
+                        checkPoint.CheckPointID = "DES_" + destinationPoints.Count;
                         destinationPoints.Add(child);
                         break;
                     case GlobalEnums.CheckPointType.SpawnPoint:
+                        checkPoint.CheckPointID = "SPW_" + spawnPoints.Count;
                         spawnPoints.Add(child);
                         break;
                 }

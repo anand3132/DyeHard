@@ -181,10 +181,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
-  BotRoot: {fileID: 0}
+  BotRoot: {fileID: 2349578881730560047}
   botType: 3
-  isBotActive: 0
+  patrolPoints: []
   inkParticle: {fileID: 4818195145417484732}
+  sightRange: 20
+  fovAngle: 60
+  attackRange: 5
+  moveSpeed: 4
+  maxFollowRange: 3
 --- !u!136 &4863301018360627485
 CapsuleCollider:
   m_ObjectHideFlags: 0

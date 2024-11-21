@@ -7,34 +7,62 @@ namespace RedGaint
 {
     public class BotController : MonoBehaviour
     {
+ #region MemberVariables
+        
+        //public GlobalEnums.BotType botType = GlobalEnums.BotType.Runner;
 
-        public BotSettings botSettings; // Reference to the ScriptableObject
-        private NavMeshAgent currentBotAgent;
-        public Transform BotRoot;
-        private CheckPointHandler checkpointHandler;
-        public GlobalEnums.BotType botType = GlobalEnums.BotType.Runner;
-        //Position Parameter
-        private int currentDestinationIndex = 0;
-        //private Vector3 NextDestination;
-        private string currentDestinationID;
         // Movement parameters
         private bool isMoving = true;
         private float inputX;
         private float inputZ;
 
         //Animation Parameter
-        [Header("Animation Smoothing")]
+        //[Header("Animation Smoothing")]
         private float horizontalAnimSmoothTime;
         private float verticalAnimSmoothTime;
         private float startAnimTime;
         private float stopAnimTime;
-        //public bool isBotActive = false;
+
+        //References
+        public Transform BotRoot;
+        private CheckPointHandler checkpointHandler;
+        private CapsuleCollider capsuleCollider;
+        private Transform currentPlayerTransform;
         private Animator currentAnimtor;
+        private ParticleSystem inkParticle;
+        private NavMeshAgent currentBotAgent;
 
-        [SerializeField] private List<Vector3> patrolPoints;
-        private int currentTargetIndex;
+        //Data List
+        private List<Vector3> botCurrentPathNodes;
 
-        [SerializeField] private ParticleSystem inkParticle;
+        //Switches
+        private bool isBotActive = false;
+        private bool isFollowingPlayer = false;
+
+        //Iteratores
+        private int currentTargetIndex = 0;
+
+        //Controlls
+        public BotSettings botSettings;
+
+        [Range(20, 80)]
+        public float sightRange = 20f; // How far the bot can see
+        [Range(15, 180)]
+        public float fovAngle = 45f;  // Field of view angle
+        //public LayerMask playerLayer;  // Layer containing the player
+        [Range(3, 10)]
+        public float attackRange = 3f; // Range at which the bot can attack
+        [Range(3, 5)]
+        public float moveSpeed = 3f;  // Speed at which the bot moves
+        [Range(3, 20)]
+        public int maxFollowRange = 3;
+
+        private int currentDestinationIndex = 0;
+
+        //ID's
+        private string currentDestinationID;
+
+#endregion//=======================================================================================
 
         public void InitialiseBot(Vector3 position, CheckPointHandler checkPointHandler)
         {
@@ -48,6 +76,7 @@ namespace RedGaint
             InitializeAnimationSmoothing(botSettings);
 
         }
+
         private void InitializeAnimationSmoothing(BotSettings settings)
         {
             // Assign settings values for animation smoothing
@@ -57,48 +86,36 @@ namespace RedGaint
             stopAnimTime = settings.stopAnimTime;
 
         }
-        //-------------------------------------------------------------------------------------------------
-        public float sightRange = 20f; // How far the bot can see
-        public float fovAngle = 45f;  // Field of view angle
-        public LayerMask playerLayer;  // Layer containing the player
-        public float attackRange = 3f; // Range at which the bot can attack
-        public float moveSpeed = 3f;  // Speed at which the bot moves
 
-        private bool isBotActive = false;
-        private bool isFollowingPlayer = false;
-        private Transform currentPlayerTransform;
-
-        // Reference to the Bot's CapsuleCollider
-        private CapsuleCollider capsuleCollider;
-
-        public List<Vector3> GetWayPointPositions(List<Transform> wayPoints)
+        public List<Vector3> GetWayPointPositions(List<Transform> wayPointTransforms)
         {
 
             // Create a new list to store the positions
             List<Vector3> positions = new List<Vector3>();
 
             // Extract positions from the Transform list
-            foreach (Transform waypoint in wayPoints)
+            foreach (Transform waypoint in wayPointTransforms)
             {
                 positions.Add(waypoint.position);
             }
 
             return positions;
         }
-
+        public List<Transform> debugPathList;
         public bool ActivateBot()
         {
             if (isBotActive) { return false; }
             currentTargetIndex = 0;
-
             if (checkpointHandler != null)
             {
                 //   SetNextDestination();
                 isBotActive = true;
 
-                patrolPoints =GetWayPointPositions(checkpointHandler.GetWayPointList());
+                debugPathList = checkpointHandler.GetWayPointList();
+
+                botCurrentPathNodes =GetWayPointPositions(debugPathList);
                 capsuleCollider = GetComponent<CapsuleCollider>();
-               // StartCoroutine(WanderCoroutine());
+                StartCoroutine(WanderCoroutine());
                 return true;
 
 
@@ -113,6 +130,7 @@ namespace RedGaint
                 Transform detectedPlayer = DetectPlayer(sightRange, fovAngle);
                 if (detectedPlayer != null)
                 {
+                    Debug.Log("<color=red>------Played detected : -------------</color>");
                     if (!isFollowingPlayer)
                     {
                         StopCoroutine(WanderCoroutine());
@@ -128,23 +146,121 @@ namespace RedGaint
                         isFollowingPlayer = false;
                         currentPlayerTransform = null;
                         StartCoroutine(WanderCoroutine());
+                        Debug.Log("<color=green>------returning patrol : -------------</color>");
+
+                        //StartCoroutine(PatrolRoutine());
+
                     }
                 }
+                UpdateAnimationParameters();
             }
         }
+
+        //private string GetWaypointID(currentDestinationIndex)
+        //{
+        //    checkpointHandler.GetWayPointList()[currentDestinationIndex].GetComponent<way>
+        //}
 
         private IEnumerator WanderCoroutine()
         {
             while (!isFollowingPlayer)
             {
-                // Logic to wander around and patrol (previous logic)
                 Vector3 targetPosition = GetNextPatrolPoint();
                 currentBotAgent.SetDestination(targetPosition);
+                Debug.Log("Bot reached destination : "+currentDestinationIndex);
 
-                yield return new WaitUntil(() => !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
+                Debug.Log("-------------------------------------------------");
 
-                // Look for player after reaching each patrol point
-                yield return new WaitForSeconds(1f); // Optional delay to simulate "looking around"
+               yield return new WaitUntil(() => !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
+
+                // Look for player after reaching each way point
+                // :delay to simulate "looking around"
+                yield return new WaitForSeconds(1f); 
+            }
+        }
+
+        private Vector3 GetPlayerPosition()
+        {
+            // Replace this with actual logic to get the player's position (e.g., reference to player object)
+            return transform.root.GetComponent<GameCoreElements>().GetPlayer().transform.position;
+        }
+        //OLD LOGIC 
+        private IEnumerator PatrolRoutine()
+        {
+            while (true)
+            {
+                // Check if the bot is following the player
+                if (isFollowingPlayer)
+                {
+                    // Stop wandering and follow the player logic 
+                    //Todo:need to check
+                    yield return StartCoroutine(FollowPlayerRoutine());
+                }
+                else
+                {
+                    // Move to the next position
+                    Vector3 targetPosition = botCurrentPathNodes[currentDestinationIndex];
+                    currentBotAgent.SetDestination(targetPosition);
+                  
+
+                    // Wait until the bot reaches the current destination
+                    yield return new WaitUntil(() =>
+                        !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
+
+                    // Rotate to face the next point
+                    int nextIndex = (currentDestinationIndex + 1) % botCurrentPathNodes.Count;
+                    Vector3 directionToNextPoint = botCurrentPathNodes[nextIndex] - transform.position;
+                    Quaternion targetRotation = Quaternion.LookRotation(directionToNextPoint);
+
+                    // Smoothly rotate towards the next point
+                    while (Quaternion.Angle(transform.rotation, targetRotation) > 1f)
+                    {
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, currentBotAgent.angularSpeed * Time.deltaTime);
+                        yield return null; // Wait until the next frame to continue rotating
+                    }
+
+                    Debug.Log("============================================");
+                    Debug.Log("Bot is moving to the next patrol point: " + currentDestinationIndex +" -> "+nextIndex);
+                    // Update the target index to the next patrol point
+                    currentDestinationIndex = nextIndex;
+
+                
+                }
+
+                // Add a small delay before starting the next patrol point
+                yield return null;
+            }
+        }
+
+        // Logic to follow the player
+        private IEnumerator FollowPlayerRoutine()
+        {
+            // This is where bot detect and move towards the player
+
+            Debug.Log("Bot detected the player and is following.");
+
+            while (isFollowingPlayer)
+            {
+                Vector3 playerPosition = GetPlayerPosition(); 
+
+                // Wait for bot to reach the player or the target
+                yield return new WaitUntil(() =>
+                    !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
+
+                // Call the attack function when close enough to the player
+                if (Vector3.Distance(transform.position, playerPosition) <= attackRange)
+                {
+                    AttackPlayer();  
+                }
+
+                // If the player runs away, stop following
+                if (Vector3.Distance(transform.position, playerPosition) > maxFollowRange)
+                {
+                    isFollowingPlayer = false;
+                    Debug.Log("Player is out of range, returning to patrol.");
+                }
+
+                yield return null;
             }
         }
 
@@ -155,12 +271,12 @@ namespace RedGaint
                 if (currentPlayerTransform != null)
                 {
                     currentBotAgent.SetDestination(currentPlayerTransform.position);
-
+                    Debug.Log("started Following ...");
                     // Attack if within attack range
                     if (Vector3.Distance(transform.position, currentPlayerTransform.position) <= attackRange)
                     {
                         AttackPlayer();
-                        yield return new WaitForSeconds(2f); // Delay between attacks, adjust as needed
+                        yield return new WaitForSeconds(20f); // Delay between attacks, adjust as needed
                     }
                 }
 
@@ -168,96 +284,161 @@ namespace RedGaint
             }
         }
 
+        //---------------------------------
+
+        private Vector3 GetNextPatrolPoint()
+        {
+            // Check if the patrolPoints list is empty
+            if (botCurrentPathNodes.Count == 0)
+            {
+                Debug.LogWarning("No path node points are set!");
+                return BotRoot.position; // Return the bot's current position if no points are set
+            }
+
+            // Get the current pathnode point from the list
+            Vector3 nextPathNodePoint = botCurrentPathNodes[currentDestinationIndex];
+
+            // Update the index for the next pathnode point (loop back to 0 when we reach the end)
+            currentDestinationIndex = (currentDestinationIndex + 1) % botCurrentPathNodes.Count;
+            Debug.Log("given position : " + nextPathNodePoint);
+            return nextPathNodePoint;
+        }
+
         private Transform DetectPlayer(float range, float fovAngle)
         {
             RaycastHit hit;
+
+            // Get the CapsuleCollider component
+            CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+
+            // Use the center of the CapsuleCollider for raycast origin
             Vector3 rayOrigin = capsuleCollider != null ? capsuleCollider.bounds.center : transform.position;
+
+            // Get the forward direction of the bot
             Vector3 forward = transform.TransformDirection(Vector3.forward);
 
-            RaycastHit[] hits = Physics.RaycastAll(rayOrigin, forward, range);
+            // Number of rays to cast (more rays = wider coverage)
+            int numberOfRays = 5;
+            float angleStep = fovAngle / numberOfRays;
 
-            foreach (var h in hits)
+            // Cast multiple rays to cover a cone of vision
+            for (int i = 0; i < numberOfRays; i++)
             {
-                // Check if the hit object has a PlayerController component
-                if (h.collider.GetComponent<MovementInput>() != null)
-                {
-                    // Check if the player is within the field of view
-                    Vector3 directionToPlayer = (h.transform.position - rayOrigin).normalized;
-                    float angle = Vector3.Angle(transform.forward, directionToPlayer);
+                // Calculate the direction of each ray
+                float angle = (-fovAngle / 2) + (i * angleStep);
+                Vector3 direction = Quaternion.Euler(0, angle, 0) * forward;
 
-                    if (angle <= fovAngle * 0.5f)
+                // Perform the raycast
+                RaycastHit[] hits = Physics.RaycastAll(rayOrigin, direction, range);
+
+                foreach (var h in hits)
+                {
+                    // Check if the hit object has a PlayerController component
+                    if (h.collider.GetComponent<MovementInput>() != null)
                     {
-                        return h.transform; // Return the player's transform if detected
+                        // Return the player's transform if detected
+                        return h.transform;
                     }
                 }
             }
 
             return null;
         }
-
-        private void AttackPlayer()
-        {
-            // Here you would call your attack logic, for example:
-            Debug.Log("Bot is attacking the player!");
-
-            // Example: Call a method from the PlayerController if needed
-            //if (currentPlayerTransform != null)
-            //{
-            //    PlayerController playerController = currentPlayerTransform.GetComponent<PlayerController>();
-            //    playerController.TakeDamage(10); // Example of dealing damage
-            //}
-        }
-
-        private Vector3 GetNextPatrolPoint()
-        {
-            // Logic to get the next patrol point, this can be a list of waypoints or random positions
-            return new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f)); // Example random point
-        }
-
-        // To visualize the raycast (debugging purposes)
+ #region forDebug
         private void OnDrawGizmos()
         {
             if (capsuleCollider != null)
             {
                 Gizmos.color = Color.red;
                 Vector3 rayOrigin = capsuleCollider.bounds.center;
-                Gizmos.DrawLine(rayOrigin, rayOrigin + transform.TransformDirection(Vector3.forward) * sightRange);
+
+                // Visualize the cone of rays (for debugging)
+                float angleStep = fovAngle / 5;
+                for (int i = 0; i < 5; i++)
+                {
+                    float angle = (-fovAngle / 2) + (i * angleStep);
+                    Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
+
+                    // Draw the cone's rays
+                    Gizmos.DrawRay(rayOrigin, direction * sightRange);
+                }
+
+                // Draw the field of view as a cone shape
+                Gizmos.color = new Color(1f, 0f, 0f, 0.2f); // Semi-transparent red for the cone area
+                Vector3 left = Quaternion.Euler(0, -fovAngle / 2, 0) * transform.forward;
+                Vector3 right = Quaternion.Euler(0, fovAngle / 2, 0) * transform.forward;
+                Gizmos.DrawRay(rayOrigin, left * sightRange);
+                Gizmos.DrawRay(rayOrigin, right * sightRange);
+
+                // Optionally, you can fill the area with a semi-transparent cone shape:
+                DrawCone(rayOrigin, left, right, sightRange);
             }
         }
-    //}
-    //// Raycast to detect the player by checking for PlayerController component
-    //private Transform DetectPlayer(float range, float fovAngle)
-    //{
-    //    RaycastHit hit;
 
-    //    // Get direction for the raycast (forward direction)
-    //    Vector3 forward = transform.TransformDirection(Vector3.forward);
-    //    Vector3 origin = transform.position;
+        // Utility to draw a filled cone for the field of view
+        private void DrawCone(Vector3 origin, Vector3 leftDirection, Vector3 rightDirection, float length)
+        {
+            int steps = 10;
+            Vector3 previousPoint = origin + leftDirection * length;
+            for (int i = 1; i <= steps; i++)
+            {
+                float t = i / (float)steps;
+                Vector3 point = Vector3.Lerp(previousPoint, origin + rightDirection * length, t);
+                Gizmos.DrawLine(previousPoint, point);
+                previousPoint = point;
+            }
+        }
+#endregion
+        private void AttackPlayer()
+        {
+            Debug.Log("Bot is attacking the player!");
+        }
 
-    //    // Check if the player is within the field of view angle and range
-    //    RaycastHit[] hits = Physics.RaycastAll(origin, forward, range, playerLayer);
 
-    //    foreach (var h in hits)
-    //    {
-    //        // Calculate angle between forward direction and hit direction
-    //        Vector3 directionToPlayer = (h.transform.position - origin).normalized;
-    //        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        // To visualize the raycast (debugging purposes)
+        //private void OnDrawGizmos()
+        //{
+        //    if (capsuleCollider != null)
+        //    {
+        //        Gizmos.color = Color.red;
+        //        Vector3 rayOrigin = capsuleCollider.bounds.center;
+        //        Gizmos.DrawLine(rayOrigin, rayOrigin + transform.TransformDirection(Vector3.forward) * sightRange);
+        //    }
+        //}
+        //}
+        //// Raycast to detect the player by checking for PlayerController component
+        //private Transform DetectPlayer(float range, float fovAngle)
+        //{
+        //    RaycastHit hit;
 
-    //        // If player is within the field of view angle and hit object has PlayerController component
-    //        if (angle <= fovAngle * 0.5f && h.collider.GetComponent<MovementInput>() != null)
-    //        {
-    //            return h.transform; // Return the player's transform if detected
-    //        }
-    //    }
-    //    return null;
-    //}
+        //    // Get direction for the raycast (forward direction)
+        //    Vector3 forward = transform.TransformDirection(Vector3.forward);
+        //    Vector3 origin = transform.position;
 
-    //private void Attack(Transform player)
-    //    {
-    //        // Your attack logic goes here
-    //        Debug.Log("Attacking player");
-    //        // Example: Call player’s health system, play attack animations, etc.
-    //    }
+        //    // Check if the player is within the field of view angle and range
+        //    RaycastHit[] hits = Physics.RaycastAll(origin, forward, range, playerLayer);
+
+        //    foreach (var h in hits)
+        //    {
+        //        // Calculate angle between forward direction and hit direction
+        //        Vector3 directionToPlayer = (h.transform.position - origin).normalized;
+        //        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+
+        //        // If player is within the field of view angle and hit object has PlayerController component
+        //        if (angle <= fovAngle * 0.5f && h.collider.GetComponent<MovementInput>() != null)
+        //        {
+        //            return h.transform; // Return the player's transform if detected
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        //private void Attack(Transform player)
+        //    {
+        //        // Your attack logic goes here
+        //        Debug.Log("Attacking player");
+        //        // Example: Call player’s health system, play attack animations, etc.
+        //    }
 
         //void Update()
         //{

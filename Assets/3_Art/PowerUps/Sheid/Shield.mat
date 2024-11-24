@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shield
-  m_Shader: {fileID: -6465566751694194690, guid: cc2b6216bd2229c49a3eb603b06933c4,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: cc2b6216bd2229c49a3eb603b06933c4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -19,7 +18,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -60,6 +60,7 @@ Material:
     - _Color: {r: 0.8907395, g: 0.17685664, b: 0, a: 0}
     - _Color_1: {r: 0.8808234, g: 0.19830054, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &1860432584626748759
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -72,4 +73,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9

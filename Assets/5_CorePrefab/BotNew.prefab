@@ -180,16 +180,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4d46fff78af084f97315ee6f9de913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
   BotRoot: {fileID: 2349578881730560047}
-  botType: 3
-  patrolPoints: []
   inkParticle: {fileID: 4818195145417484732}
+  botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
   sightRange: 20
   fovAngle: 60
   attackRange: 5
   moveSpeed: 4
   maxFollowRange: 3
+  minRotationAngle: -15
+  maxRotationAngle: 15
+  rotationDuration: 2
+  startBotSurvilanceAfter: 1
+  EndBotSurvilanceBefore: 1
+  debugPathList: []
 --- !u!136 &4863301018360627485
 CapsuleCollider:
   m_ObjectHideFlags: 0

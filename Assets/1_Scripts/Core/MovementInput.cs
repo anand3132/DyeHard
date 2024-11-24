@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 namespace RedGaint
 {
@@ -18,9 +19,31 @@ namespace RedGaint
 
         void Start()
         {
+      
+
             anim = GetComponent<Animator>();
             controller = GetComponent<CharacterController>();
             cam = Camera.main;
+            InputHandler.instance.HandOnLeftJoystick += OnTriggerOn;
+            InputHandler.instance.ReleaseLeftJoystick += OnTriggerOFF;
+        }
+
+        private void OnDisable()
+        {
+            InputHandler.instance.HandOnLeftJoystick -= OnTriggerOn;
+            InputHandler.instance.ReleaseLeftJoystick -= OnTriggerOFF;
+
+        }
+
+
+        private void OnTriggerOFF()
+        {
+            anim.SetBool("OnShooting", false);
+        }
+
+        private void OnTriggerOn(Vector2 vector)
+        {
+            anim.SetBool("OnShooting", true);
         }
 
         void Update()
@@ -68,13 +91,14 @@ namespace RedGaint
             inputZ = InputHandler.instance.GetRightJoystickDirection().y;
             float speed = new Vector2(inputX, inputZ).sqrMagnitude;
 
-#if UNITY_EDITOR && !ONTEST_INPUT
-            anim.SetBool("OnShooting", Input.GetButton("Fire1"));
+//            InputHandler.instance.IS
+//#if UNITY_EDITOR && !ONTEST_INPUT
+//            anim.SetBool("OnShooting", Input.GetButton("Fire1"));
 
-#else
-        anim.SetBool("OnShooting", InputHandler.instance.GetLeftJoystickDirection.magnitude > 0.1f);
+//#else
+//        anim.SetBool("OnShooting", InputHandler.instance.GetLeftJoystickDirection.magnitude > 0.1f);
 
-#endif
+//#endif
 
             if (speed > movementSettings.allowPlayerRotation)
             {

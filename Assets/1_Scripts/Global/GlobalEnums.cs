@@ -52,5 +52,10 @@ namespace RedGaint
             Normal,
             Hard
         }
+        public enum RotationMode
+        {
+            RandomMode,
+            SineWaveMode
+        }
     }
 }

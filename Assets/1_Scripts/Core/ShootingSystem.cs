@@ -33,13 +33,13 @@ namespace RedGaint
             Debug.Log("Shooting....");
             inkParticle.Play();
 
-            //bool pressing = InputHandler.instance.GetLeftJoystickDirection().magnitude > 0.1;
+            bool pressing = InputHandler.instance.GetLeftJoystickDirection().magnitude > 0.1;
 
-            //if (direction.magnitude > 0.1)
-            //if (direction.magnitude < 0.1)
-            //    inkParticle.Stop();
+            if (direction.magnitude > 0.1)
+                if (direction.magnitude < 0.1)
+                    inkParticle.Stop();
 
-            //Vector3 angle = parentController.localEulerAngles;
+            Vector3 angle = parentController.localEulerAngles;
             //parentController.localEulerAngles = new Vector3(Mathf.LerpAngle(angle.x, pressing ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0, .3f), angle.y, angle.z);
         }
 

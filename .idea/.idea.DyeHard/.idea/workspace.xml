@@ -6,24 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-Slope.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-Slope.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/SampleScene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/SampleScene/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/SampleScene/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/prefab/paltform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/prefab/paltform.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Ink_Blast.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Ink_Blast.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Shield.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Shield.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SlowRun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SlowRun.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SpeedRun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SpeedRun.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/so_BotMovement.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/so_BotMovement.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Deprecated/ThirdPersonCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Deprecated/ThirdPersonCamera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +127,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732528765116</updated>
       <workItem from="1732528766312" duration="8072000" />
-      <workItem from="1732555570573" duration="8347000" />
+      <workItem from="1732555570573" duration="13087000" />
     </task>
     <servers />
   </component>
@@ -153,26 +149,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs</url>
-          <line>205</line>
+          <line>208</line>
           <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'WanderCoroutine'">
             <startOffsets>
-              <option value="8108" />
+              <option value="8166" />
             </startOffsets>
             <endOffsets>
-              <option value="8155" />
+              <option value="8213" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs</url>
-          <line>278</line>
+          <line>280</line>
           <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'GetNextPatrolPoint'">
             <startOffsets>
-              <option value="11385" />
+              <option value="11426" />
             </startOffsets>
             <endOffsets>
-              <option value="11420" />
+              <option value="11461" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

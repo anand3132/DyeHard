@@ -1,23 +1,23 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
-public class PowerUpController : MonoBehaviour
+namespace RedGaint
 {
-    private Dictionary<string, PowerUpBase> collectedPowerUps = new Dictionary<string, PowerUpBase>();
+   public class PowerUpController : MonoBehaviour
+   {
+      public GlobalEnums.PowerUpType powerUpType;
 
-    public void CollectPowerUp(PowerUpBase powerUp)
-    {
-        if (!collectedPowerUps.ContainsKey(powerUp.GetType().Name))
-        {
-            collectedPowerUps.Add(powerUp.GetType().Name, powerUp);
-        }
-    }
+      public void TriggerPowerUp()
+      {
+         StartCoroutine(OnPowerUp(5f));
+      }
 
-    public void ActivatePowerUp(string powerUpName)
-    {
-        if (collectedPowerUps.TryGetValue(powerUpName, out PowerUpBase powerUp))
-        {
-            powerUp.Activate();
-        }
-    }
-}
+      private IEnumerator OnPowerUp(float delay)
+      {
+         Debug.Log($"PowerUp {powerUpType} activated. Destroying in 5 seconds...");
+         yield return new WaitForSeconds(delay);
+         Destroy(gameObject); // Destroy this GameObject after the delay
+      }
+   }
+}//ResGaint

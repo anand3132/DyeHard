@@ -21,8 +21,10 @@ namespace RedGaint
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction shootAction;
+        private InputAction powerUpAction;
         private Vector2 movementInput;
         
+        private ShootingSystem shootingSystem;
 
         private void OnEnable()
         {
@@ -31,11 +33,13 @@ namespace RedGaint
             
             moveAction.Enable();
             shootAction.Enable();
+            powerUpAction.Enable();
             moveAction.performed += OnMove;
             moveAction.canceled += OnMove;
             shootAction.started += OnShootStarted;
             shootAction.performed += OnShoot;
             shootAction.canceled += OnShootEnd;
+            powerUpAction.started += OnPowerUp;
 
         }
         private void OnDisable()
@@ -45,6 +49,8 @@ namespace RedGaint
             shootAction.started -= OnShootStarted;
             shootAction.performed -= OnShoot;
             shootAction.canceled -= OnShootEnd;
+            powerUpAction.started -= OnPowerUp;
+            powerUpAction.Disable();
             moveAction.Disable();
             shootAction.Disable();
         }
@@ -57,21 +63,22 @@ namespace RedGaint
 
         private void Awake()
         {
+            //Binding all inputs
             if (playerInput == null)
                 playerInput = GetComponent<PlayerInput>();
             moveAction = playerInput.actions["Move"];
             shootAction = playerInput.actions["Shoot"];
+            powerUpAction = playerInput.actions["PowerUp"];
+
             anim = GetComponent<Animator>();
             controller = GetComponent<CharacterController>();
             // cam = Camera.main;
         }
-        
-
+        //Input Events---------------------------------------------------
         private void OnMove(InputAction.CallbackContext context)
         {
             movementInput = context.ReadValue<Vector2>();
         }
-
         private void OnShoot(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -87,7 +94,11 @@ namespace RedGaint
             gunSystem.Stop();
         }
 
-        private ShootingSystem shootingSystem;
+        private void OnPowerUp(InputAction.CallbackContext context)
+        {
+            GetComponent<PowerUpBasket>().TriggerPowerUp();
+        }
+        //-----------------------------------------------------------------
         private void Start()
         {
             cam = Camera.main;
@@ -95,7 +106,6 @@ namespace RedGaint
                 Debug.LogWarning("No Main Camera found in the scene.");
             shootingSystem = GetComponent<ShootingSystem>();
         }
-
         void Update()
         {
             InputMagnitude();
@@ -106,7 +116,6 @@ namespace RedGaint
                 verticalVel -= 1;
             controller.Move(new Vector3(0, verticalVel * .2f * Time.deltaTime, 0));
         }
-
         void PlayerMoveAndRotation()
         {
             var forward = cam.transform.forward;
@@ -130,7 +139,6 @@ namespace RedGaint
                 controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) * Time.deltaTime * movementSettings.velocity);
             }
         }
-
         void InputMagnitude()
         {
             float speed = movementInput.sqrMagnitude;
@@ -149,4 +157,4 @@ namespace RedGaint
             }
         }
     }
-}
+}//RedGaint

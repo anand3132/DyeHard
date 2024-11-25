@@ -72,16 +72,12 @@ namespace RedGaint
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<PlayerController>())
+            if (other.GetComponent<PlayerController>()||other.GetComponentInParent<BotController>())
             {
-                // // Grant a random power-up to the player upon collision
-                // int randomIndex = UnityEngine.Random.Range(0, availablePowerUps.Length);
-                // PowerUpBase collectedPowerUp = Instantiate(availablePowerUps[randomIndex]);
-                // FindObjectOfType<PowerUpController>().CollectPowerUp(collectedPowerUp);
-
+                if(!other.GetComponent<PowerUpBasket>().ActivateCurrentPowerUp(powerUpType))
+                    return;
                 // Trigger the event to notify the generator
                 OnPowerUpConsumed?.Invoke(positionIndex);
-
                 // Destroy the power-up after collection
                 Destroy(gameObject);
             }

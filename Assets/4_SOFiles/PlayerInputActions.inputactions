@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Powerups",
+                    "name": "PowerUp",
                     "type": "Button",
                     "id": "b557c387-26a1-423f-9c46-11d4cbe32e13",
                     "expectedControlType": "Button",
@@ -52,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Powerups",
+                    "action": "PowerUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

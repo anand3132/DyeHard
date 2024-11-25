@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 4928722668947712444}
   - component: {fileID: 4863301018360627485}
   - component: {fileID: 8321920013357744656}
+  - component: {fileID: 7957842942209917508}
   m_Layer: 0
   m_Name: BotNew 1
   m_TagString: Untagged
@@ -183,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4d46fff78af084f97315ee6f9de913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationspeedOffset: 0
   BotRoot: {fileID: 2349578881730560047}
   inkParticle: {fileID: 4818195145417484732}
   botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
@@ -191,12 +193,10 @@ MonoBehaviour:
   attackRange: 3
   moveSpeed: 3
   maxFollowRange: 3
-  minRotationAngle: -15
-  maxRotationAngle: 15
-  rotationDuration: 2
+  stuckThreshold: 0.1
+  stuckTimeLimit: 2
   startBotSurvilanceAfter: 1
   EndBotSurvilanceBefore: 1
-  debugPathList: []
 --- !u!136 &4863301018360627485
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -247,6 +247,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7957842942209917508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301680609491423985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f73030a283a1b4eaae4b811f82e670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpObjectPrefab: {fileID: 0}
+  currentPowerUp: {fileID: 0}
+  isPowerUpAvilable: 0
 --- !u!1 &347825275340732708
 GameObject:
   m_ObjectHideFlags: 0

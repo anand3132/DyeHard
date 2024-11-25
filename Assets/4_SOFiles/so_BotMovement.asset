@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c859a41be29d748ac550ee4d36d4a9, type: 3}
   m_Name: so_BotMovement
   m_EditorClassIdentifier: 
-  attackRange: 2
+  attackRange: 3
   movementSpeed: 4
+  maxFollowRange: 3
   horizontalAnimSmoothTime: 0.2
   verticalAnimSmoothTime: 0.2
   startAnimTime: 0.3
   stopAnimTime: 0.15
+  animationSpeedOffset: 0.5
+  sightRange: 20
+  fovAngle: 45
+  minRotationAngle: -15
+  maxRotationAngle: 15
+  rotationDuration: 2

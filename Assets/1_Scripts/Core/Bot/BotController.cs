@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
+
 namespace RedGaint
 {
     public class BotController : MonoBehaviour
@@ -34,7 +37,7 @@ namespace RedGaint
         private bool isFollowingPlayer = false;
         //Iteratores
         private int currentTargetIndex = 0;
-
+        
         //Controlls
         public BotSettings botSettings;
         private int currentDestinationIndex = 0;
@@ -213,7 +216,6 @@ namespace RedGaint
                 // :delay to simulate "looking around"
                 
                 yield return new WaitForSeconds(1f); 
-                
             }
         }
         private IEnumerator BotGunMovement(GlobalEnums.RotationMode rotationMode)
@@ -433,6 +435,13 @@ namespace RedGaint
                 inkParticle.Stop();
             }
         }
-        
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<PowerUp>())
+            {
+                
+            }
+        }
     }//BotController
 }//RedGaint

@@ -1,18 +1,13 @@
-using RedGaint;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static Cinemachine.CinemachineTargetGroup;
-
 namespace RedGaint
 {
     public class BotController : MonoBehaviour
     {
  #region MemberVariables
-        
         //public GlobalEnums.BotType botType = GlobalEnums.BotType.Runner;
-
         // Movement parameters
         private bool isMoving = true;
         private float inputX;
@@ -24,109 +19,96 @@ namespace RedGaint
         private float verticalAnimSmoothTime;
         private float startAnimTime;
         private float stopAnimTime;
-
+        public float animationspeedOffset; 
         //References
         public Transform BotRoot;
         private CheckPointHandler checkpointHandler;
-        private CapsuleCollider capsuleCollider;
         private Transform currentPlayerTransform;
         private Animator currentAnimtor;
         public ParticleSystem inkParticle;
         private NavMeshAgent currentBotAgent;
-
         //Data List
         private List<Vector3> botCurrentPathNodes;
-
         //Switches
         private bool isBotActive = false;
         private bool isFollowingPlayer = false;
-
         //Iteratores
         private int currentTargetIndex = 0;
 
         //Controlls
         public BotSettings botSettings;
-
-        [Range(20, 80)]
-        public float sightRange = 20f; // How far the bot can see
-        [Range(15, 180)]
-        public float fovAngle = 45f;  // Field of view angle
-        //public LayerMask playerLayer;  // Layer containing the player
-        [Range(3, 10)]
-        public float attackRange = 3f; // Range at which the bot can attack
-        [Range(3, 5)]
-        public float moveSpeed = 3f;  // Speed at which the bot moves
-        [Range(3, 20)]
-        public int maxFollowRange = 3;
-
-
         private int currentDestinationIndex = 0;
-        [SerializeField] private float minRotationAngle = -15f;  // Minimum random angle for left rotation
-        [SerializeField] private float maxRotationAngle = 15f;   // Maximum random angle for right rotation
-        [SerializeField] private float rotationDuration = 2f;     // Time to rotate to the new random angle
+
+        public float sightRange;
+        public float fovAngle;
+        public float attackRange;
+        public float moveSpeed;
+        public int maxFollowRange;
+        private float minRotationAngle;
+        private float maxRotationAngle;
+        private float rotationDuration;
 
         //[SerializeField] private GlobalEnums.RotationMode rotationMode = GlobalEnums.RotationMode.SineWaveMode;
-
-
-        [Range(0, 5)]
-        [SerializeField] private float startBotSurvilanceAfter = 1f;         // Time to wait before rotating back to the original angle
-
-        [Range(0, 5)]
-        [SerializeField] private float EndBotSurvilanceBefore = 1f;         // Time to wait before rotating back to the original angle
+        public float stuckThreshold = 0.1f;  // Threshold for considering the bot stuck (low velocity)
+        private float timeStuck = 0f;
+        public float stuckTimeLimit = 2f; 
+        [Range(0, 5)] [SerializeField] private float startBotSurvilanceAfter = 1f;         // Time to wait before rotating back to the original angle
+        [Range(0, 5)][SerializeField] private float EndBotSurvilanceBefore = 1f;         // Time to wait before rotating back to the original angle
 
         private bool isRotating = false;  // Flag to prevent multiple rotations happening at once
         private Quaternion initialRotation; // Store the initial rotation to return to after the random rotation
-
-
         //ID's
         private string currentDestinationID;
 
 #endregion//=======================================================================================
-
-        public void InitialiseBot(Vector3 position, CheckPointHandler checkPointHandler)
+        public void InitialiseBot(Vector3 _position, CheckPointHandler checkPointHandler)
+        {
+            if (botSettings == null)
+            {
+                Debug.LogError("Please set bot settings");
+                return;
+            }
+            checkpointHandler = checkPointHandler;
+            InitialiseBotSettings(botSettings,_position);
+            InitializeAnimationSettings(botSettings);
+        }
+        private void InitialiseBotSettings(BotSettings settings,Vector3 _position)
         {
             if (BotRoot == null)
                 BotRoot = gameObject.transform;
-            BotRoot.transform.position = position;
+            BotRoot.transform.position = _position;
+            
             currentBotAgent = GetComponent<NavMeshAgent>();
+            currentBotAgent.speed = settings.movementSpeed;
+            sightRange= settings.sightRange;
+            fovAngle= settings.fovAngle;
+            attackRange = settings.attackRange;
+            moveSpeed=settings.movementSpeed;
+            maxFollowRange = settings.maxFollowRange;
+            minRotationAngle=settings.minRotationAngle;
+            maxRotationAngle=settings.maxRotationAngle;
+            rotationDuration=settings.rotationDuration;
+        }
+
+        private void InitializeAnimationSettings(BotSettings settings)
+        {
             currentAnimtor = GetComponent<Animator>();
-            UpdateBotSettings(botSettings);
-
-            checkpointHandler = checkPointHandler;
-            InitializeAnimationSmoothing(botSettings);
-
-        }
-        private void UpdateBotSettings(BotSettings _botSettings)
-        {
-            currentBotAgent.speed = _botSettings.movementSpeed;
-
-        }
-
-        private void InitializeAnimationSmoothing(BotSettings settings)
-        {
-            // Assign settings values for animation smoothing
             horizontalAnimSmoothTime = settings.horizontalAnimSmoothTime;
             verticalAnimSmoothTime = settings.verticalAnimSmoothTime;
             startAnimTime = settings.startAnimTime;
             stopAnimTime = settings.stopAnimTime;
-
+            animationspeedOffset = settings.animationSpeedOffset;
         }
 
         public List<Vector3> GetWayPointPositions(List<Transform> wayPointTransforms)
         {
-
-            // Create a new list to store the positions
             List<Vector3> positions = new List<Vector3>();
-
-            // Extract positions from the Transform list
             foreach (Transform waypoint in wayPointTransforms)
             {
                 positions.Add(waypoint.position);
             }
-
             return positions;
         }
-        public List<Transform> debugPathList;
         public bool ActivateBot()
         {
             if (isBotActive) { return false; }
@@ -138,17 +120,10 @@ namespace RedGaint
             }
             if (checkpointHandler != null)
             {
-                //   SetNextDestination();
                 isBotActive = true;
-
-                debugPathList = checkpointHandler.GetWayPointList();
-
-                botCurrentPathNodes =GetWayPointPositions(debugPathList);
-                capsuleCollider = GetComponent<CapsuleCollider>();
-               StartCoroutine(WanderCoroutine());
+                botCurrentPathNodes =GetWayPointPositions(checkpointHandler.GetWayPointList());
+                StartCoroutine(WanderCoroutine());
                 return true;
-
-
             }
             return false;
         }
@@ -177,42 +152,70 @@ namespace RedGaint
                         currentPlayerTransform = null;
                         StartCoroutine(WanderCoroutine());
                         Debug.Log("<color=green>------returning patrol : -------------</color>");
-
-                        //StartCoroutine(PatrolRoutine());
-
                     }
                 }
-                // MoveBotTo(currentBotAgent.destination);
-                UpdateAnimationParameters(currentBotAgent.velocity.magnitude);
+                // Check for bot's speed and update animation parameters
+                float speed = currentBotAgent.velocity.magnitude;
+                UpdateAnimationParameters(speed);
+                // Check if the bot is stuck (via the failsafe)
+                CheckIfBotIsStuck(speed);
             }
         }
+   // How long to wait before considering the bot stuck
 
-  
+        private void CheckIfBotIsStuck(float speed)
+        {
+            if (speed < stuckThreshold)
+            {
+                timeStuck += Time.deltaTime;
 
+                // If the bot has been stuck for more than the time limit, handle it
+                if (timeStuck >= stuckTimeLimit)
+                {
+                    HandleBotStuck();
+                }
+            }
+            else
+            {
+                // Reset stuck time if the bot is moving
+                timeStuck = 0f;
+            }
+        }
+        private void HandleBotStuck()
+        {
+            // If the bot is stuck, stop the animation and reset the path
+            Debug.Log("<color=yellow>------Bot is stuck, handling it.-------------</color>");
+            currentAnimtor.SetFloat("Blend", 0f);  // Stop the walking animation
+
+            // Optionally reset the NavMeshAgent's path
+            currentBotAgent.ResetPath();
+
+            // Optionally, attempt to replan the path or take other actions
+            // currentBotAgent.SetDestination(newDestination); // Recalculate path
+        }
         private IEnumerator WanderCoroutine()
         {
             while (!isFollowingPlayer)
             {
                 GunState(true);
-                //if (!isRotating)
-                //{
-                //    StartCoroutine(BotGunMovement(GlobalEnums.RotationMode.SineWaveMode));
-                //}
+                // if (!isRotating)
+                // {
+                //     StartCoroutine(BotGunMovement(GlobalEnums.RotationMode.SineWaveMode));
+                // }
                 Vector3 targetPosition = GetNextPatrolPoint();
                 currentBotAgent.SetDestination(targetPosition);
                 Debug.Log("Bot reached destination : "+currentDestinationIndex);
-
                 Debug.Log("-------------------------------------------------");
 
                yield return new WaitUntil(() => !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
 
                 // Look for player after reaching each way point
                 // :delay to simulate "looking around"
+                
                 yield return new WaitForSeconds(1f); 
                 
             }
         }
-
         private IEnumerator BotGunMovement(GlobalEnums.RotationMode rotationMode)
         {
             yield return new WaitForSeconds(startBotSurvilanceAfter);
@@ -270,10 +273,6 @@ namespace RedGaint
             // Reset the rotating flag after the action is complete
             isRotating = false;
         }
-        //private string GetWaypointID(currentDestinationIndex)
-        //{
-        //    checkpointHandler.GetWayPointList()[currentDestinationIndex].GetComponent<way>
-        //}
         private Vector3 GetNextPatrolPoint()
         {
             // Check if the patrolPoints list is empty
@@ -292,7 +291,6 @@ namespace RedGaint
             return nextPathNodePoint;
         }
 
-        // Logic to follow the player
         private IEnumerator FollowPlayerCoroutine()
         {
             while (isFollowingPlayer)
@@ -354,128 +352,7 @@ namespace RedGaint
 
             return null;
         }
-
-        private Vector3 GetPlayerPosition()
-        {
-            // Replace this with actual logic to get the player's position (e.g., reference to player object)
-            return transform.root.GetComponent<GameCoreElements>().GetPlayer().transform.position;
-        }
-
-        //-----------------------------------------------------------------------------------------------
-        //OLD LOGIC 
-        private IEnumerator PatrolRoutine()
-        {
-            while (true)
-            {
-                // Check if the bot is following the player
-                if (isFollowingPlayer)
-                {
-                    // Stop wandering and follow the player logic 
-                    //Todo:need to check
-                    yield return StartCoroutine(FollowPlayerRoutine());
-                }
-                else
-                {
-                    // Move to the next position
-                    Vector3 targetPosition = botCurrentPathNodes[currentDestinationIndex];
-                    currentBotAgent.SetDestination(targetPosition);
-
-
-                    // Wait until the bot reaches the current destination
-                    yield return new WaitUntil(() =>
-                        !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
-
-                    // Rotate to face the next point
-                    int nextIndex = (currentDestinationIndex + 1) % botCurrentPathNodes.Count;
-                    Vector3 directionToNextPoint = botCurrentPathNodes[nextIndex] - transform.position;
-                    Quaternion targetRotation = Quaternion.LookRotation(directionToNextPoint);
-
-                    // Smoothly rotate towards the next point
-                    while (Quaternion.Angle(transform.rotation, targetRotation) > 1f)
-                    {
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, currentBotAgent.angularSpeed * Time.deltaTime);
-                        yield return null; // Wait until the next frame to continue rotating
-                    }
-
-                    Debug.Log("============================================");
-                    Debug.Log("Bot is moving to the next patrol point: " + currentDestinationIndex + " -> " + nextIndex);
-                    // Update the target index to the next patrol point
-                    currentDestinationIndex = nextIndex;
-
-
-                }
-
-                // Add a small delay before starting the next patrol point
-                yield return null;
-            }
-        }
-
-        private IEnumerator FollowPlayerRoutine()
-        {
-            // This is where bot detect and move towards the player
-
-            Debug.Log("Bot detected the player and is following.");
-
-            while (isFollowingPlayer)
-            {
-                Vector3 playerPosition = GetPlayerPosition();
-
-                // Wait for bot to reach the player or the target
-                yield return new WaitUntil(() =>
-                    !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
-
-                // Call the attack function when close enough to the player
-                if (Vector3.Distance(transform.position, playerPosition) <= attackRange)
-                {
-                    AttackPlayer();
-                    isFollowingPlayer = false;
-                }
-
-                // If the player runs away, stop following
-                if (Vector3.Distance(transform.position, playerPosition) > maxFollowRange)
-                {
-                    isFollowingPlayer = false;
-                    Debug.Log("<color=blue> Player is out of range, returning to patrol.</color>");
-                }
-
-                yield return null;
-            }
-        }
-
-//------------------------------------------------------------------------------------------------
-
-        
  #region forDebug
-
-        private void OnDrawGizmos()
-        {
-            if (capsuleCollider != null)
-            {
-                Gizmos.color = Color.red;
-                Vector3 rayOrigin = capsuleCollider.bounds.center;
-
-                // Visualize the cone of rays (for debugging)
-                float angleStep = fovAngle / 5;
-                for (int i = 0; i < 5; i++)
-                {
-                    float angle = (-fovAngle / 2) + (i * angleStep);
-                    Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
-
-                    // Draw the cone's rays
-                    Gizmos.DrawRay(rayOrigin, direction * sightRange);
-                }
-
-                // Draw the field of view as a cone shape
-                Gizmos.color = new Color(1f, 0f, 0f, 0.2f); // Semi-transparent red for the cone area
-                Vector3 left = Quaternion.Euler(0, -fovAngle / 2, 0) * transform.forward;
-                Vector3 right = Quaternion.Euler(0, fovAngle / 2, 0) * transform.forward;
-                Gizmos.DrawRay(rayOrigin, left * sightRange);
-                Gizmos.DrawRay(rayOrigin, right * sightRange);
-
-                // Optionally, you can fill the area with a semi-transparent cone shape:
-                DrawCone(rayOrigin, left, right, sightRange);
-            }
-        }
 
         // Utility to draw a filled cone for the field of view
         private void DrawCone(Vector3 origin, Vector3 leftDirection, Vector3 rightDirection, float length)
@@ -495,8 +372,8 @@ namespace RedGaint
         private void AttackPlayer()
         {
             Debug.Log("Bot is attacking the player!");
+            //BotAttack();
         }
-
         private void MoveBotTo(Vector4 direction)
         {
             Vector3 moveDirection = Vector3.zero;
@@ -507,29 +384,29 @@ namespace RedGaint
             if (direction.z < 0) moveDirection -= transform.forward;       // Backward
             inputX = direction.x;
             inputZ = direction.z;
-
             currentBotAgent.Move(moveDirection.normalized * botSettings.movementSpeed * Time.deltaTime);
         }
 
         private void UpdateAnimationParameters(float speed)
         {
-            //float speed = new Vector2(inputX, inputZ).sqrMagnitude;
-            //Run
-            if (speed > 0.1f)
+            // Apply the speed offset to reduce the speed
+            float adjustedSpeed = speed * animationspeedOffset;
+
+            // Run
+            if (adjustedSpeed > 0.1f)
             {
-                currentAnimtor.SetFloat("Blend", speed, startAnimTime, Time.deltaTime);
+                currentAnimtor.SetFloat("Blend", adjustedSpeed, startAnimTime, Time.deltaTime);
                 currentAnimtor.SetFloat("X", inputX, startAnimTime / 3, Time.deltaTime);
                 currentAnimtor.SetFloat("Y", inputZ, startAnimTime / 3, Time.deltaTime);
             }
-            //Idle
+            // Idle
             else
             {
-                currentAnimtor.SetFloat("Blend", speed, stopAnimTime, Time.deltaTime);
+                currentAnimtor.SetFloat("Blend", adjustedSpeed, stopAnimTime, Time.deltaTime);
                 currentAnimtor.SetFloat("X", inputX, stopAnimTime / 3, Time.deltaTime);
                 currentAnimtor.SetFloat("Y", inputZ, stopAnimTime / 3, Time.deltaTime);
             }
         }
-
         public void BotAttack(Vector4 direction)
         {
             Vector3 attackDirection = new Vector3(direction.x, 0, direction.z).normalized;
@@ -556,36 +433,6 @@ namespace RedGaint
                 inkParticle.Stop();
             }
         }
-
-        public void OnTriggerEnter(Collider other)
-        {
-            //if (other.GetComponent<CheckPoint>() != null)
-            //{
-            //    CheckPoint currentWayPoint = other.GetComponent<CheckPoint>();
-            //    if (currentWayPoint.CheckPointType == GlobalEnums.CheckPointType.WayPoint
-            //        && string.Equals(currentDestinationID, currentWayPoint.CheckPointID))
-            //    {
-            //        currentBotAgent.isStopped = true;
-            //        isMoving = false;
-            //        GunState(false);
-            //        Debug.Log("Reached Destination : " + currentDestinationID);
-            //        Debug.Log("------------------------------------------------");
-            //        if (SetNextDestination())
-            //        {
-            //            isMoving = true;
-            //            GunState(true);
-            //        }
-
-            //    }
-
-            //    Debug.Log("triggered with : " + other.gameObject.name);
-            //}
-        }
-
-        public void OnCollisionEnter(Collision collision)
-        {
-            Debug.Log("on collition with : " + collision.gameObject.name);
-
-        }//OnCollisionEnter
+        
     }//BotController
 }//RedGaint

@@ -1,0 +1,59 @@
+using UnityEngine;
+using System;
+
+namespace RedGaint
+{
+    public class PowerUp : MonoBehaviour
+    {
+        public event Action<int> OnPowerUpConsumed;
+        public PowerUpBase[] availablePowerUps;
+
+        [Header("Bounce Settings")]
+        public float bounceHeight = 0.5f;       // The height of the bounce
+        public float bounceSpeed = 2.0f;        // The speed of the bounce
+
+        [Header("Rotation Settings")]
+        public float rotationSpeed = 50f;       // Rotation speed in degrees per second
+
+        private Vector3 startPosition;
+        private int positionIndex;
+
+        public void Initialize(int positionIndex)
+        {
+            this.positionIndex = positionIndex;
+        }
+
+        private void Start()
+        {
+            // Store the initial position of the basket
+            startPosition = transform.position;
+        }
+
+        private void Update()
+        {
+            // Bouncing effect
+            float newY = startPosition.y + Mathf.Sin(Time.time * bounceSpeed) * bounceHeight;
+            transform.position = new Vector3(startPosition.x, newY, startPosition.z);
+
+            // Rotation effect
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                // Grant a random power-up to the player upon collision
+                int randomIndex = UnityEngine.Random.Range(0, availablePowerUps.Length);
+                PowerUpBase collectedPowerUp = Instantiate(availablePowerUps[randomIndex]);
+                FindObjectOfType<PowerUpController>().CollectPowerUp(collectedPowerUp);
+
+                // Trigger the event to notify the generator
+                OnPowerUpConsumed?.Invoke(positionIndex);
+
+                // Destroy the power-up after collection
+                Destroy(gameObject);
+            }
+        }
+    }//PowerUp
+}//RedGaint

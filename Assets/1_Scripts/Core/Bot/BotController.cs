@@ -131,6 +131,11 @@ namespace RedGaint
         {
             if (isBotActive) { return false; }
             currentTargetIndex = 0;
+            if (currentBotAgent == null)
+            {
+                Debug.LogError("Cant able to get the Bot Agent!!");
+                return false;
+            }
             if (checkpointHandler != null)
             {
                 //   SetNextDestination();
@@ -140,7 +145,7 @@ namespace RedGaint
 
                 botCurrentPathNodes =GetWayPointPositions(debugPathList);
                 capsuleCollider = GetComponent<CapsuleCollider>();
-                StartCoroutine(WanderCoroutine());
+               StartCoroutine(WanderCoroutine());
                 return true;
 
 
@@ -177,7 +182,7 @@ namespace RedGaint
 
                     }
                 }
-               // MoveBotTo(currentBotAgent.destination);
+                // MoveBotTo(currentBotAgent.destination);
                 UpdateAnimationParameters(currentBotAgent.velocity.magnitude);
             }
         }
@@ -339,7 +344,7 @@ namespace RedGaint
                 foreach (var h in hits)
                 {
                     // Check if the hit object has a PlayerController component
-                    if (h.collider.GetComponent<MovementInput>() != null)
+                    if (h.collider.GetComponent<PlayerController>() != null)
                     {
                         // Return the player's transform if detected
                         return h.transform;

@@ -14,13 +14,11 @@ namespace RedGaint {
         private int reverseIndex;
         private bool IsGeneratorActive = false;
         public int createBot = 1;
+        private List<GameObject> BotList=new List<GameObject>();
 
         public List<GameObject> BotPrefab;
-
-        public List<GameObject> BotList=new List<GameObject>();
         private void Start()
         {
-
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
             if (checkpointHandler == null)
             {
@@ -34,10 +32,11 @@ namespace RedGaint {
             }
             for (int i = 0; i < createBot; i++)
             {
-                if (GetNewSpawnPosition(out Vector3 posiion)) {
-                    GenerateNewBot(posiion,out GameObject bot);
+                if (GetNewSpawnPosition(out Vector3 posiion))
+                {
+                    GenerateNewBot(posiion, out GameObject bot);
                     BotList.Add(bot);
-                        }
+                }
             }
         }
 
@@ -151,13 +150,11 @@ namespace RedGaint {
             for (int i = 0; i < list.Count; i++)
             {
                 int randomIndex = UnityEngine.Random.Range(i, list.Count);
-                Vector3 temp = list[i];
-                list[i] = list[randomIndex];
-                list[randomIndex] = temp;
+                (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
             }
         }
 
-        public bool GenerateNewBot(Vector3 position, out GameObject bot)
+        private bool GenerateNewBot(Vector3 position, out GameObject bot)
         {
             bot = GameObject.Instantiate(BotPrefab[0], transform);
             bot.SetActive(true);

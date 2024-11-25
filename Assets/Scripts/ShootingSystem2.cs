@@ -4,29 +4,46 @@ using UnityEngine;
 using DG.Tweening;
 using Cinemachine;
 
-public class ShootingSystem : MonoBehaviour
+public class ShootingSystem2 : MonoBehaviour
 {
+
+    MovementInput input;
+
+    [SerializeField] ParticleSystem inkParticle;
     [SerializeField] Transform parentController;
     [SerializeField] Transform splatGunNozzle;
     [SerializeField] CinemachineFreeLook freeLookCamera;
-    //CinemachineImpulseSource impulseSource;
+    CinemachineImpulseSource impulseSource;
 
     void Start()
     {
-        //impulseSource = freeLookCamera.GetComponent<CinemachineImpulseSource>();
+        input = GetComponent<MovementInput>();
+        impulseSource = freeLookCamera.GetComponent<CinemachineImpulseSource>();
     }
 
-    public void Shoot(bool state)
+    void Update()
     {
         Vector3 angle = parentController.localEulerAngles;
-        VisualPolish(state);
+        input.blockRotationPlayer = Input.GetMouseButton(0);
+        bool pressing = Input.GetMouseButton(0);
+
+        if (Input.GetMouseButton(0))
+        {
+            VisualPolish();
+            input.RotateToCamera(transform);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+            inkParticle.Play();
+        else if (Input.GetMouseButtonUp(0))
+            inkParticle.Stop();
+
         parentController.localEulerAngles
-            = new Vector3(Mathf.LerpAngle(parentController.localEulerAngles.x, state ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0, .3f), angle.y, angle.z);
+            = new Vector3(Mathf.LerpAngle(parentController.localEulerAngles.x, pressing ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0, .3f), angle.y, angle.z);
     }
 
-    void VisualPolish(bool state)
+    void VisualPolish()
     {
-        if (!state) return;
         if (!DOTween.IsTweening(parentController))
         {
             parentController.DOComplete();
@@ -34,7 +51,8 @@ public class ShootingSystem : MonoBehaviour
             Vector3 localPos = parentController.localPosition;
             parentController.DOLocalMove(localPos - new Vector3(0, 0, .2f), .03f)
                 .OnComplete(() => parentController.DOLocalMove(localPos, .1f).SetEase(Ease.OutSine));
-          // impulseSource.GenerateImpulse();
+
+           impulseSource.GenerateImpulse();
         }
 
         if (!DOTween.IsTweening(splatGunNozzle))

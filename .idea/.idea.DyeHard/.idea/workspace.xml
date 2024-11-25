@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Player.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Player.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem.inputsettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem.inputsettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Main Visual Particle.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Main Visual Particle.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MovementInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MovementInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShootingSystem2.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShootingSystem2.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.plastic/plastic.changes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.plastic/plastic.selector" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.plastic/plastic.wktree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.plastic/plastic.workspace" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vsconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/MousePainter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/MousePainter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/MovementInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/MovementInput.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/ParticlesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/ParticlesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/ShootingSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/ShootingSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/RendererFeatures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/RendererFeatures/RenderMetaballs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/RendererFeatures/RenderMetaballs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/RendererFeatures/RenderMetaballsScreenSpace.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/RendererFeatures/RenderMetaballsScreenSpace.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/Scripts/MetaballParticleManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Metaballs/Scripts/MetaballParticleManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/BotSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/so_BotMovement.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/BotSettings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/so_BotMovement.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/MovementInputSettings 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/so_PlayerMovement.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/MovementInputSettings 1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/so_PlayerMovement.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/High_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Low_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Medium_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Medium_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Very High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Very High_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Very Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/RenderSettings/Very Low_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Global Volume.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Global Volume.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/ThirdPersonCamera.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/ThirdPersonCamera.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Virtual Camera 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Virtual Camera 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Virtual Camera.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Virtual Camera.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DYEHARD.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ignore.conf" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2pKxr32LmPFw8nNZ0tRiu8UOf8a" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2023.2.20f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath E:\1_Live\2_Glanza\DyeHard -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\1_Live\2_Glanza\DyeHard" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2023.2.20f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath E:\1_Live\2_Glanza\DyeHard -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\1_Live\2_Glanza\DyeHard" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="31456">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="31456" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list>
+          <MonoRuntime />
+        </list>
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="" />
+      <created>1732528765116</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732528765116</updated>
+      <workItem from="1732528766312" duration="2240000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs</url>
+          <line>201</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'WanderCoroutine'">
+            <startOffsets>
+              <option value="7059" />
+            </startOffsets>
+            <endOffsets>
+              <option value="7106" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs</url>
+          <line>279</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'GetNextPatrolPoint'">
+            <startOffsets>
+              <option value="10502" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10537" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

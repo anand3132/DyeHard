@@ -13,6 +13,16 @@ namespace RedGaint
             RoundRobin,
             ReverseSequence,
             Cluster,
+            SingleShot,
+            DoubleShot
+        }
+
+        public enum PowerUpType
+        {
+            Sprint,
+            Shield,
+            Sludge,
+            Bomb
         }
         public enum BotType
         {

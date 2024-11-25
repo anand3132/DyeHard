@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf3921875424b749ae387cab60d263a, type: 3}
-  m_Name: MovementInputSettings 1
+  m_Name: so_PlayerMovement
   m_EditorClassIdentifier: 
   velocity: 5
   desiredRotationSpeed: 0.1

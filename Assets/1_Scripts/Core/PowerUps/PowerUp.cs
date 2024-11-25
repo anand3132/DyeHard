@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 namespace RedGaint
 {
@@ -16,37 +17,67 @@ namespace RedGaint
         public float rotationSpeed = 50f;       // Rotation speed in degrees per second
 
         private Vector3 startPosition;
-        private int positionIndex;
+        int positionIndex;
+        public GlobalEnums.PowerUpType powerUpType;
+        public bool isActive=false;
+        private List<Material> powerUpMaterials;
 
-        public void Initialize(int positionIndex)
-        {
-            this.positionIndex = positionIndex;
-        }
-
-        private void Start()
-        {
-            // Store the initial position of the basket
+        public void Initialize( List<Material> _powerUpMaterials, int _positionIndex,GlobalEnums.PowerUpType  _powerUpType)
+        {   
+            positionIndex=_positionIndex;
+            powerUpType = _powerUpType;
+            powerUpMaterials = _powerUpMaterials;
             startPosition = transform.position;
+            SetPowerUpType(_powerUpType);
+            isActive = true;
+            Debug.Log("PowerUp Initialized");
         }
 
+        private void SetPowerUpType(GlobalEnums.PowerUpType powerUpType1)
+        {
+            // Ensure the provided power-up type has a corresponding material in the list
+            if ((int)powerUpType < powerUpMaterials.Count)
+            {
+                // Get the Renderer component of the power-up game object
+                Renderer renderer = GetComponent<Renderer>();
+
+                if (renderer != null)
+                {
+                    // Set the material based on the power-up type
+                    renderer.material = powerUpMaterials[(int)powerUpType];
+                }
+                else
+                {
+                    Debug.LogWarning("Renderer component not found on power-up object.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No material available for the specified power-up type.");
+            }
+        }
+
+        public GlobalEnums.PowerUpType PowerUpType { get { return powerUpType; } private set { powerUpType = value; } }
         private void Update()
         {
+            if(!isActive)
+                return;
             // Bouncing effect
             float newY = startPosition.y + Mathf.Sin(Time.time * bounceSpeed) * bounceHeight;
             transform.position = new Vector3(startPosition.x, newY, startPosition.z);
-
+            
             // Rotation effect
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.GetComponent<PlayerController>())
             {
-                // Grant a random power-up to the player upon collision
-                int randomIndex = UnityEngine.Random.Range(0, availablePowerUps.Length);
-                PowerUpBase collectedPowerUp = Instantiate(availablePowerUps[randomIndex]);
-                FindObjectOfType<PowerUpController>().CollectPowerUp(collectedPowerUp);
+                // // Grant a random power-up to the player upon collision
+                // int randomIndex = UnityEngine.Random.Range(0, availablePowerUps.Length);
+                // PowerUpBase collectedPowerUp = Instantiate(availablePowerUps[randomIndex]);
+                // FindObjectOfType<PowerUpController>().CollectPowerUp(collectedPowerUp);
 
                 // Trigger the event to notify the generator
                 OnPowerUpConsumed?.Invoke(positionIndex);

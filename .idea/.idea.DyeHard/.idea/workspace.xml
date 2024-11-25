@@ -6,9 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Settings/BotSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Settings/BotSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-NavMesh.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-Slope.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/DYEHARD/NavMesh-Slope.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/SampleScene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/SampleScene/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2_Scenes/SampleScene/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,30 +52,30 @@
     <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Bot/BotController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2pKxr32LmPFw8nNZ0tRiu8UOf8a" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2023.2.20f1\Editor\Unity.exe" />
@@ -91,10 +106,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="31456">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="13736">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="31456" />
+      <option name="pid" value="13736" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -116,6 +131,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732528765116</updated>
       <workItem from="1732528766312" duration="8072000" />
+      <workItem from="1732555570573" duration="8347000" />
     </task>
     <servers />
   </component>
@@ -140,10 +156,10 @@
           <line>205</line>
           <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'WanderCoroutine'">
             <startOffsets>
-              <option value="8096" />
+              <option value="8108" />
             </startOffsets>
             <endOffsets>
-              <option value="8143" />
+              <option value="8155" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
@@ -153,10 +169,10 @@
           <line>278</line>
           <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'GetNextPatrolPoint'">
             <startOffsets>
-              <option value="11373" />
+              <option value="11385" />
             </startOffsets>
             <endOffsets>
-              <option value="11408" />
+              <option value="11420" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

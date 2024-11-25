@@ -43,42 +43,47 @@ namespace RedGaint
 
         private void InitializeCheckPoints()
         {
-            // Iterate over each child of the CheckPointHandler
-            foreach (Transform child in transform)
+            InitializeCheckPointsRecursive(transform);
+        }
+
+        private void InitializeCheckPointsRecursive(Transform parentTransform)
+        {
+            // Iterate over each child of the given parent transform
+            foreach (Transform child in parentTransform)
             {
                 // Get the CheckPoint component on each child
                 CheckPoint checkPoint = child.GetComponent<CheckPoint>();
 
                 // Ensure the CheckPoint component exists
-                if (checkPoint == null)
+                if (checkPoint != null)
                 {
-                    return;
-                }
-                // Add the transform to the appropriate list based on CheckPointType
-                switch (checkPoint.CheckPointType)
-                {
-                    case GlobalEnums.CheckPointType.WayPoint:
-                        checkPoint.CheckPointID = "WAY_" + wayPoints.Count;
-                        wayPoints.Add(child);
-                        break;
-                    case GlobalEnums.CheckPointType.DefendPoint:
-                        checkPoint.CheckPointID = "DEF_" + defendPoints.Count;
-                        defendPoints.Add(child);
-                        break;
-                    case GlobalEnums.CheckPointType.Destination:
-                        checkPoint.CheckPointID = "DES_" + destinationPoints.Count;
-                        destinationPoints.Add(child);
-                        break;
-                    case GlobalEnums.CheckPointType.SpawnPoint:
-                        checkPoint.CheckPointID = "SPW_" + spawnPoints.Count;
-                        spawnPoints.Add(child);
-                        break;
+                    // Add the transform to the appropriate list based on CheckPointType
+                    switch (checkPoint.CheckPointType)
+                    {
+                        case GlobalEnums.CheckPointType.WayPoint:
+                            checkPoint.CheckPointID = "WAY_" + wayPoints.Count;
+                            wayPoints.Add(child);
+                            break;
+                        case GlobalEnums.CheckPointType.DefendPoint:
+                            checkPoint.CheckPointID = "DEF_" + defendPoints.Count;
+                            defendPoints.Add(child);
+                            break;
+                        case GlobalEnums.CheckPointType.Destination:
+                            checkPoint.CheckPointID = "DES_" + destinationPoints.Count;
+                            destinationPoints.Add(child);
+                            break;
+                        case GlobalEnums.CheckPointType.SpawnPoint:
+                            checkPoint.CheckPointID = "SPW_" + spawnPoints.Count;
+                            spawnPoints.Add(child);
+                            break;
+                    }
                 }
 
+                // Recursively call this method to go through all nested children
+                InitializeCheckPointsRecursive(child);
             }
-            isHandlerInitialised = true;
-
         }
+
         private void Reset()
         {
             wayPoints.Clear();

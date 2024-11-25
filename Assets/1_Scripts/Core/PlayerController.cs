@@ -77,7 +77,7 @@ namespace RedGaint
             if (context.performed)
             {
                 anim.SetBool("OnShooting", true);
-               shootingSystem.Shoot(true);
+              shootingSystem.Shoot(true);
 
             }
         }

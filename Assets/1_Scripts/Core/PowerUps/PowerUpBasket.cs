@@ -18,9 +18,12 @@ namespace RedGaint
                 currentPowerUp=Instantiate(powerUpObjectPrefab,transform.position,Quaternion.identity);
                 currentPowerUp.transform.parent = transform;
                 currentPowerUp.GetComponent<PowerUpController>().powerUpHolder = gameObject;
-                InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
-                InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =
-                    currentPowerUp.GetComponent<PowerUpController>().powerUpLogo;
+                if (GetComponent<PlayerController>())
+                {
+                    InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
+                    InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =
+                        currentPowerUp.GetComponent<PowerUpController>().powerUpLogo;
+                }
                 currentPowerUp.SetActive(false);
                 isPowerUpAvilable = true;
                 return true;

@@ -16,23 +16,23 @@ namespace RedGaint
       public GameObject powerUpHolder;
       public void TriggerPowerUp()
       {
-         StartCoroutine(OnPowerUp(5f));
+         StartCoroutine(OnPowerUp(10f));
       }
 
       private IEnumerator OnPowerUp(float delay)
       {
          powerUpTriggerEvents?.Invoke();
-         currentSettings = powerUpHolder.GetComponent<PlayerController>().movementSettings;
-         if (currentSettings!=null)
-         {
-            powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
-         }
+         // currentSettings = powerUpHolder.GetComponent<PlayerController>().movementSettings;
+         // if (currentSettings!=null)
+         // {
+         //    powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
+         // }
          Debug.Log($"PowerUp {powerUpType} activated. Destroying in 5 seconds...");
          yield return new WaitForSeconds(delay);
-         if (currentSettings != null)
-         {
-            powerUpHolder.GetComponent<PlayerController>().movementSettings = currentSettings;
-         }
+         // if (currentSettings != null)
+         // {
+         //    powerUpHolder.GetComponent<PlayerController>().movementSettings = currentSettings;
+         // }
 
          powerUpHolder = null;
          // Destroy this GameObject after the delay

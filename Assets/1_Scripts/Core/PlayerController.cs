@@ -98,8 +98,9 @@ namespace RedGaint
 
         private void OnPowerUp(InputAction.CallbackContext context)
         {
+            if(!GetComponent<PowerUpBasket>().IsPowerUpAvilable())
+                return;
             GetComponent<PowerUpBasket>().TriggerPowerUp();
-            
             InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color =
                 InputHandler.instance.powerUpBtnDefaultColor;
             InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =

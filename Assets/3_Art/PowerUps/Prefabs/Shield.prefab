@@ -123,3 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 1
+  powerUpLogo: {fileID: 21300000, guid: 22149bf52ed50704592d7b42a65e2606, type: 3}
+  powerUpTriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  powerUpSettings: {fileID: 11400000, guid: 4b72f841242d2434e8b83ffaef49f1de, type: 2}

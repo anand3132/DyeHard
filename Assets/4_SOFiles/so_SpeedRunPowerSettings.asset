@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf3921875424b749ae387cab60d263a, type: 3}
+  m_Name: so_SpeedRunPowerSettings
+  m_EditorClassIdentifier: 
+  velocity: 10
+  desiredRotationSpeed: 0.1
+  speed: 3.5
+  allowPlayerRotation: 0.1
+  horizontalAnimSmoothTime: 0.2
+  verticalAnimTime: 0.2
+  startAnimTime: 0.3
+  stopAnimTime: 0.15

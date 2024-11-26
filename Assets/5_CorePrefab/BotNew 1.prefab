@@ -184,10 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4d46fff78af084f97315ee6f9de913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
+  gunSystem: {fileID: 4818195145417484732}
   animationspeedOffset: 0
   BotRoot: {fileID: 2349578881730560047}
-  inkParticle: {fileID: 4818195145417484732}
-  botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
   sightRange: 20
   fovAngle: 45
   attackRange: 3
@@ -22233,7 +22233,7 @@ GameObject:
   - component: {fileID: 4818195145417484732}
   - component: {fileID: 1784626309452627781}
   m_Layer: 0
-  m_Name: Main Visual Particle
+  m_Name: GunSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,11 +10,6 @@ public class InkBomb : MonoBehaviour
     public GameObject InkMesh;
     public ParticleSystem InkBlast;
     public ParticleSystem Inksplash;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -25,7 +20,7 @@ public class InkBomb : MonoBehaviour
         }
         
     }
-    void InkBlasting()
+    public void InkBlasting()
     {
         SphereBomb.transform.DOScale(0.5f, 0.1f).OnComplete(() => 
         {

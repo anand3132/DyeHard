@@ -15,8 +15,7 @@ namespace RedGaint {
         private bool IsGeneratorActive = false;
         public int createBot = 1;
         private List<GameObject> BotList=new List<GameObject>();
-
-        public List<GameObject> BotPrefab;
+            public List<GameObject> BotPrefab;
         private void Start()
         {
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
@@ -32,7 +31,7 @@ namespace RedGaint {
             }
             for (int i = 0; i < createBot; i++)
             {
-                if (GetNewSpawnPosition(out Vector3 posiion))
+                if (GetNewSpawnPosition(GlobalEnums.Mode.Random,out Vector3 posiion))
                 {
                     GenerateNewBot(posiion, out GameObject bot);
                     BotList.Add(bot);
@@ -97,7 +96,7 @@ namespace RedGaint {
             BugsBunny.Log("Spawn mode switched to: " + spawnMode);
         }
 
-        public bool GetNewSpawnPosition(out Vector3 position)
+        public bool GetNewSpawnPosition(GlobalEnums.Mode pathMode,out Vector3 position)
         {
             if (allSpawnPositions.Count < 1)
             {
@@ -105,7 +104,7 @@ namespace RedGaint {
                 return false;
             }
 
-            switch (spawnMode)
+            switch (pathMode)
             {
                 case GlobalEnums.Mode.Random:
                     position = allSpawnPositions[UnityEngine.Random.Range(0, allSpawnPositions.Count)];

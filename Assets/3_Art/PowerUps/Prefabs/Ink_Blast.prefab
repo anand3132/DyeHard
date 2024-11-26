@@ -14790,6 +14790,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 3
+  powerUpLogo: {fileID: 21300000, guid: 280b222a44e110a4eb0528a0648f8b96, type: 3}
+  powerUpTriggerEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6972166110639907274}
+        m_TargetAssemblyTypeName: InkBomb, Assembly-CSharp
+        m_MethodName: InkBlasting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  powerUpSettings: {fileID: 11400000, guid: f5dd99050bfd51f49b9fd902617ef823, type: 2}
 --- !u!1001 &5271508777729962250
 PrefabInstance:
   m_ObjectHideFlags: 0

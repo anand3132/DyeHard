@@ -1,9 +1,8 @@
-using System;
-using RedGaint;
 using UnityEngine;
-
+using UnityEngine.UI;
 namespace RedGaint
 {
+    //Class Responsibility : To hold, activate and trigger powerUp...!! It's just a basket to hold power up!!
     public class PowerUpBasket : MonoBehaviour
     {
         [SerializeField] GameObject  powerUpObjectPrefab;
@@ -13,18 +12,22 @@ namespace RedGaint
         {
             if (isPowerUpAvilable)
                 return false;
-            powerUpObjectPrefab= PowerUpManager.instance.GetPowerUp(powerUpType);
+            powerUpObjectPrefab= PowerUpManager.instance.GetPowerUpPrefab(powerUpType);
             if (powerUpObjectPrefab != null && powerUpObjectPrefab.GetComponent<PowerUpController>().powerUpType == powerUpType)
             {
                 currentPowerUp=Instantiate(powerUpObjectPrefab,transform.position,Quaternion.identity);
                 currentPowerUp.transform.parent = transform;
+                currentPowerUp.GetComponent<PowerUpController>().powerUpHolder = gameObject;
+                InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
+                InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =
+                    currentPowerUp.GetComponent<PowerUpController>().powerUpLogo;
                 currentPowerUp.SetActive(false);
                 isPowerUpAvilable = true;
                 return true;
             }
             return false;
         }
-
+        public bool IsPowerUpAvilable()=>isPowerUpAvilable;
         public bool TriggerPowerUp()
         {
             if (isPowerUpAvilable)

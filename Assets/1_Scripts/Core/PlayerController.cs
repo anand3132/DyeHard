@@ -1,6 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 namespace RedGaint
 {
     [RequireComponent(typeof(CharacterController))]
@@ -25,7 +26,6 @@ namespace RedGaint
         private Vector2 movementInput;
         
         private ShootingSystem shootingSystem;
-
         private void OnEnable()
         {
             if (playerInput == null)
@@ -74,7 +74,9 @@ namespace RedGaint
             controller = GetComponent<CharacterController>();
             // cam = Camera.main;
         }
-        //Input Events---------------------------------------------------
+        
+#region UICalls
+        //Input Events- UI --------------------------------------------------
         private void OnMove(InputAction.CallbackContext context)
         {
             movementInput = context.ReadValue<Vector2>();
@@ -97,8 +99,15 @@ namespace RedGaint
         private void OnPowerUp(InputAction.CallbackContext context)
         {
             GetComponent<PowerUpBasket>().TriggerPowerUp();
+            
+            InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color =
+                InputHandler.instance.powerUpBtnDefaultColor;
+            InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =
+                InputHandler.instance.defaultSprite;
         }
-        //-----------------------------------------------------------------
+#endregion
+//----------------------------------------------------------------------------------------------------------------------
+
         private void Start()
         {
             cam = Camera.main;
@@ -116,6 +125,7 @@ namespace RedGaint
                 verticalVel -= 1;
             controller.Move(new Vector3(0, verticalVel * .2f * Time.deltaTime, 0));
         }
+        
         void PlayerMoveAndRotation()
         {
             var forward = cam.transform.forward;

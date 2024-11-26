@@ -10,7 +10,11 @@ namespace RedGaint
     public class BotController : MonoBehaviour
     {
  #region MemberVariables
-        //public GlobalEnums.BotType botType = GlobalEnums.BotType.Runner;
+        //public        
+        //Controlls
+        public BotSettings botSettings;
+        public ParticleSystem gunSystem;
+
         // Movement parameters
         private bool isMoving = true;
         private float inputX;
@@ -28,18 +32,16 @@ namespace RedGaint
         private CheckPointHandler checkpointHandler;
         private Transform currentPlayerTransform;
         private Animator currentAnimtor;
-        public ParticleSystem inkParticle;
         private NavMeshAgent currentBotAgent;
+        
         //Data List
         private List<Vector3> botCurrentPathNodes;
         //Switches
         private bool isBotActive = false;
         private bool isFollowingPlayer = false;
-        //Iteratores
+       
+        //iterators
         private int currentTargetIndex = 0;
-        
-        //Controlls
-        public BotSettings botSettings;
         private int currentDestinationIndex = 0;
 
         public float sightRange;
@@ -112,6 +114,8 @@ namespace RedGaint
             }
             return positions;
         }
+        
+        
         public bool ActivateBot()
         {
             if (isBotActive) { return false; }
@@ -125,12 +129,67 @@ namespace RedGaint
             {
                 isBotActive = true;
                 botCurrentPathNodes =GetWayPointPositions(checkpointHandler.GetWayPointList());
+                var tmp = GetModifiedPath(GlobalEnums.Mode.Random, botCurrentPathNodes);
+                botCurrentPathNodes = tmp;
                 StartCoroutine(WanderCoroutine());
                 return true;
             }
             return false;
         }
 
+        
+        
+        public List<Vector3> GetModifiedPath(GlobalEnums.Mode mode,List<Vector3> modifiedList)
+        {
+            switch (mode)
+            {
+                case GlobalEnums.Mode.Random:
+                    modifiedList.Sort((a, b) => Random.Range(-1, 2)); // Shuffle using random sorting
+                    break;
+
+                case GlobalEnums.Mode.Sequence:
+                    // Already in sequence by default
+                    break;
+
+                case GlobalEnums.Mode.Stack:
+                    modifiedList.Reverse(); // Reverse list for stack ordering
+                    break;
+
+                case GlobalEnums.Mode.Shuffle:
+                    for (int i = 0; i < modifiedList.Count; i++)
+                    {
+                        int randomIndex = Random.Range(0, modifiedList.Count);
+                        (modifiedList[i], modifiedList[randomIndex]) = (modifiedList[randomIndex], modifiedList[i]);
+                    }
+                    break;
+
+                case GlobalEnums.Mode.RoundRobin:
+                    modifiedList = new List<Vector3>(botCurrentPathNodes); // Repeat list indefinitely (sample case)
+                    break;
+
+                case GlobalEnums.Mode.ReverseSequence:
+                    modifiedList.Reverse(); // Reverse order
+                    break;
+
+                case GlobalEnums.Mode.Cluster:
+                    int clusterSize = Mathf.Max(1, modifiedList.Count / 3); // Cluster items by reducing size
+                    modifiedList = modifiedList.GetRange(0, clusterSize);
+                    break;
+
+                case GlobalEnums.Mode.SingleShot:
+                    // No modification needed
+                    break;
+
+                case GlobalEnums.Mode.DoubleShot:
+                    List<Vector3> doubleShotList = new List<Vector3>(modifiedList);
+                    doubleShotList.AddRange(modifiedList); // Duplicate sequence
+                    modifiedList = doubleShotList;
+                    break;
+            }
+
+            return modifiedList;
+        }
+        
         void Update()
         {
             if (isBotActive)
@@ -226,7 +285,7 @@ namespace RedGaint
             isRotating = true;
 
             // Store the initial rotation (before applying any mode)
-            Quaternion initialRotation = inkParticle.gameObject.transform.rotation;
+            Quaternion initialRotation = gunSystem.gameObject.transform.rotation;
 
             // Perform rotation based on the selected mode
             float rotationAngle = 0f;
@@ -243,19 +302,19 @@ namespace RedGaint
             }
 
             // Calculate the target rotation based on the current forward direction and the calculated angle
-            Quaternion targetRotation = inkParticle.gameObject.transform.rotation * Quaternion.Euler(0, rotationAngle, 0);
+            Quaternion targetRotation = gunSystem.gameObject.transform.rotation * Quaternion.Euler(0, rotationAngle, 0);
 
             // Smoothly rotate the bot to the target rotation over the specified duration
             float elapsedTime = 0f;
             while (elapsedTime < rotationDuration)
             {
-                inkParticle.gameObject.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / rotationDuration);
+                gunSystem.gameObject.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / rotationDuration);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
             // Finalize the rotation to ensure it reaches the exact target rotation
-            inkParticle.gameObject.transform.rotation = targetRotation;
+            gunSystem.gameObject.transform.rotation = targetRotation;
 
             // Wait for the specified duration before rotating back to the original orientation
             yield return new WaitForSeconds(EndBotSurvilanceBefore);
@@ -264,13 +323,13 @@ namespace RedGaint
             elapsedTime = 0f;
             while (elapsedTime < rotationDuration)
             {
-                inkParticle.gameObject.transform.rotation = Quaternion.Slerp(targetRotation, initialRotation, elapsedTime / rotationDuration);
+                gunSystem.gameObject.transform.rotation = Quaternion.Slerp(targetRotation, initialRotation, elapsedTime / rotationDuration);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
             // Finalize the return rotation to ensure it reaches the exact initial rotation
-            inkParticle.gameObject.transform.rotation = initialRotation;
+            gunSystem.gameObject.transform.rotation = initialRotation;
 
             // Reset the rotating flag after the action is complete
             isRotating = false;
@@ -428,11 +487,11 @@ namespace RedGaint
         {
             if (status)
             {
-                inkParticle.Play();
+                gunSystem.Play();
             }
             else
             {
-                inkParticle.Stop();
+                gunSystem.Stop();
             }
         }
 
@@ -440,7 +499,11 @@ namespace RedGaint
         {
             if (other.GetComponent<PowerUp>())
             {
-                
+                if (gameObject.GetComponent<PowerUpBasket>().IsPowerUpAvilable())
+                {
+                    gameObject.GetComponent<PowerUpBasket>().TriggerPowerUp();
+                    Debug.Log("<color=red>Bot is attacking in powerup! please wait...</color>");
+                }
             }
         }
     }//BotController

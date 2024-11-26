@@ -48,6 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 0
+  powerUpLogo: {fileID: 21300000, guid: 75878be35f08f1541bfef3bcbe9e4095, type: 3}
+  powerUpTriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  powerUpSettings: {fileID: 11400000, guid: 7860e744b7139004ab87ce0e3cedb235, type: 2}
 --- !u!1 &4559280511939831437
 GameObject:
   m_ObjectHideFlags: 0

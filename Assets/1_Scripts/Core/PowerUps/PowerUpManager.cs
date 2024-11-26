@@ -6,9 +6,8 @@ namespace RedGaint
     public class PowerUpManager : Singleton<PowerUpManager>
     {
         public GameObject[] powerUps;
-
         [CanBeNull]
-        public GameObject GetPowerUp(GlobalEnums.PowerUpType _powerUpType)
+        public GameObject GetPowerUpPrefab(GlobalEnums.PowerUpType _powerUpType)
         {
             foreach (var item in powerUps)
             {
@@ -17,7 +16,7 @@ namespace RedGaint
                     return item;
                 }
             }
-            Debug.LogError("Cant able to get the specified powerUp type :" +_powerUpType.ToString());
+            Debug.LogError("Cant able to get the specified powerUp prefab of type :" +_powerUpType.ToString());
             return null;
         }
     }

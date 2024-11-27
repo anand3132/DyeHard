@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Cinemachine;
@@ -9,12 +7,6 @@ public class ShootingSystem : MonoBehaviour
     [SerializeField] Transform parentController;
     [SerializeField] Transform splatGunNozzle;
     [SerializeField] CinemachineFreeLook freeLookCamera;
-    //CinemachineImpulseSource impulseSource;
-
-    void Start()
-    {
-        //impulseSource = freeLookCamera.GetComponent<CinemachineImpulseSource>();
-    }
 
     public void Shoot(bool state)
     {
@@ -34,7 +26,6 @@ public class ShootingSystem : MonoBehaviour
             Vector3 localPos = parentController.localPosition;
             parentController.DOLocalMove(localPos - new Vector3(0, 0, .2f), .03f)
                 .OnComplete(() => parentController.DOLocalMove(localPos, .1f).SetEase(Ease.OutSine));
-          // impulseSource.GenerateImpulse();
         }
 
         if (!DOTween.IsTweening(splatGunNozzle))

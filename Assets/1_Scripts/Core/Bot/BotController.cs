@@ -128,8 +128,11 @@ namespace RedGaint
             if (checkpointHandler != null)
             {
                 isBotActive = true;
+                
                 botCurrentPathNodes =GetWayPointPositions(checkpointHandler.GetWayPointList());
+                
                 var tmp = GetModifiedPath(GlobalEnums.Mode.Random, botCurrentPathNodes);
+                
                 botCurrentPathNodes = tmp;
                 StartCoroutine(WanderCoroutine());
                 return true;

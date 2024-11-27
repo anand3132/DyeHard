@@ -54,6 +54,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   powerUpSettings: {fileID: 11400000, guid: fe4a6d23e447a8c4dbd495a30da23fd5, type: 2}
+  currentSettings: {fileID: 0}
+  powerUpHolder: {fileID: 0}
 --- !u!1 &2544092988105182423
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +660,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -10478,7 +10480,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0

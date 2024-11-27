@@ -29,12 +29,16 @@ namespace RedGaint
             return defendPoints;
         }
 
-        public List<Transform> GetWayPointList()
+        public List<Transform> GetWayPointTransform()
         {
             if (!isHandlerInitialised) InitializeCheckPoints();
             return wayPoints;
         }
-
+        public List<Vector3> GetWayPointPositions()
+        {
+            if (!isHandlerInitialised) InitializeCheckPoints();
+            return ConvertToPositions(wayPoints);
+        }
         public List<Transform> GetDestinationPointsList()
         {
             if (!isHandlerInitialised) InitializeCheckPoints();
@@ -45,7 +49,30 @@ namespace RedGaint
         {
             InitializeCheckPointsRecursive(transform);
         }
+        public static List<Vector3> ConvertToPositions(List<Transform> transforms)
+        {
+            if (transforms == null || transforms.Count == 0)
+            {
+                Debug.LogWarning("Transform list is null or empty.");
+                return new List<Vector3>();
+            }
 
+            List<Vector3> positions = new List<Vector3>();
+
+            foreach (Transform transform in transforms)
+            {
+                if (transform != null)
+                {
+                    positions.Add(transform.position);
+                }
+                else
+                {
+                    Debug.LogWarning("Null transform found in the list, skipping.");
+                }
+            }
+
+            return positions;
+        }
         private void InitializeCheckPointsRecursive(Transform parentTransform)
         {
             // Iterate over each child of the given parent transform

@@ -28,16 +28,17 @@ namespace RedGaint
         private float stopAnimTime;
         public float animationspeedOffset; 
         //References
-        public Transform BotRoot;
-        private CheckPointHandler checkpointHandler;
+        public Transform botRoot;
         private Transform currentPlayerTransform;
         private Animator currentAnimtor;
         private NavMeshAgent currentBotAgent;
         
         //Data List
-        private List<Vector3> botCurrentPathNodes;
+        [SerializeField] private List<Vector3> botPatrollingPath;
         //Switches
         private bool isBotActive = false;
+        private bool isInitialized = false; 
+
         private bool isFollowingPlayer = false;
        
         //iterators
@@ -66,22 +67,12 @@ namespace RedGaint
         private string currentDestinationID;
 
 #endregion//=======================================================================================
-        public void InitialiseBot(Vector3 _position, CheckPointHandler checkPointHandler)
+        private void InitialiseBotSettings(BotSettings settings,Vector3 spawnOrigin)
         {
-            if (botSettings == null)
-            {
-                Debug.LogError("Please set bot settings");
-                return;
-            }
-            checkpointHandler = checkPointHandler;
-            InitialiseBotSettings(botSettings,_position);
-            InitializeAnimationSettings(botSettings);
-        }
-        private void InitialiseBotSettings(BotSettings settings,Vector3 _position)
-        {
-            if (BotRoot == null)
-                BotRoot = gameObject.transform;
-            BotRoot.transform.position = _position;
+            if (botRoot == null)
+                botRoot = gameObject.transform;
+            
+            botRoot.transform.position = spawnOrigin;
             
             currentBotAgent = GetComponent<NavMeshAgent>();
             currentBotAgent.speed = settings.movementSpeed;
@@ -104,95 +95,60 @@ namespace RedGaint
             stopAnimTime = settings.stopAnimTime;
             animationspeedOffset = settings.animationSpeedOffset;
         }
-
-        public List<Vector3> GetWayPointPositions(List<Transform> wayPointTransforms)
+        
+        public BotController InitialiseBot(List<Vector3> patrollingPath)
         {
-            List<Vector3> positions = new List<Vector3>();
-            foreach (Transform waypoint in wayPointTransforms)
+            if (botSettings == null)
             {
-                positions.Add(waypoint.position);
+                Debug.LogError("Please set bot settings");
+                return null; 
             }
-            return positions;
+
+            botPatrollingPath = patrollingPath;
+            // Initialize bot settings
+            InitialiseBotSettings(botSettings, patrollingPath[0]);
+            
+            // Initialize animation settings
+            InitializeAnimationSettings(botSettings);
+            isInitialized = true;
+            return this;
         }
-        
-        
-        public bool ActivateBot()
+
+        public BotController ActivateBot()
         {
-            if (isBotActive) { return false; }
+            if (!isInitialized)
+            {
+                Debug.LogError("Cannot activate bot: Bot has not been initialized.");
+                return this;
+            }
+
+            if (isBotActive)
+            {
+                Debug.LogWarning("Bot is already active.");
+                return this; 
+            }
+
             currentTargetIndex = 0;
+
             if (currentBotAgent == null)
             {
-                Debug.LogError("Cant able to get the Bot Agent!!");
-                return false;
+                Debug.LogError("Bot agent is missing.");
+                return this; 
             }
-            if (checkpointHandler != null)
+
+            if (botPatrollingPath == null || botPatrollingPath.Count < 1)
             {
-                isBotActive = true;
-                
-                botCurrentPathNodes =GetWayPointPositions(checkpointHandler.GetWayPointList());
-                
-                var tmp = GetModifiedPath(GlobalEnums.Mode.Random, botCurrentPathNodes);
-                
-                botCurrentPathNodes = tmp;
-                StartCoroutine(WanderCoroutine());
-                return true;
-            }
-            return false;
-        }
-
-        
-        
-        public List<Vector3> GetModifiedPath(GlobalEnums.Mode mode,List<Vector3> modifiedList)
-        {
-            switch (mode)
-            {
-                case GlobalEnums.Mode.Random:
-                    modifiedList.Sort((a, b) => Random.Range(-1, 2)); // Shuffle using random sorting
-                    break;
-
-                case GlobalEnums.Mode.Sequence:
-                    // Already in sequence by default
-                    break;
-
-                case GlobalEnums.Mode.Stack:
-                    modifiedList.Reverse(); // Reverse list for stack ordering
-                    break;
-
-                case GlobalEnums.Mode.Shuffle:
-                    for (int i = 0; i < modifiedList.Count; i++)
-                    {
-                        int randomIndex = Random.Range(0, modifiedList.Count);
-                        (modifiedList[i], modifiedList[randomIndex]) = (modifiedList[randomIndex], modifiedList[i]);
-                    }
-                    break;
-
-                case GlobalEnums.Mode.RoundRobin:
-                    modifiedList = new List<Vector3>(botCurrentPathNodes); // Repeat list indefinitely (sample case)
-                    break;
-
-                case GlobalEnums.Mode.ReverseSequence:
-                    modifiedList.Reverse(); // Reverse order
-                    break;
-
-                case GlobalEnums.Mode.Cluster:
-                    int clusterSize = Mathf.Max(1, modifiedList.Count / 3); // Cluster items by reducing size
-                    modifiedList = modifiedList.GetRange(0, clusterSize);
-                    break;
-
-                case GlobalEnums.Mode.SingleShot:
-                    // No modification needed
-                    break;
-
-                case GlobalEnums.Mode.DoubleShot:
-                    List<Vector3> doubleShotList = new List<Vector3>(modifiedList);
-                    doubleShotList.AddRange(modifiedList); // Duplicate sequence
-                    modifiedList = doubleShotList;
-                    break;
+                Debug.LogError("No valid path nodes available.");
+                return this; 
             }
 
-            return modifiedList;
+            // Activate the bot
+            isBotActive = true;
+            StartCoroutine(WanderCoroutine());
+            Debug.Log("Bot activated successfully.");
+
+            return this;
         }
-        
         void Update()
         {
             if (isBotActive)
@@ -226,8 +182,8 @@ namespace RedGaint
                 CheckIfBotIsStuck(speed);
             }
         }
+        
    // How long to wait before considering the bot stuck
-
         private void CheckIfBotIsStuck(float speed)
         {
             if (speed < stuckThreshold)
@@ -246,6 +202,7 @@ namespace RedGaint
                 timeStuck = 0f;
             }
         }
+        
         private void HandleBotStuck()
         {
             // If the bot is stuck, stop the animation and reset the path
@@ -258,6 +215,7 @@ namespace RedGaint
             // Optionally, attempt to replan the path or take other actions
             // currentBotAgent.SetDestination(newDestination); // Recalculate path
         }
+        
         private IEnumerator WanderCoroutine()
         {
             while (!isFollowingPlayer)
@@ -340,17 +298,17 @@ namespace RedGaint
         private Vector3 GetNextPatrolPoint()
         {
             // Check if the patrolPoints list is empty
-            if (botCurrentPathNodes.Count == 0)
+            if (botPatrollingPath.Count == 0)
             {
                 Debug.LogWarning("No path node points are set!");
-                return BotRoot.position; // Return the bot's current position if no points are set
+                return botRoot.position; // Return the bot's current position if no points are set
             }
 
             // Get the current pathnode point from the list
-            Vector3 nextPathNodePoint = botCurrentPathNodes[currentDestinationIndex];
+            Vector3 nextPathNodePoint = botPatrollingPath[currentDestinationIndex];
 
             // Update the index for the next pathnode point (loop back to 0 when we reach the end)
-            currentDestinationIndex = (currentDestinationIndex + 1) % botCurrentPathNodes.Count;
+            currentDestinationIndex = (currentDestinationIndex + 1) % botPatrollingPath.Count;
             Debug.Log("given position : " + nextPathNodePoint);
             return nextPathNodePoint;
         }
@@ -438,18 +396,18 @@ namespace RedGaint
             Debug.Log("Bot is attacking the player!");
             //BotAttack();
         }
-        private void MoveBotTo(Vector4 direction)
-        {
-            Vector3 moveDirection = Vector3.zero;
-
-            if (direction.x > 0) moveDirection += transform.right;         // Right
-            if (direction.x < 0) moveDirection -= transform.right;         // Left
-            if (direction.z > 0) moveDirection += transform.forward;       // Forward
-            if (direction.z < 0) moveDirection -= transform.forward;       // Backward
-            inputX = direction.x;
-            inputZ = direction.z;
-            currentBotAgent.Move(moveDirection.normalized * botSettings.movementSpeed * Time.deltaTime);
-        }
+        // private void MoveBotTo(Vector4 direction)
+        // {
+        //     Vector3 moveDirection = Vector3.zero;
+        //
+        //     if (direction.x > 0) moveDirection += transform.right;         // Right
+        //     if (direction.x < 0) moveDirection -= transform.right;         // Left
+        //     if (direction.z > 0) moveDirection += transform.forward;       // Forward
+        //     if (direction.z < 0) moveDirection -= transform.forward;       // Backward
+        //     inputX = direction.x;
+        //     inputZ = direction.z;
+        //     currentBotAgent.Move(moveDirection.normalized * botSettings.movementSpeed * Time.deltaTime);
+        // }
 
         private void UpdateAnimationParameters(float speed)
         {

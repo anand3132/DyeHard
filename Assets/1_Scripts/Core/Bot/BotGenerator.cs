@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 namespace RedGaint {
     public class BotGenerator : MonoBehaviour
     {
@@ -15,7 +17,7 @@ namespace RedGaint {
         private bool IsGeneratorActive = false;
         public int createBot = 1;
         private List<GameObject> BotList=new List<GameObject>();
-            public List<GameObject> BotPrefab;
+        public List<GameObject> BotPrefab;
         private void Start()
         {
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
@@ -95,7 +97,57 @@ namespace RedGaint {
             InitializeMode();
             BugsBunny.Log("Spawn mode switched to: " + spawnMode);
         }
+        public List<Vector3> GetModifiedPath(GlobalEnums.Mode mode, List<Vector3> modifiedList)
+        {
+            switch (mode)
+            {
+                case GlobalEnums.Mode.Random:
+                    modifiedList.Sort((a, b) => Random.Range(-1, 2)); // Shuffle using random sorting
+                    break;
 
+                case GlobalEnums.Mode.Sequence:
+                    // Already in sequence by default
+                    break;
+
+                case GlobalEnums.Mode.Stack:
+                    modifiedList.Reverse(); // Reverse list for stack ordering
+                    break;
+
+                case GlobalEnums.Mode.Shuffle:
+                    for (int i = 0; i < modifiedList.Count; i++)
+                    {
+                        int randomIndex = Random.Range(0, modifiedList.Count);
+                        (modifiedList[i], modifiedList[randomIndex]) = (modifiedList[randomIndex], modifiedList[i]);
+                    }
+                    break;
+
+                // case GlobalEnums.Mode.RoundRobin:
+                //     modifiedList = new List<Vector3>(botCurrentPathNodes); // Repeat list indefinitely (sample case)
+                //     break;
+
+                case GlobalEnums.Mode.ReverseSequence:
+                    modifiedList.Reverse(); // Reverse order
+                    break;
+
+                case GlobalEnums.Mode.Cluster:
+                    int clusterSize = Mathf.Max(1, modifiedList.Count / 3); // Cluster items by reducing size
+                    modifiedList = modifiedList.GetRange(0, clusterSize);
+                    break;
+
+                case GlobalEnums.Mode.SingleShot:
+                    // No modification needed
+                    break;
+
+                case GlobalEnums.Mode.DoubleShot:
+                    List<Vector3> doubleShotList = new List<Vector3>(modifiedList);
+                    doubleShotList.AddRange(modifiedList); // Duplicate sequence
+                    modifiedList = doubleShotList;
+                    break;
+            }
+
+            return modifiedList;
+        }
+        
         public bool GetNewSpawnPosition(GlobalEnums.Mode pathMode,out Vector3 position)
         {
             if (allSpawnPositions.Count < 1)
@@ -140,7 +192,6 @@ namespace RedGaint {
                     position = Vector3.zero;
                     return false;
             }
-
             return true;
         }
 
@@ -160,8 +211,10 @@ namespace RedGaint {
             if (bot == null)
                 return false;
             var currentBotcontroller = bot.GetComponent<BotController>();
-            currentBotcontroller.InitialiseBot(position, checkpointHandler);
-            currentBotcontroller.ActivateBot();
+            List<Vector3> patrollingPath = new List<Vector3> { position };
+            List<Vector3> tmpPath= GetModifiedPath(GlobalEnums.Mode.Random,checkpointHandler.GetWayPointPositions());
+            patrollingPath.AddRange(tmpPath);
+            currentBotcontroller.InitialiseBot(patrollingPath).ActivateBot();
             return true;
         }
     }

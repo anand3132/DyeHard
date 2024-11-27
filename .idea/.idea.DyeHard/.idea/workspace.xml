@@ -7,12 +7,8 @@
     <list default="true" id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/ShootingSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/ShootingSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SlowRun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SlowRun.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SpeedRun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SpeedRun.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,13 +91,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2616">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="2616" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -121,7 +119,7 @@
       <workItem from="1732555570573" duration="14687000" />
       <workItem from="1732610645138" duration="11172000" />
       <workItem from="1732624761727" duration="8658000" />
-      <workItem from="1732727210699" duration="434000" />
+      <workItem from="1732727210699" duration="6391000" />
     </task>
     <servers />
   </component>

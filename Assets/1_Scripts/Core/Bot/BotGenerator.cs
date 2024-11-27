@@ -8,96 +8,66 @@ namespace RedGaint {
     public class BotGenerator : MonoBehaviour
     {
         private CheckPointHandler checkpointHandler;
-        private GlobalEnums.Mode spawnMode = GlobalEnums.Mode.Sequence;
         private List<Vector3> allSpawnPositions = new List<Vector3>();
-        private int sequenceIndex = 0;
-        private List<Vector3> shuffleList;
-        private int roundRobinIndex = 0;
-        private int reverseIndex;
         private bool IsGeneratorActive = false;
         public int createBot = 1;
         private List<GameObject> BotList=new List<GameObject>();
         public List<GameObject> BotPrefab;
+        public GlobalEnums.Mode botSpawnMode;
+        public GlobalEnums.Mode botPatrollingMode;
+
         private void Start()
+        {
+            InitializeGenerator();
+        }
+
+        private void InitializeGenerator()
         {
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
             if (checkpointHandler == null)
             {
-                BugsBunny.LogError("BotGenerator: Cant able to fetch Core Component -> CheckPointHandler");
+                BugsBunny.LogRed("BotGenerator: Can't fetch Core Component -> CheckPointHandler");
+                return; 
             }
             else
             {
-                UpdateAllSpawnPoints();
-                InitializeMode();
+                UpdateAllSpawnPoints(botSpawnMode);
                 IsGeneratorActive = true;
+            }
+
+            if (BotPrefab.Count == 0)
+            {
+                BugsBunny.LogRed("BotGenerator: There is no bot prefab for Bot Generation");
+                return;
             }
             for (int i = 0; i < createBot; i++)
             {
-                if (GetNewSpawnPosition(GlobalEnums.Mode.Random,out Vector3 posiion))
-                {
-                    GenerateNewBot(posiion, out GameObject bot);
-                    BotList.Add(bot);
-                }
+                Vector3 spawnPosition = allSpawnPositions[i % allSpawnPositions.Count]; 
+                GenerateNewBot(spawnPosition, out GameObject bot);
+                BotList.Add(bot);
             }
         }
-
-        private void UpdateAllSpawnPoints()
+        private void UpdateAllSpawnPoints(GlobalEnums.Mode mode )
         {
             allSpawnPositions.Clear();
-            List<Transform> itemList = checkpointHandler.GetSpawnList();
-            foreach (Transform t in itemList)
-            {
-                allSpawnPositions.Add(t.position);
-            }
+            List<Vector3> itemList = checkpointHandler.GetSpawnPositions();
+            allSpawnPositions=GetModifiedPath(mode, itemList);
         }
 
         public void ResetGenerator()
         {
-            allSpawnPositions.Clear();
-        }
-
-        private void InitializeMode()
-        {
-            switch (spawnMode)
+            foreach (var item in BotList)
             {
-                case GlobalEnums.Mode.Shuffle:
-                    shuffleList = new List<Vector3>(allSpawnPositions);
-                    ShuffleList(shuffleList);
-                    sequenceIndex = 0;
-                    break;
-
-                case GlobalEnums.Mode.Sequence:
-                    sequenceIndex = 0;
-                    break;
-
-                case GlobalEnums.Mode.ReverseSequence:
-                    reverseIndex = allSpawnPositions.Count - 1;
-                    break;
-
-                case GlobalEnums.Mode.RoundRobin:
-                    roundRobinIndex = 0;
-                    break;
+                if (item != null && item.GetComponent<BotController>().KillBot())
+                {
+                    BugsBunny.Log1("ResetGenerator: on bot killing...");
+                }
             }
+            allSpawnPositions.Clear();
+            IsGeneratorActive = false;
         }
-
-        public void SwitchSpawnMode()
-        {
-            // Move to the next mode in the enum
-            spawnMode = (GlobalEnums.Mode)(((int)spawnMode + 1) % Enum.GetValues(typeof(GlobalEnums.Mode)).Length);
-
-            // Reinitialize mode-specific settings if necessary
-            InitializeMode();
-
-            BugsBunny.Log("Spawn mode switched to: " + spawnMode);
-        }
-
-        public void SwitchSpawnMode(GlobalEnums.Mode mode)
-        {
-            spawnMode = mode;
-            InitializeMode();
-            BugsBunny.Log("Spawn mode switched to: " + spawnMode);
-        }
-        public List<Vector3> GetModifiedPath(GlobalEnums.Mode mode, List<Vector3> modifiedList)
+        
+        private List<Vector3> GetModifiedPath(GlobalEnums.Mode mode, List<Vector3> modifiedList)
         {
             switch (mode)
             {
@@ -110,7 +80,7 @@ namespace RedGaint {
                     break;
 
                 case GlobalEnums.Mode.Stack:
-                    modifiedList.Reverse(); // Reverse list for stack ordering
+                    modifiedList.Reverse();
                     break;
 
                 case GlobalEnums.Mode.Shuffle:
@@ -120,13 +90,11 @@ namespace RedGaint {
                         (modifiedList[i], modifiedList[randomIndex]) = (modifiedList[randomIndex], modifiedList[i]);
                     }
                     break;
-
-                // case GlobalEnums.Mode.RoundRobin:
-                //     modifiedList = new List<Vector3>(botCurrentPathNodes); // Repeat list indefinitely (sample case)
-                //     break;
-
+                case GlobalEnums.Mode.RoundRobin:
+                    break;
+                
                 case GlobalEnums.Mode.ReverseSequence:
-                    modifiedList.Reverse(); // Reverse order
+                    modifiedList.Reverse(); 
                     break;
 
                 case GlobalEnums.Mode.Cluster:
@@ -144,66 +112,9 @@ namespace RedGaint {
                     modifiedList = doubleShotList;
                     break;
             }
-
             return modifiedList;
         }
-        
-        public bool GetNewSpawnPosition(GlobalEnums.Mode pathMode,out Vector3 position)
-        {
-            if (allSpawnPositions.Count < 1)
-            {
-                position = Vector3.zero;
-                return false;
-            }
-
-            switch (pathMode)
-            {
-                case GlobalEnums.Mode.Random:
-                    position = allSpawnPositions[UnityEngine.Random.Range(0, allSpawnPositions.Count)];
-                    break;
-
-                case GlobalEnums.Mode.Sequence:
-                    position = allSpawnPositions[sequenceIndex];
-                    sequenceIndex = (sequenceIndex + 1) % allSpawnPositions.Count;
-                    break;
-
-                case GlobalEnums.Mode.Stack:
-                    position = allSpawnPositions[allSpawnPositions.Count - 1];
-                    allSpawnPositions.RemoveAt(allSpawnPositions.Count - 1);
-                    break;
-
-                case GlobalEnums.Mode.Shuffle:
-                    if (sequenceIndex >= shuffleList.Count) ShuffleList(shuffleList);
-                    position = shuffleList[sequenceIndex];
-                    sequenceIndex = (sequenceIndex + 1) % shuffleList.Count;
-                    break;
-
-                case GlobalEnums.Mode.RoundRobin:
-                    position = allSpawnPositions[roundRobinIndex];
-                    roundRobinIndex = (roundRobinIndex + 1) % allSpawnPositions.Count;
-                    break;
-
-                case GlobalEnums.Mode.ReverseSequence:
-                    position = allSpawnPositions[reverseIndex];
-                    reverseIndex = reverseIndex > 0 ? reverseIndex - 1 : allSpawnPositions.Count - 1;
-                    break;
-
-                default:
-                    position = Vector3.zero;
-                    return false;
-            }
-            return true;
-        }
-
-        private void ShuffleList(List<Vector3> list)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                int randomIndex = UnityEngine.Random.Range(i, list.Count);
-                (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
-            }
-        }
-
+    
         private bool GenerateNewBot(Vector3 position, out GameObject bot)
         {
             bot = GameObject.Instantiate(BotPrefab[0], transform);

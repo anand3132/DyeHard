@@ -1663,7 +1663,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116513949}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19757071, y: -0.13889411, z: 0.028290508, w: 0.96998656}
+  m_LocalRotation: {x: 0.19757065, y: -0.13889411, z: 0.028290497, w: 0.96998656}
   m_LocalPosition: {x: 14.012322, y: 12.809999, z: -31.415081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1725,7 +1725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3345853118149295157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17959018, y: -0.42749637, z: 0.08707416, w: 0.88170993}
+  m_LocalRotation: {x: 0.17959012, y: -0.42749637, z: 0.08707413, w: 0.88170993}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39678,7 +39678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6213656630463992061}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14744359, y: -0.43037724, z: 0.071487926, w: 0.8876516}
+  m_LocalRotation: {x: 0.14744368, y: -0.4303772, z: 0.07148796, w: 0.88765156}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44852,6 +44852,8 @@ MonoBehaviour:
   createBot: 3
   BotPrefab:
   - {fileID: 301680609491423985, guid: e00adfde7fd2779408e33cee72de88a2, type: 3}
+  botSpawnMode: 0
+  botPatrollingMode: 0
 --- !u!33 &5262179667735975693
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61049,7 +61051,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6091309672366166251}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17959018, y: -0.42749637, z: 0.08707416, w: 0.88170993}
+  m_LocalRotation: {x: 0.17959012, y: -0.42749637, z: 0.08707413, w: 0.88170993}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -456,6 +456,11 @@ namespace RedGaint
             }
         }
 
+        public bool KillBot()
+        {
+            Debug.Log("Bot is killed!");
+            return true;
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<PowerUp>())

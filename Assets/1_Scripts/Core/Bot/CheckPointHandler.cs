@@ -22,6 +22,12 @@ namespace RedGaint
             if (!isHandlerInitialised) InitializeCheckPoints();
             return spawnPoints;
         }
+        
+        public List<Vector3> GetSpawnPositions()
+        {
+            if (!isHandlerInitialised) InitializeCheckPoints();
+            return ConvertToPositions(spawnPoints);
+        }
 
         public List<Transform> GetdefendPointsList()
         {

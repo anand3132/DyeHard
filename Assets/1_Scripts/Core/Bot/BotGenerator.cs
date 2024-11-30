@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using Random = UnityEngine.Random;
 
 namespace RedGaint {
@@ -42,8 +43,14 @@ namespace RedGaint {
             }
             for (int i = 0; i < createBot; i++)
             {
-                Vector3 spawnPosition = allSpawnPositions[i % allSpawnPositions.Count]; 
-                GenerateNewBot(spawnPosition, out GameObject bot);
+                Vector3 spawnPosition = allSpawnPositions[i % allSpawnPositions.Count];
+             //-------------------------   
+                //todo:need to remove later 
+                temporyDataHolder = spawnPosition;
+                
+                var team = GetRandomTeam();
+                GenerateNewBot(GetTeamPositions(team),team, out GameObject bot);
+               //----------------Hack--------- 
                 BotList.Add(bot);
             }
         }
@@ -114,18 +121,32 @@ namespace RedGaint {
             }
             return modifiedList;
         }
-    
-        private bool GenerateNewBot(Vector3 position, out GameObject bot)
+        public static GlobalEnums.GameTeam GetRandomTeam()
+        {
+            Array teams = Enum.GetValues(typeof(GlobalEnums.GameTeam));
+            return (GlobalEnums.GameTeam)teams.GetValue(UnityEngine.Random.Range(0, teams.Length));
+        }
+
+        //has to replace later just a place holder
+        private Vector3 temporyDataHolder;
+        private Vector3 GetTeamPositions(GlobalEnums.GameTeam teams)
+        {
+            return temporyDataHolder;
+        }
+        private bool GenerateNewBot(Vector3 position,GlobalEnums.GameTeam team, out GameObject bot)
         {
             bot = GameObject.Instantiate(BotPrefab[0], transform);
             bot.SetActive(true);
             if (bot == null)
                 return false;
             var currentBotcontroller = bot.GetComponent<BotController>();
+            
             List<Vector3> patrollingPath = new List<Vector3> { position };
+            
             List<Vector3> tmpPath= GetModifiedPath(GlobalEnums.Mode.Random,checkpointHandler.GetWayPointPositions());
+            
             patrollingPath.AddRange(tmpPath);
-            currentBotcontroller.InitialiseBot(patrollingPath).ActivateBot();
+            currentBotcontroller.InitialiseBot(patrollingPath).ActivateBot(team);
             return true;
         }
     }

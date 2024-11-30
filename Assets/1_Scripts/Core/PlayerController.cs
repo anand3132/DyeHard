@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,23 +10,23 @@ namespace RedGaint
     {
         [Header("Movement Settings")]
         public MovementInputSettings movementSettings;
-        public ParticleSystem gunSystem;
-
+        
         private Animator anim;
         private Camera cam;
         private CharacterController controller;
         private bool isGrounded;
         private Vector3 desiredMoveDirection;
         private float verticalVel;
-        // private Vector3 moveVector;
         
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction shootAction;
         private InputAction powerUpAction;
         private Vector2 movementInput;
+        private GunHoister gunHoister;
+        private GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
+        public GlobalEnums.GameTeam CurrentTeam => currentTeam;
         
-        private ShootingSystem shootingSystem;
         private void OnEnable()
         {
             if (playerInput == null)
@@ -57,8 +58,7 @@ namespace RedGaint
 
         private void OnShootStarted(InputAction.CallbackContext obj)
         {
-            gunSystem.Play();
-            // gunSystem.SetParticles();
+            gunHoister.currentGun.StartShoot();
         }
 
         private void Awake()
@@ -72,7 +72,7 @@ namespace RedGaint
 
             anim = GetComponent<Animator>();
             controller = GetComponent<CharacterController>();
-            // cam = Camera.main;
+            gunHoister = GetComponentInChildren<GunHoister>();
         }
         
 #region UICalls
@@ -93,7 +93,7 @@ namespace RedGaint
         private void OnShootEnd(InputAction.CallbackContext obj)
         {
             anim.SetBool("OnShooting", false);
-            gunSystem.Stop();
+            gunHoister.currentGun.StopShoot();
         }
 
         private void OnPowerUp(InputAction.CallbackContext context)
@@ -109,12 +109,45 @@ namespace RedGaint
 #endregion
 //----------------------------------------------------------------------------------------------------------------------
 
+        private void SetPlayerTeam(GlobalEnums.GameTeam team)
+        {
+            currentTeam = team;
+            Gun gun= gunHoister.LoadGun(GlobalEnums.GunType.Gun1);
+            Color gunColor=Color.white;
+            switch (team)
+            {
+                case GlobalEnums.GameTeam.TeamBlue:
+                    gunColor=Color.blue;
+                    break;
+                case GlobalEnums.GameTeam.TeamRed:
+                    gunColor=Color.red;
+                    break;
+                case GlobalEnums.GameTeam.TeamYellow:
+                    gunColor=Color.yellow;
+                    break;
+                case GlobalEnums.GameTeam.TeamGreen:
+                    gunColor=Color.green;
+                    break;
+            }
+            SetGunColor(gun,gunColor);
+        }
+
+        private void SetGunColor(Gun gun, Color color)
+        {
+            if(gun)
+                gun.SetGunColor(color);
+            else
+            {
+                BugsBunny.LogRed("Cant able to get the Gun to set color");
+            }
+        }
+
         private void Start()
         {
             cam = Camera.main;
             if (cam == null)
                 Debug.LogWarning("No Main Camera found in the scene.");
-            shootingSystem = GetComponent<ShootingSystem>();
+            SetPlayerTeam(GlobalEnums.GameTeam.TeamBlue);
         }
         void Update()
         {

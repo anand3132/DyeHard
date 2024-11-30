@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RedGaint
 {
-    [CreateAssetMenu(fileName = "BotSettings", menuName = "GameSettings/BotSettings", order = 1)]
+    [CreateAssetMenu(fileName = "BotSettings", menuName = "GameSettings/BotSettings", order = 3)]
     public class BotSettings : ScriptableObject
     {
         [Header("Movement Settings")]//-----------------------------------------------------
@@ -19,11 +19,6 @@ namespace RedGaint
         public int maxFollowRange = 3;
 
         [Header("Animation Smoothing")]//---------------------------------------------------------
-        [Tooltip("Smoothing time for horizontal animation.")]
-        [Range(0, 1f)] public float horizontalAnimSmoothTime = 0.2f;
-
-        [Tooltip("Smoothing time for vertical animation.")]
-        [Range(0, 1f)] public float verticalAnimSmoothTime = 0.2f;
 
         [Tooltip("Time delay to start the walk animation.")]
         [Range(0, 1f)] public float startAnimTime = 0.3f;

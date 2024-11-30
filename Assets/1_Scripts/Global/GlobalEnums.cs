@@ -1,4 +1,5 @@
 
+using UnityEngine;
 namespace RedGaint
 {
 
@@ -15,6 +16,15 @@ namespace RedGaint
             Cluster,
             SingleShot,
             DoubleShot
+        }
+
+        public enum GameTeam
+        {
+            None = 0,
+            TeamRed,
+            TeamBlue,
+            TeamYellow,
+            TeamGreen,
         }
 
         public enum PowerUpType
@@ -68,4 +78,29 @@ namespace RedGaint
             SineWaveMode
         }
     }
+
+    public static class GlobalStaticVariables
+    {
+        public static Color TeamRedColor { get; private set; }
+        public static float GameSectionTime { get; private set; }
+        public static float BotMaxHealth { get; private set; }
+        public static float PlayerMaxHealth { get; private set; }
+
+        public static void LoadFromScriptableObject(GolbalGameData data)
+        {
+            if (data == null)
+            {
+                Debug.LogError("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.");
+                return;
+            }
+
+            TeamRedColor = data.teamRedColor;
+            GameSectionTime = data.gameSectionTime;
+            BotMaxHealth = data.botMaxHealth;
+            PlayerMaxHealth = data.playerMaxHealth;
+
+            Debug.Log("GlobalStaticVariables: Data loaded successfully.");
+        }
+    }
+
 }

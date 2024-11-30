@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -14,19 +15,14 @@ namespace RedGaint
         //Controlls
         public BotSettings botSettings;
         public ParticleSystem gunSystem;
-
-        // Movement parameters
-        private bool isMoving = true;
-        private float inputX;
-        private float inputZ;
-
+        private GlobalEnums.GameTeam gameTeam;
+        
         //Animation Parameter
         //[Header("Animation Smoothing")]
-        private float horizontalAnimSmoothTime;
-        private float verticalAnimSmoothTime;
         private float startAnimTime;
         private float stopAnimTime;
         public float animationspeedOffset; 
+        
         //References
         public Transform botRoot;
         private Transform currentPlayerTransform;
@@ -38,9 +34,9 @@ namespace RedGaint
         //Switches
         private bool isBotActive = false;
         private bool isInitialized = false; 
-
         private bool isFollowingPlayer = false;
-       
+        private bool isMoving = true;
+
         //iterators
         private int currentTargetIndex = 0;
         private int currentDestinationIndex = 0;
@@ -48,8 +44,6 @@ namespace RedGaint
         public float sightRange;
         public float fovAngle;
         public float attackRange;
-        public float moveSpeed;
-        public int maxFollowRange;
         private float minRotationAngle;
         private float maxRotationAngle;
         private float rotationDuration;
@@ -79,8 +73,6 @@ namespace RedGaint
             sightRange= settings.sightRange;
             fovAngle= settings.fovAngle;
             attackRange = settings.attackRange;
-            moveSpeed=settings.movementSpeed;
-            maxFollowRange = settings.maxFollowRange;
             minRotationAngle=settings.minRotationAngle;
             maxRotationAngle=settings.maxRotationAngle;
             rotationDuration=settings.rotationDuration;
@@ -89,8 +81,6 @@ namespace RedGaint
         private void InitializeAnimationSettings(BotSettings settings)
         {
             currentAnimtor = GetComponent<Animator>();
-            horizontalAnimSmoothTime = settings.horizontalAnimSmoothTime;
-            verticalAnimSmoothTime = settings.verticalAnimSmoothTime;
             startAnimTime = settings.startAnimTime;
             stopAnimTime = settings.stopAnimTime;
             animationspeedOffset = settings.animationSpeedOffset;
@@ -114,7 +104,36 @@ namespace RedGaint
             return this;
         }
 
-        public BotController ActivateBot()
+        private GlobalEnums.GameTeam currentBotTeam=GlobalEnums.GameTeam.None;
+        public GlobalEnums.GameTeam CurrentBotTeam => currentBotTeam;
+
+        private void SetGunColor(Color color)
+        {
+            
+        }
+        private void SetBotTeam(GlobalEnums.GameTeam team)
+        {
+            currentBotTeam = team;
+            switch (team)
+            {
+                case GlobalEnums.GameTeam.TeamBlue:
+                    SetGunColor(Color.blue);
+                    break;
+                case GlobalEnums.GameTeam.TeamRed:
+                    SetGunColor(Color.red);
+                    break;
+                case GlobalEnums.GameTeam.TeamYellow:
+                    SetGunColor(Color.yellow);
+                    break;
+                case GlobalEnums.GameTeam.TeamGreen:
+                    SetGunColor(Color.green);
+                    break;
+                default:
+                    break;
+                
+            }
+        }
+        public BotController ActivateBot(GlobalEnums.GameTeam team)
         {
             if (!isInitialized)
             {
@@ -141,9 +160,10 @@ namespace RedGaint
                 Debug.LogError("No valid path nodes available.");
                 return this; 
             }
-
+            
             // Activate the bot
             isBotActive = true;
+            SetBotTeam(team);
             StartCoroutine(WanderCoroutine());
             Debug.Log("Bot activated successfully.");
 
@@ -180,10 +200,18 @@ namespace RedGaint
                 UpdateAnimationParameters(speed);
                 // Check if the bot is stuck (via the failsafe)
                 CheckIfBotIsStuck(speed);
+                CheckBotHealth();
             }
         }
-        
-   // How long to wait before considering the bot stuck
+
+        private float botHealth = 10f;
+        private void CheckBotHealth()
+        {
+            if (botHealth < 1)
+                KillBot();
+        }
+
+        // How long to wait before considering the bot stuck
         private void CheckIfBotIsStuck(float speed)
         {
             if (speed < stuckThreshold)
@@ -363,10 +391,16 @@ namespace RedGaint
 
                 foreach (var h in hits)
                 {
-                    // Check if the hit object has a PlayerController component
-                    if (h.collider.GetComponent<PlayerController>() != null)
+                    
+                    PlayerController player = h.collider.gameObject.GetComponent<PlayerController>();
+                    if (player != null&& player.CurrentTeam!=currentBotTeam )
                     {
-                        // Return the player's transform if detected
+                        return h.transform;
+                    }
+                    
+                    BotController OtherBot = h.collider.gameObject.GetComponent<BotController>();
+                    if (OtherBot != null&& OtherBot.currentBotTeam!=currentBotTeam )
+                    {
                         return h.transform;
                     }
                 }
@@ -374,6 +408,8 @@ namespace RedGaint
 
             return null;
         }
+        
+        // [CanBeNull] private GameObject GetIfOpponentPlayer(GlobalEnums.GameTeam Ourteam,)
  #region forDebug
 
         // Utility to draw a filled cone for the field of view
@@ -396,38 +432,13 @@ namespace RedGaint
             Debug.Log("Bot is attacking the player!");
             //BotAttack();
         }
-        // private void MoveBotTo(Vector4 direction)
-        // {
-        //     Vector3 moveDirection = Vector3.zero;
-        //
-        //     if (direction.x > 0) moveDirection += transform.right;         // Right
-        //     if (direction.x < 0) moveDirection -= transform.right;         // Left
-        //     if (direction.z > 0) moveDirection += transform.forward;       // Forward
-        //     if (direction.z < 0) moveDirection -= transform.forward;       // Backward
-        //     inputX = direction.x;
-        //     inputZ = direction.z;
-        //     currentBotAgent.Move(moveDirection.normalized * botSettings.movementSpeed * Time.deltaTime);
-        // }
-
         private void UpdateAnimationParameters(float speed)
         {
-            // Apply the speed offset to reduce the speed
             float adjustedSpeed = speed * animationspeedOffset;
-
-            // Run
             if (adjustedSpeed > 0.1f)
-            {
-                currentAnimtor.SetFloat("Blend", adjustedSpeed, startAnimTime, Time.deltaTime);
-                currentAnimtor.SetFloat("X", inputX, startAnimTime / 3, Time.deltaTime);
-                currentAnimtor.SetFloat("Y", inputZ, startAnimTime / 3, Time.deltaTime);
-            }
-            // Idle
+                currentAnimtor.SetFloat("Blend", adjustedSpeed, startAnimTime, Time.deltaTime);//Run
             else
-            {
-                currentAnimtor.SetFloat("Blend", adjustedSpeed, stopAnimTime, Time.deltaTime);
-                currentAnimtor.SetFloat("X", inputX, stopAnimTime / 3, Time.deltaTime);
-                currentAnimtor.SetFloat("Y", inputZ, stopAnimTime / 3, Time.deltaTime);
-            }
+                currentAnimtor.SetFloat("Blend", adjustedSpeed, stopAnimTime, Time.deltaTime);//Idle
         }
         public void BotAttack(Vector4 direction)
         {

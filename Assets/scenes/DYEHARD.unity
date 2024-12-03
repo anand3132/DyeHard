@@ -11682,7 +11682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835dc6e3d8cd48a46b6b9939e97012d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMode: 0
+  spawnMode: 7
+  selectedPowerUpType: 4
   powerUpMaterials:
   - {fileID: 2100000, guid: de74b2e39f8fa164daaa076bc7ba1c96, type: 2}
   - {fileID: 2100000, guid: 6b2047bc571986245a7e7c966808631e, type: 2}
@@ -13018,12 +13019,12 @@ Transform:
   m_Children:
   - {fileID: 975893332801560121}
   - {fileID: 2306362973200708691}
+  - {fileID: 1144554451}
   - {fileID: 4266784921670624883}
   - {fileID: 4661870776865755449}
   - {fileID: 4854818002112158820}
   - {fileID: 1103242306}
   - {fileID: 6656694179153749992}
-  - {fileID: 1144554451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1804092777655192365
@@ -24790,7 +24791,7 @@ MonoBehaviour:
   BotList: []
   BotPrefab:
   - {fileID: 301680609491423985, guid: e00adfde7fd2779408e33cee72de88a2, type: 3}
-  botSpawnMode: 0
+  botSpawnMode: 7
   botPatrollingMode: 0
 --- !u!33 &5262179667735975693
 MeshFilter:

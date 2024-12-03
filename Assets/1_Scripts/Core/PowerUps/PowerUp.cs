@@ -8,7 +8,7 @@ namespace RedGaint
     public class PowerUp : MonoBehaviour
     {
         public event Action<int> OnPowerUpConsumed;
-        public PowerUpBase[] availablePowerUps;
+        // public PowerUpBase[] availablePowerUps;
 
         [Header("Bounce Settings")]
         public float bounceHeight = 0.5f;       // The height of the bounce
@@ -19,8 +19,8 @@ namespace RedGaint
 
         private Vector3 startPosition;
         int positionIndex;
-        public GlobalEnums.PowerUpType powerUpType;
-        public bool isActive=false;
+        private GlobalEnums.PowerUpType powerUpType;
+        private bool isActive=false;
         private List<Material> powerUpMaterials;
 
         public void Initialize( List<Material> _powerUpMaterials, int _positionIndex,GlobalEnums.PowerUpType  _powerUpType)

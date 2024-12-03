@@ -7,6 +7,8 @@ namespace RedGaint
     public class PowerUpGenerator : MonoBehaviour
     {
         public GlobalEnums.Mode spawnMode;
+        public GlobalEnums.PowerUpType selectedPowerUpType = GlobalEnums.PowerUpType.None;
+        [Space]
         public List<Material> powerUpMaterials;
         public GameObject powerUpPrefab;
 
@@ -123,9 +125,14 @@ namespace RedGaint
         {
             if (spawnPositions.Count > 0)
             {
-                SpawnNextPowerUp(0);
+                SpawnNextPowerUp(0, selectedPowerUpType); // Pass the selected type
+            }
+            else
+            {
+                Debug.LogWarning("No spawn positions available for SingleShot mode.");
             }
         }
+
 
         private void SpawnDoubleShot()
         {
@@ -146,21 +153,46 @@ namespace RedGaint
         {
             if (spawnIndex < 0 || spawnIndex >= spawnPositions.Count)
                 return;
+        
+            Transform spawnPoint = spawnPositions[spawnIndex];
+            GameObject powerUpInstance = Instantiate(powerUpPrefab, transform);
+            powerUpInstance.transform.position = spawnPoint.position;
+        
+            // Determine the power-up type dynamically
+            GlobalEnums.PowerUpType powerUpType = GetPowerUpType(spawnIndex);
+        
+            PowerUp powerUpComponent = powerUpInstance.GetComponent<PowerUp>();
+            powerUpComponent.Initialize(powerUpMaterials, spawnIndex, powerUpType);
+            powerUpComponent.OnPowerUpConsumed += HandlePowerUpConsumed;
+        
+            // Remove this position from available positions
+            availablePositions.Remove(spawnIndex);
+        }
+
+        private void SpawnNextPowerUp(int spawnIndex, GlobalEnums.PowerUpType specificType)
+        {
+            if (spawnIndex < 0 || spawnIndex >= spawnPositions.Count)
+                return;
 
             Transform spawnPoint = spawnPositions[spawnIndex];
             GameObject powerUpInstance = Instantiate(powerUpPrefab, transform);
             powerUpInstance.transform.position = spawnPoint.position;
 
-            // Determine the power-up type dynamically
-            GlobalEnums.PowerUpType powerUpType = GetPowerUpType(spawnIndex);
-
             PowerUp powerUpComponent = powerUpInstance.GetComponent<PowerUp>();
-            powerUpComponent.Initialize(powerUpMaterials, spawnIndex, powerUpType);
-            powerUpComponent.OnPowerUpConsumed += HandlePowerUpConsumed;
+            if (powerUpComponent != null)
+            {
+                powerUpComponent.Initialize(powerUpMaterials, spawnIndex, specificType); // Use specific type
+                powerUpComponent.OnPowerUpConsumed += HandlePowerUpConsumed;
 
-            // Remove this position from available positions
-            availablePositions.Remove(spawnIndex);
+                // Remove this position from available positions
+                availablePositions.Remove(spawnIndex);
+            }
+            else
+            {
+                Debug.LogError("PowerUp prefab is missing the PowerUp component.");
+            }
         }
+
 
         private GlobalEnums.PowerUpType GetPowerUpType(int spawnIndex)
         {
@@ -185,19 +217,30 @@ namespace RedGaint
 
         private void HandlePowerUpConsumed(int positionIndex)
         {
+            // Re-add the consumed power-up's position index to availablePositions
             if (!availablePositions.Contains(positionIndex))
             {
-                // Re-add the consumed power-up’s position index to availablePositions
                 availablePositions.Add(positionIndex);
             }
 
-            // Check if there are still available positions and spawn the next power-up
+            // Check if there are still available positions
             if (availablePositions.Count > 0)
             {
                 int nextIndex = GetSpawnPosition();
-                SpawnNextPowerUp(nextIndex);
+
+                // If in SingleShot mode, ensure the selected power-up type is spawned
+                if (spawnMode == GlobalEnums.Mode.SingleShot)
+                {
+                    SpawnNextPowerUp(nextIndex, selectedPowerUpType);
+                }
+                else
+                {
+                    // Default behavior for other modes
+                    SpawnNextPowerUp(nextIndex);
+                }
             }
         }
+
 
 
         private int GetSpawnPosition()

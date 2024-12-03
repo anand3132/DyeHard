@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8477d1a9362063d419680e036aea8033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availablePowerUps: []
   bounceHeight: 0.5
   bounceSpeed: 2
   rotationSpeed: 50
+  powerUpType: 0
+  isActive: 0

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639a41c4c16dc4844bb1f0a936b74e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 0
+  powerUpType: 1
   powerUpLogo: {fileID: 21300000, guid: 75878be35f08f1541bfef3bcbe9e4095, type: 3}
   powerUpTriggerEvents:
     m_PersistentCalls:

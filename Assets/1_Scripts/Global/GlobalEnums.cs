@@ -15,7 +15,7 @@ namespace RedGaint
             ReverseSequence,
             Cluster,
             SingleShot,
-            DoubleShot
+            DoubleShot,
         }
 
         public enum GameTeam
@@ -29,6 +29,7 @@ namespace RedGaint
 
         public enum PowerUpType
         {
+            None,
             Sprint,
             Shield,
             Sludge,

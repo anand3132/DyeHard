@@ -7,6 +7,7 @@ namespace RedGaint
     {
         public List<Gun> gunPrefab;
         public Gun currentGun = null;
+        
         public Gun LoadGun(GlobalEnums.GunType guntype)
         {
             foreach (var gun in gunPrefab)

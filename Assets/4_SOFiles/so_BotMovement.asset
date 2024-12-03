@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: so_BotMovement
   m_EditorClassIdentifier: 
   attackRange: 3
-  movementSpeed: 4
+  movementSpeed: 3
   maxFollowRange: 3
-  horizontalAnimSmoothTime: 0.2
-  verticalAnimSmoothTime: 0.2
   startAnimTime: 0.3
   stopAnimTime: 0.15
   animationSpeedOffset: 0.5

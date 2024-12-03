@@ -11,7 +11,7 @@ namespace RedGaint
         public float attackRange = 3f;
 
         [Tooltip("The speed at which the bot moves.")]
-        [Range(3, 5)]
+        [Range(.1f, 15)]
         public float movementSpeed = 3f;
 
         [Tooltip("The maximum distance the bot will follow a target.")]

@@ -1,21 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace RedGaint
 {
-    public class BotController : MonoBehaviour
+    public class BotController : BaseCharacterController
     {
  #region MemberVariables
         //public        
         //Controlls
         public BotSettings botSettings;
-        public ParticleSystem gunSystem;
-        private GlobalEnums.GameTeam gameTeam;
         
         //Animation Parameter
         //[Header("Animation Smoothing")]
@@ -28,9 +24,9 @@ namespace RedGaint
         private Transform currentPlayerTransform;
         private Animator currentAnimtor;
         private NavMeshAgent currentBotAgent;
-        
+       
         //Data List
-        [SerializeField] private List<Vector3> botPatrollingPath;
+        private List<Vector3> botPatrollingPath;
         //Switches
         private bool isBotActive = false;
         private bool isInitialized = false; 
@@ -86,14 +82,16 @@ namespace RedGaint
             animationspeedOffset = settings.animationSpeedOffset;
         }
         
-        public BotController InitialiseBot(List<Vector3> patrollingPath)
+        public BotController InitialiseBot(List<Vector3> patrollingPath,string botID)
         {
             if (botSettings == null)
             {
-                Debug.LogError("Please set bot settings");
+                BugsBunny.LogError("Please set bot settings");
                 return null; 
             }
 
+            characternID = botID;
+            gunHoister = GetComponentInChildren<GunHoister>();
             botPatrollingPath = patrollingPath;
             // Initialize bot settings
             InitialiseBotSettings(botSettings, patrollingPath[0]);
@@ -104,35 +102,6 @@ namespace RedGaint
             return this;
         }
 
-        private GlobalEnums.GameTeam currentBotTeam=GlobalEnums.GameTeam.None;
-        public GlobalEnums.GameTeam CurrentBotTeam => currentBotTeam;
-
-        private void SetGunColor(Color color)
-        {
-            
-        }
-        private void SetBotTeam(GlobalEnums.GameTeam team)
-        {
-            currentBotTeam = team;
-            switch (team)
-            {
-                case GlobalEnums.GameTeam.TeamBlue:
-                    SetGunColor(Color.blue);
-                    break;
-                case GlobalEnums.GameTeam.TeamRed:
-                    SetGunColor(Color.red);
-                    break;
-                case GlobalEnums.GameTeam.TeamYellow:
-                    SetGunColor(Color.yellow);
-                    break;
-                case GlobalEnums.GameTeam.TeamGreen:
-                    SetGunColor(Color.green);
-                    break;
-                default:
-                    break;
-                
-            }
-        }
         public BotController ActivateBot(GlobalEnums.GameTeam team)
         {
             if (!isInitialized)
@@ -160,13 +129,12 @@ namespace RedGaint
                 Debug.LogError("No valid path nodes available.");
                 return this; 
             }
-            
             // Activate the bot
             isBotActive = true;
-            SetBotTeam(team);
+            SetPlayerTeam(team);
             StartCoroutine(WanderCoroutine());
             Debug.Log("Bot activated successfully.");
-
+                
             return this;
         }
         void Update()
@@ -208,7 +176,7 @@ namespace RedGaint
         private void CheckBotHealth()
         {
             if (botHealth < 1)
-                KillBot();
+                KillTheActor();
         }
 
         // How long to wait before considering the bot stuck
@@ -265,63 +233,6 @@ namespace RedGaint
                 
                 yield return new WaitForSeconds(1f); 
             }
-        }
-        private IEnumerator BotGunMovement(GlobalEnums.RotationMode rotationMode)
-        {
-            yield return new WaitForSeconds(startBotSurvilanceAfter);
-
-            // Set the flag to indicate that the bot is rotating
-            isRotating = true;
-
-            // Store the initial rotation (before applying any mode)
-            Quaternion initialRotation = gunSystem.gameObject.transform.rotation;
-
-            // Perform rotation based on the selected mode
-            float rotationAngle = 0f;
-
-            switch (rotationMode)
-            {
-                case GlobalEnums.RotationMode.RandomMode:
-                    rotationAngle = Random.Range(minRotationAngle, maxRotationAngle);
-                    break;
-
-                case GlobalEnums.RotationMode.SineWaveMode:
-                    rotationAngle = Mathf.Sin(Time.time) * maxRotationAngle;
-                    break;
-            }
-
-            // Calculate the target rotation based on the current forward direction and the calculated angle
-            Quaternion targetRotation = gunSystem.gameObject.transform.rotation * Quaternion.Euler(0, rotationAngle, 0);
-
-            // Smoothly rotate the bot to the target rotation over the specified duration
-            float elapsedTime = 0f;
-            while (elapsedTime < rotationDuration)
-            {
-                gunSystem.gameObject.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / rotationDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            // Finalize the rotation to ensure it reaches the exact target rotation
-            gunSystem.gameObject.transform.rotation = targetRotation;
-
-            // Wait for the specified duration before rotating back to the original orientation
-            yield return new WaitForSeconds(EndBotSurvilanceBefore);
-
-            // Rotate back to the initial rotation
-            elapsedTime = 0f;
-            while (elapsedTime < rotationDuration)
-            {
-                gunSystem.gameObject.transform.rotation = Quaternion.Slerp(targetRotation, initialRotation, elapsedTime / rotationDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            // Finalize the return rotation to ensure it reaches the exact initial rotation
-            gunSystem.gameObject.transform.rotation = initialRotation;
-
-            // Reset the rotating flag after the action is complete
-            isRotating = false;
         }
         private Vector3 GetNextPatrolPoint()
         {
@@ -393,13 +304,13 @@ namespace RedGaint
                 {
                     
                     PlayerController player = h.collider.gameObject.GetComponent<PlayerController>();
-                    if (player != null&& player.CurrentTeam!=currentBotTeam )
+                    if (player != null&& player.CurrentTeam!=currentTeam )
                     {
                         return h.transform;
                     }
                     
                     BotController OtherBot = h.collider.gameObject.GetComponent<BotController>();
-                    if (OtherBot != null&& OtherBot.currentBotTeam!=currentBotTeam )
+                    if (OtherBot != null&& OtherBot.currentTeam!=currentTeam )
                     {
                         return h.transform;
                     }
@@ -408,25 +319,6 @@ namespace RedGaint
 
             return null;
         }
-        
-        // [CanBeNull] private GameObject GetIfOpponentPlayer(GlobalEnums.GameTeam Ourteam,)
- #region forDebug
-
-        // Utility to draw a filled cone for the field of view
-        private void DrawCone(Vector3 origin, Vector3 leftDirection, Vector3 rightDirection, float length)
-        {
-            int steps = 10;
-            Vector3 previousPoint = origin + leftDirection * length;
-            for (int i = 1; i <= steps; i++)
-            {
-                float t = i / (float)steps;
-                Vector3 point = Vector3.Lerp(previousPoint, origin + rightDirection * length, t);
-                Gizmos.DrawLine(previousPoint, point);
-                previousPoint = point;
-            }
-        }
-
-#endregion
         private void AttackPlayer()
         {
             Debug.Log("Bot is attacking the player!");
@@ -454,24 +346,7 @@ namespace RedGaint
             currentAnimtor.SetTrigger("Attack");
             Debug.Log("Bot is attacking in direction: " + attackDirection);
         }
-
-        public void GunState(bool status)
-        {
-            if (status)
-            {
-                gunSystem.Play();
-            }
-            else
-            {
-                gunSystem.Stop();
-            }
-        }
-
-        public bool KillBot()
-        {
-            Debug.Log("Bot is killed!");
-            return true;
-        }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<PowerUp>())

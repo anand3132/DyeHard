@@ -85,6 +85,7 @@ namespace RedGaint
         public static float GameSectionTime { get; private set; }
         public static float BotMaxHealth { get; private set; }
         public static float PlayerMaxHealth { get; private set; }
+        public static readonly float HealthHitRation = 10f;
 
         public static void LoadFromScriptableObject(GolbalGameData data)
         {

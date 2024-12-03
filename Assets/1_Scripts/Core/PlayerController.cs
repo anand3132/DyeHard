@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace RedGaint
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : BaseCharacterController
     {
         [Header("Movement Settings")]
         public MovementInputSettings movementSettings;
@@ -23,9 +23,6 @@ namespace RedGaint
         private InputAction shootAction;
         private InputAction powerUpAction;
         private Vector2 movementInput;
-        private GunHoister gunHoister;
-        private GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
-        public GlobalEnums.GameTeam CurrentTeam => currentTeam;
         
         private void OnEnable()
         {
@@ -56,10 +53,6 @@ namespace RedGaint
             shootAction.Disable();
         }
 
-        private void OnShootStarted(InputAction.CallbackContext obj)
-        {
-            gunHoister.currentGun.StartShoot();
-        }
 
         private void Awake()
         {
@@ -69,10 +62,11 @@ namespace RedGaint
             moveAction = playerInput.actions["Move"];
             shootAction = playerInput.actions["Shoot"];
             powerUpAction = playerInput.actions["PowerUp"];
-
+            characternID = "Player";
             anim = GetComponent<Animator>();
             controller = GetComponent<CharacterController>();
             gunHoister = GetComponentInChildren<GunHoister>();
+            
         }
         
 #region UICalls
@@ -81,19 +75,24 @@ namespace RedGaint
         {
             movementInput = context.ReadValue<Vector2>();
         }
+
+        private void OnShootStarted(InputAction.CallbackContext obj)
+        {
+            GunState(true);
+        }
+
         private void OnShoot(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
                 anim.SetBool("OnShooting", true);
-             // shootingSystem.Shoot(true);
-
+                // shootingSystem.Shoot(true);
             }
         }
         private void OnShootEnd(InputAction.CallbackContext obj)
         {
             anim.SetBool("OnShooting", false);
-            gunHoister.currentGun.StopShoot();
+            GunState(false);
         }
 
         private void OnPowerUp(InputAction.CallbackContext context)
@@ -108,40 +107,6 @@ namespace RedGaint
         }
 #endregion
 //----------------------------------------------------------------------------------------------------------------------
-
-        private void SetPlayerTeam(GlobalEnums.GameTeam team)
-        {
-            currentTeam = team;
-            Gun gun= gunHoister.LoadGun(GlobalEnums.GunType.Gun1);
-            Color gunColor=Color.white;
-            switch (team)
-            {
-                case GlobalEnums.GameTeam.TeamBlue:
-                    gunColor=Color.blue;
-                    break;
-                case GlobalEnums.GameTeam.TeamRed:
-                    gunColor=Color.red;
-                    break;
-                case GlobalEnums.GameTeam.TeamYellow:
-                    gunColor=Color.yellow;
-                    break;
-                case GlobalEnums.GameTeam.TeamGreen:
-                    gunColor=Color.green;
-                    break;
-            }
-            SetGunColor(gun,gunColor);
-        }
-
-        private void SetGunColor(Gun gun, Color color)
-        {
-            if(gun)
-                gun.SetGunColor(color);
-            else
-            {
-                BugsBunny.LogRed("Cant able to get the Gun to set color");
-            }
-        }
-
         private void Start()
         {
             cam = Camera.main;
@@ -158,6 +123,12 @@ namespace RedGaint
             else
                 verticalVel -= 1;
             controller.Move(new Vector3(0, verticalVel * .2f * Time.deltaTime, 0));
+            
+        }
+
+        private bool isPlayerHealthy()
+        {
+            return false;
         }
         
         void PlayerMoveAndRotation()
@@ -176,11 +147,11 @@ namespace RedGaint
             if (!movementSettings.blockRotationPlayer)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), movementSettings.desiredRotationSpeed);
-                controller.Move(desiredMoveDirection * Time.deltaTime * movementSettings.velocity);
+                controller.Move(desiredMoveDirection * Time.deltaTime * movementSettings.movementSpeed);
             }
             else
             {
-                controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) * Time.deltaTime * movementSettings.velocity);
+                controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) * Time.deltaTime * movementSettings.movementSpeed);
             }
         }
         void InputMagnitude()

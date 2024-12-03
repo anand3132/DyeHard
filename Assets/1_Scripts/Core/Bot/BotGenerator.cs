@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Android;
 using Random = UnityEngine.Random;
 
 namespace RedGaint {
@@ -12,7 +10,7 @@ namespace RedGaint {
         private List<Vector3> allSpawnPositions = new List<Vector3>();
         private bool IsGeneratorActive = false;
         public int createBot = 1;
-        private List<GameObject> BotList=new List<GameObject>();
+        public List<GameObject> BotList=new List<GameObject>();
         public List<GameObject> BotPrefab;
         public GlobalEnums.Mode botSpawnMode;
         public GlobalEnums.Mode botPatrollingMode;
@@ -21,7 +19,6 @@ namespace RedGaint {
         {
             InitializeGenerator();
         }
-
         private void InitializeGenerator()
         {
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
@@ -48,11 +45,18 @@ namespace RedGaint {
                 //todo:need to remove later 
                 temporyDataHolder = spawnPosition;
                 
-                var team = GetRandomTeam();
+                // var team = GetRandomTeam();
+                var team = GlobalEnums.GameTeam.TeamGreen;
                 GenerateNewBot(GetTeamPositions(team),team, out GameObject bot);
+
                //----------------Hack--------- 
                 BotList.Add(bot);
             }
+        }
+
+        private string GetNewBotID()
+        {
+            return "bot_"+System.DateTime.Now.ToString("HHmmss");
         }
         private void UpdateAllSpawnPoints(GlobalEnums.Mode mode )
         {
@@ -65,7 +69,7 @@ namespace RedGaint {
         {
             foreach (var item in BotList)
             {
-                if (item != null && item.GetComponent<BotController>().KillBot())
+                if (item != null && item.GetComponent<BotController>().KillTheActor())
                 {
                     BugsBunny.Log1("ResetGenerator: on bot killing...");
                 }
@@ -146,7 +150,7 @@ namespace RedGaint {
             List<Vector3> tmpPath= GetModifiedPath(GlobalEnums.Mode.Random,checkpointHandler.GetWayPointPositions());
             
             patrollingPath.AddRange(tmpPath);
-            currentBotcontroller.InitialiseBot(patrollingPath).ActivateBot(team);
+            currentBotcontroller.InitialiseBot(patrollingPath,GetNewBotID()).ActivateBot(team);
             return true;
         }
     }

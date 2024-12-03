@@ -6,22 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/Bot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/Bot.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotInventory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotInventory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Inventory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Inventory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GunHoister.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GunHoister.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerInventory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerInventory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/ShootingSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/ShootingSystem.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Settings/BotSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Settings/BotSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Settings/MovementInputSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Settings/MovementInputSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/so_BotMovement.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/so_BotMovement.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Visual Particle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Visual Particle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovementInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovementInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShootingSystem2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShootingSystem2.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +39,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DebugManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DebugMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@2.0.0/Runtime/TMP/MaterialReferenceManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -48,13 +59,14 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.6744548&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -118,7 +130,10 @@
       <workItem from="1732819097738" duration="5031000" />
       <workItem from="1732955049845" duration="4173000" />
       <workItem from="1732962022948" duration="11000" />
-      <workItem from="1732962102057" duration="10728000" />
+      <workItem from="1732962102057" duration="15013000" />
+      <workItem from="1732989087384" duration="5114000" />
+      <workItem from="1733245457742" duration="6217000" />
+      <workItem from="1733252702524" duration="1847000" />
     </task>
     <servers />
   </component>
@@ -177,13 +192,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs</url>
-          <line>102</line>
+          <line>101</line>
           <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PlayerController.cs" containingFunctionPresentation="Method 'OnPowerUp'">
             <startOffsets>
-              <option value="3438" />
+              <option value="3284" />
             </startOffsets>
             <endOffsets>
-              <option value="3485" />
+              <option value="3331" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
@@ -213,6 +228,84 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
+          <line>43</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'SpectateNextTarget'">
+            <startOffsets>
+              <option value="1389" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1423" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
+          <line>50</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'SpectateNextTarget'">
+            <startOffsets>
+              <option value="1599" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1660" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
+          <line>45</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'SpectateNextTarget'">
+            <startOffsets>
+              <option value="1454" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1508" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
+          <line>33</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'InitializeSpectatableTargets'">
+            <startOffsets>
+              <option value="1147" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1163" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs</url>
+          <line>65</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\BaseCharacterController.cs" containingFunctionPresentation="Method 'GunState'">
+            <startOffsets>
+              <option value="2137" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2172" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs</url>
+          <line>64</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\BaseCharacterController.cs" containingFunctionPresentation="Method 'GunState'">
+            <startOffsets>
+              <option value="2119" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2120" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

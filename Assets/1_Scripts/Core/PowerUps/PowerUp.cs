@@ -75,6 +75,7 @@ namespace RedGaint
         {
             if (other.GetComponentInParent<BaseCharacterController>())
             {
+                BugsBunny.LogBlue(other.GetComponent<BaseCharacterController>().characternID);
                 if(!other.GetComponent<PowerUpBasket>().ActivateCurrentPowerUp(powerUpType))
                     return;
                 // Trigger the event to notify the generator

@@ -8,7 +8,7 @@ namespace RedGaint
         protected GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
         public GlobalEnums.GameTeam CurrentTeam => currentTeam;
         protected GunHoister gunHoister;
-        protected string characternID;
+        public string characternID;
         private bool gunstate;
         protected virtual void SetGunColor(Gun gun, Color color)
         {

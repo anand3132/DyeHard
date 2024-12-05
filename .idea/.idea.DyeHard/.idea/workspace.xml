@@ -5,71 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b870d7be-f903-4bda-bc2d-fa352659637d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/query/client-agp/cache-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/query/client-agp/cmakeFiles-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/query/client-agp/codemodel-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/cache-v2-30ba850fc03a3f90d5bb.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/cmakeFiles-v1-bd852832729fc44f6e1f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/codemodel-v2-53272a8f551044e2d5e1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/directory-.-RelWithDebInfo-d0094a50bb2071803777.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/directory-FramePacing-RelWithDebInfo-7f9c8865fd027a154c90.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/index-2024-11-26T13-47-52-0196.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/target-swappywrapper-RelWithDebInfo-b86b37a42c12032503b7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.ninja_deps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.ninja_log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdCXX/CMakeCXXCompilerId.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/CMakeOutput.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/rules.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/FramePacing/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/android_gradle_build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/build.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/compile_commands.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/compile_commands.json.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/metadata_generation_command.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/prefab_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab-configure/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfig.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab-configure/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfigVersion.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfig.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfigVersion.cmake" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/Player Animator Controller.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/Player Animator Controller.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/ThiefAvatar.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/ThiefAvatar.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/CuteGuys-LowpolyCharacters/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/CuteGuys-LowpolyCharacters/Scripts/RotateGuys.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/CuteGuys-LowpolyCharacters/Scripts/RotateGuys.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/2_UIElements.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Blue.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Blue.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Green.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Green.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Red.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Red.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Yellow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Yellow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/Normal_Plain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/Normal_Plain.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCorridoor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCorridoor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableSlope.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableSlope.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableTower.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableTower.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials/Forest.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials/Forest/Ruin_Water.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials/Forest/Ruin_Water.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Shaders/Highlands_Water.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Shaders/Highlands_Water.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures/Forest.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures/Forest/Water_Normal.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures/Forest/Water_Normal.bmp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/Materials/Day04.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/Materials/Day04.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/textures/Day04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/textures/Day04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Theaf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Theaf.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scenes/SampleScene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scenes/SampleScene/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scenes/SampleScene/SampleScene.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +79,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Core/skyboxChanger.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -160,7 +161,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733338844970</updated>
       <workItem from="1733338848016" duration="6988000" />
-      <workItem from="1733419083105" duration="3515000" />
+      <workItem from="1733419083105" duration="5240000" />
     </task>
     <servers />
   </component>

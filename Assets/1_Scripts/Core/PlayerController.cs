@@ -111,7 +111,7 @@ namespace RedGaint
         {
             cam = Camera.main;
             if (cam == null)
-                Debug.LogWarning("No Main Camera found in the scene.");
+                BugsBunny.LogYellow("No Main Camera found in the scene.");
             SetPlayerTeam(GlobalEnums.GameTeam.TeamBlue);
         }
         void Update()

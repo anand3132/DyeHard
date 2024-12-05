@@ -106,13 +106,13 @@ namespace RedGaint
         {
             if (!isInitialized)
             {
-                Debug.LogError("Cannot activate bot: Bot has not been initialized.");
+                BugsBunny.LogError("Cannot activate bot: Bot has not been initialized.");
                 return this;
             }
 
             if (isBotActive)
             {
-                Debug.LogWarning("Bot is already active.");
+                BugsBunny.LogYellow("Bot is already active.");
                 return this; 
             }
 
@@ -120,20 +120,20 @@ namespace RedGaint
 
             if (currentBotAgent == null)
             {
-                Debug.LogError("Bot agent is missing.");
+                BugsBunny.LogError("Bot agent is missing.");
                 return this; 
             }
 
             if (botPatrollingPath == null || botPatrollingPath.Count < 1)
             {
-                Debug.LogError("No valid path nodes available.");
+                BugsBunny.LogError("No valid path nodes available.");
                 return this; 
             }
             // Activate the bot
             isBotActive = true;
             SetPlayerTeam(team);
             StartCoroutine(WanderCoroutine());
-            Debug.Log("Bot activated successfully.");
+            BugsBunny.Log3("Bot activated successfully.");
                 
             return this;
         }
@@ -144,7 +144,7 @@ namespace RedGaint
                 Transform detectedPlayer = DetectPlayer(sightRange, fovAngle);
                 if (detectedPlayer != null)
                 {
-                    Debug.Log("<color=red>------Played detected : -------------</color>");
+                    BugsBunny.Log3("<color=red>------Played detected : -------------</color>");
                     if (!isFollowingPlayer)
                     {
                         StopCoroutine(WanderCoroutine());
@@ -160,7 +160,7 @@ namespace RedGaint
                         isFollowingPlayer = false;
                         currentPlayerTransform = null;
                         StartCoroutine(WanderCoroutine());
-                        Debug.Log("<color=green>------returning patrol : -------------</color>");
+                        BugsBunny.Log3("<color=green>------returning patrol : -------------</color>");
                     }
                 }
                 // Check for bot's speed and update animation parameters
@@ -202,7 +202,7 @@ namespace RedGaint
         private void HandleBotStuck()
         {
             // If the bot is stuck, stop the animation and reset the path
-            Debug.Log("<color=yellow>------Bot is stuck, handling it.-------------</color>");
+            BugsBunny.Log3("<color=yellow>------Bot is stuck, handling it.-------------</color>");
             currentAnimtor.SetFloat("Blend", 0f);  // Stop the walking animation
 
             // Optionally reset the NavMeshAgent's path
@@ -223,8 +223,8 @@ namespace RedGaint
                 // }
                 Vector3 targetPosition = GetNextPatrolPoint();
                 currentBotAgent.SetDestination(targetPosition);
-                Debug.Log("Bot reached destination : "+currentDestinationIndex);
-                Debug.Log("-------------------------------------------------");
+                BugsBunny.Log3("Bot reached destination : "+currentDestinationIndex);
+                BugsBunny.Log3("-------------------------------------------------");
 
                yield return new WaitUntil(() => !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
 
@@ -239,7 +239,7 @@ namespace RedGaint
             // Check if the patrolPoints list is empty
             if (botPatrollingPath.Count == 0)
             {
-                Debug.LogWarning("No path node points are set!");
+                BugsBunny.Log3("No path node points are set!");
                 return botRoot.position; // Return the bot's current position if no points are set
             }
 
@@ -248,7 +248,7 @@ namespace RedGaint
 
             // Update the index for the next pathnode point (loop back to 0 when we reach the end)
             currentDestinationIndex = (currentDestinationIndex + 1) % botPatrollingPath.Count;
-            Debug.Log("given position : " + nextPathNodePoint);
+            BugsBunny.Log3("given position : " + nextPathNodePoint);
             return nextPathNodePoint;
         }
 
@@ -259,7 +259,7 @@ namespace RedGaint
                 if (currentPlayerTransform != null)
                 {
                     currentBotAgent.SetDestination(currentPlayerTransform.position);
-                    Debug.Log("started Following ...");
+                    BugsBunny.Log3("started Following ...");
                     // Attack if within attack range
                     if (Vector3.Distance(transform.position, currentPlayerTransform.position) <= attackRange)
                     {
@@ -321,7 +321,7 @@ namespace RedGaint
         }
         private void AttackPlayer()
         {
-            Debug.Log("Bot is attacking the player!");
+            BugsBunny.Log3("Bot is attacking the player!");
             //BotAttack();
         }
         private void UpdateAnimationParameters(float speed)
@@ -344,7 +344,7 @@ namespace RedGaint
 
             // Simulate an attack action
             currentAnimtor.SetTrigger("Attack");
-            Debug.Log("Bot is attacking in direction: " + attackDirection);
+            BugsBunny.Log3("Bot is attacking in direction: " + attackDirection);
         }
         
         private void OnTriggerEnter(Collider other)
@@ -354,7 +354,7 @@ namespace RedGaint
                 if (gameObject.GetComponent<PowerUpBasket>().IsPowerUpAvilable())
                 {
                     gameObject.GetComponent<PowerUpBasket>().TriggerPowerUp();
-                    Debug.Log("<color=red>Bot is attacking in powerup! please wait...</color>");
+                    BugsBunny.Log3("<color=red>Bot is attacking in powerup! please wait...</color>");
                 }
             }
         }

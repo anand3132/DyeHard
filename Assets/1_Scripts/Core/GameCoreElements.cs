@@ -1,12 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class GameCoreElements : MonoBehaviour
+namespace RedGaint
 {
-    public GameObject Player;
-    public GameObject GetPlayer()
+    public class GameCoreElements : MonoBehaviour
     {
-        return Player;
+        public GameObject Player;
+        public GolbalGameData golbalGameData;
+
+        public GameObject GetPlayer()
+        {
+            return Player;
+        }
+
+        private void Awake()
+        {
+            if (golbalGameData == null)
+            {
+                BugsBunny.LogRed("Game Core ERROR:: GolbalGameData is null please attach the GolbalGameData..!!");
+                return;
+            }
+
+            GlobalStaticVariables.LoadFromScriptableObject(golbalGameData);
+        }
     }
 }

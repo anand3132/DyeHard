@@ -31,7 +31,7 @@ namespace RedGaint
             }
             else
             {
-                Debug.LogWarning($"Spawn mode {spawnMode} not supported.");
+                BugsBunny.LogYellow($"Spawn mode {spawnMode} not supported.");
             }
         }
 
@@ -129,7 +129,7 @@ namespace RedGaint
             }
             else
             {
-                Debug.LogWarning("No spawn positions available for SingleShot mode.");
+                BugsBunny.LogYellow("No spawn positions available for SingleShot mode.");
             }
         }
 
@@ -189,7 +189,7 @@ namespace RedGaint
             }
             else
             {
-                Debug.LogError("PowerUp prefab is missing the PowerUp component.");
+                BugsBunny.LogError("PowerUp prefab is missing the PowerUp component.");
             }
         }
 
@@ -247,7 +247,7 @@ namespace RedGaint
         {
             if (availablePositions.Count == 0)
             {
-                Debug.LogWarning("No available positions to spawn power-ups.");
+                BugsBunny.LogYellow("No available positions to spawn power-ups.");
                 return -1; // No valid positions
             }
 
@@ -285,7 +285,7 @@ namespace RedGaint
                     return availablePositions.Count >= 2 ? availablePositions[1] : availablePositions[0];
 
                 default:
-                    Debug.LogWarning($"Unknown spawn mode: {spawnMode}. Defaulting to Random.");
+                    BugsBunny.LogYellow($"Unknown spawn mode: {spawnMode}. Defaulting to Random.");
                     return availablePositions[UnityEngine.Random.Range(0, availablePositions.Count)];
             }
         }

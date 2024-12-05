@@ -27,7 +27,7 @@ namespace RedGaint
          // {
          //    powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
          // }
-         Debug.Log($"PowerUp {powerUpType} activated. Destroying in 5 seconds...");
+         BugsBunny.Log3($"PowerUp {powerUpType} activated. Destroying in 5 seconds...");
          yield return new WaitForSeconds(delay);
          // if (currentSettings != null)
          // {

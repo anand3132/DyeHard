@@ -45,8 +45,8 @@ namespace RedGaint {
                 //todo:need to remove later 
                 temporyDataHolder = spawnPosition;
                 
-                // var team = GetRandomTeam();
-                var team = GlobalEnums.GameTeam.TeamGreen;
+                var team = GetRandomTeam();
+                // var team = GlobalEnums.GameTeam.TeamGreen;
                 GenerateNewBot(GetTeamPositions(team),team, out GameObject bot);
 
                //----------------Hack--------- 
@@ -139,7 +139,8 @@ namespace RedGaint {
         }
         private bool GenerateNewBot(Vector3 position,GlobalEnums.GameTeam team, out GameObject bot)
         {
-            bot = GameObject.Instantiate(BotPrefab[0], transform);
+            bot = GameObject.Instantiate(BotPrefab[Random.Range(0,BotPrefab.Count)], transform);
+            
             bot.SetActive(true);
             if (bot == null)
                 return false;

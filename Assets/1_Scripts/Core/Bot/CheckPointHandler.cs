@@ -59,7 +59,7 @@ namespace RedGaint
         {
             if (transforms == null || transforms.Count == 0)
             {
-                Debug.LogWarning("Transform list is null or empty.");
+                BugsBunny.LogYellow("Transform list is null or empty.");
                 return new List<Vector3>();
             }
 
@@ -73,7 +73,7 @@ namespace RedGaint
                 }
                 else
                 {
-                    Debug.LogWarning("Null transform found in the list, skipping.");
+                    BugsBunny.LogYellow("Null transform found in the list, skipping.");
                 }
             }
 

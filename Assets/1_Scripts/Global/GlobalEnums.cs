@@ -86,13 +86,13 @@ namespace RedGaint
         public static float GameSectionTime { get; private set; }
         public static float BotMaxHealth { get; private set; }
         public static float PlayerMaxHealth { get; private set; }
-        public static readonly float HealthHitRation = 10f;
+        public static readonly float HealthHitRation = 20f;
 
         public static void LoadFromScriptableObject(GolbalGameData data)
         {
             if (data == null)
             {
-                Debug.LogError("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.");
+                BugsBunny.LogRed("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.");
                 return;
             }
 
@@ -101,7 +101,7 @@ namespace RedGaint
             BotMaxHealth = data.botMaxHealth;
             PlayerMaxHealth = data.playerMaxHealth;
 
-            Debug.Log("GlobalStaticVariables: Data loaded successfully.");
+            BugsBunny.Log3("GlobalStaticVariables: Data loaded successfully.");
         }
     }
 

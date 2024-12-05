@@ -3929,7 +3929,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 0.15
+    radiusScale: 0.5
     collidesWith:
       serializedVersion: 2
       m_Bits: 55
@@ -20176,7 +20176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8275179797479565660
 Transform:
   m_ObjectHideFlags: 0

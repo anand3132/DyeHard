@@ -81,4 +81,36 @@ public class PaintManager : Singleton<PaintManager>{
         command.Clear();
     }
 
+    public static class PaintAnalyzer {
+        public static int CalculatePaintedArea(RenderTexture renderTexture, Color targetColor, float tolerance = 0.01f) {
+            Texture2D texture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false);
+
+            RenderTexture.active = renderTexture;
+            texture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+            texture.Apply();
+            RenderTexture.active = null;
+
+            Color[] pixels = texture.GetPixels();
+            Object.Destroy(texture);
+
+            int paintedArea = 0;
+
+            foreach (Color pixel in pixels) {
+                if (IsColorWithinTolerance(pixel, targetColor, tolerance)) {
+                    paintedArea++;
+                }
+            }
+
+            return paintedArea;
+        }
+
+        private static bool IsColorWithinTolerance(Color color1, Color color2, float tolerance) {
+            float diffR = Mathf.Abs(color1.r - color2.r);
+            float diffG = Mathf.Abs(color1.g - color2.g);
+            float diffB = Mathf.Abs(color1.b - color2.b);
+            float diffA = Mathf.Abs(color1.a - color2.a);
+
+            return diffR <= tolerance && diffG <= tolerance && diffB <= tolerance && diffA <= tolerance;
+        }
+    }
 }

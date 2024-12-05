@@ -31,7 +31,7 @@ namespace RedGaint
             startPosition = transform.position;
             SetPowerUpType(_powerUpType);
             isActive = true;
-            Debug.Log("PowerUp Initialized");
+            BugsBunny.Log3("PowerUp Initialized");
         }
 
         private void SetPowerUpType(GlobalEnums.PowerUpType powerUpType1)
@@ -49,7 +49,7 @@ namespace RedGaint
                 }
                 else
                 {
-                    Debug.LogWarning("Renderer component not found on power-up object.");
+                    BugsBunny.LogYellow("Renderer component not found on power-up object.");
                 }
             }
             else
@@ -73,7 +73,7 @@ namespace RedGaint
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<PlayerController>()||other.GetComponentInParent<BotController>())
+            if (other.GetComponentInParent<BaseCharacterController>())
             {
                 if(!other.GetComponent<PowerUpBasket>().ActivateCurrentPowerUp(powerUpType))
                     return;

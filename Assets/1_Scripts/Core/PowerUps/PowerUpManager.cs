@@ -16,7 +16,7 @@ namespace RedGaint
                     return item;
                 }
             }
-            Debug.LogError("Cant able to get the specified powerUp prefab of type :" +_powerUpType.ToString());
+            BugsBunny.LogError("Cant able to get the specified powerUp prefab of type :" +_powerUpType.ToString());
             return null;
         }
     }

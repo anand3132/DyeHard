@@ -75,6 +75,7 @@ namespace RedGaint
 
         protected virtual void ReduceHealth(float amount)
         {
+            GetComponent<HealthBarLookAt>().TakeDamage(amount);
         }
 
     }//BaseCharacterController

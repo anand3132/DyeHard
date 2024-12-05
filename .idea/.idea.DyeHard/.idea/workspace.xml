@@ -4,17 +4,72 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="">
+    <list default="true" id="b870d7be-f903-4bda-bc2d-fa352659637d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/query/client-agp/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/query/client-agp/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/query/client-agp/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/cache-v2-30ba850fc03a3f90d5bb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/cmakeFiles-v1-bd852832729fc44f6e1f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/codemodel-v2-53272a8f551044e2d5e1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/directory-.-RelWithDebInfo-d0094a50bb2071803777.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/directory-FramePacing-RelWithDebInfo-7f9c8865fd027a154c90.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/index-2024-11-26T13-47-52-0196.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.cmake/api/v1/reply/target-swappywrapper-RelWithDebInfo-b86b37a42c12032503b7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdCXX/CMakeCXXCompilerId.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/FramePacing/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/compile_commands.json.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/metadata_generation_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/armeabi-v7a/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab-configure/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfig.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab-configure/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfigVersion.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfig.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.utmp/RelWithDebInfo/4w2l485g/prefab/armeabi-v7a/prefab/lib/arm-linux-androideabi/cmake/games-frame-pacing/games-frame-pacingConfigVersion.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/CheckPointHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Ink_Blast.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Ink_Blast.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Shield.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/Shield.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SlowRun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SlowRun.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SpeedRun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/PowerUps/Prefabs/SpeedRun.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/PowerUps.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/PowerUps.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/BotNew 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,16 +82,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DebugMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/PowerUpGeneratorEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@2.0.0/Runtime/TMP/MaterialReferenceManager.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2pKxr32LmPFw8nNZ0tRiu8UOf8a" />
+  <component name="ProjectId" id="2plRnZE2pPoM0vCTNclSlQWbHJs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,14 +96,14 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.4577167",
+    "XThreadsFramesViewSplitterKey": "0.5084388",
     "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -87,15 +137,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="28176">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="28176" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -106,23 +154,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="de144a7f-0f98-45c9-bf9b-87cf7717f8e9" name="Changes" comment="" />
-      <created>1732528765116</created>
+      <changelist id="b870d7be-f903-4bda-bc2d-fa352659637d" name="Changes" comment="" />
+      <created>1733338844970</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732528765116</updated>
-      <workItem from="1732528766312" duration="8072000" />
-      <workItem from="1732555570573" duration="14687000" />
-      <workItem from="1732610645138" duration="11172000" />
-      <workItem from="1732624761727" duration="8658000" />
-      <workItem from="1732727210699" duration="10014000" />
-      <workItem from="1732819097738" duration="5031000" />
-      <workItem from="1732955049845" duration="4173000" />
-      <workItem from="1732962022948" duration="11000" />
-      <workItem from="1732962102057" duration="15013000" />
-      <workItem from="1732989087384" duration="5114000" />
-      <workItem from="1733245457742" duration="6217000" />
-      <workItem from="1733252702524" duration="7663000" />
+      <updated>1733338844970</updated>
+      <workItem from="1733338848016" duration="6988000" />
+      <workItem from="1733419083105" duration="3515000" />
     </task>
     <servers />
   </component>
@@ -136,17 +174,6 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -154,140 +181,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs</url>
-          <line>24</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpController.cs" containingFunctionPresentation="Method 'OnPowerUp'">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/HealthBarLookAt.cs</url>
+          <line>115</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\HealthBarLookAt.cs" containingFunctionPresentation="Method 'TakeDamage'">
             <startOffsets>
-              <option value="702" />
+              <option value="3850" />
             </startOffsets>
             <endOffsets>
-              <option value="787" />
+              <option value="3880" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
-          <line>43</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'SpectateNextTarget'">
-            <startOffsets>
-              <option value="1389" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1423" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
-          <line>50</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'SpectateNextTarget'">
-            <startOffsets>
-              <option value="1599" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1660" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
-          <line>45</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'SpectateNextTarget'">
-            <startOffsets>
-              <option value="1454" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1508" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs</url>
-          <line>33</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\DyeHardDebugWindow.cs" containingFunctionPresentation="Method 'InitializeSpectatableTargets'">
-            <startOffsets>
-              <option value="1147" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1163" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
-          <line>183</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpGenerator.cs" containingFunctionPresentation="Method 'SpawnNextPowerUp'">
-            <startOffsets>
-              <option value="6017" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6089" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
-          <line>184</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpGenerator.cs" containingFunctionPresentation="Method 'SpawnNextPowerUp'">
-            <startOffsets>
-              <option value="6127" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6187" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
-          <line>173</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpGenerator.cs" containingFunctionPresentation="Method 'SpawnNextPowerUp'">
-            <startOffsets>
-              <option value="5568" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5625" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
-          <line>125</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpGenerator.cs" containingFunctionPresentation="Method 'SpawnSingleShot'">
-            <startOffsets>
-              <option value="3854" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3883" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
-          <line>153</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpGenerator.cs" containingFunctionPresentation="Method 'SpawnNextPowerUp'">
-            <startOffsets>
-              <option value="4630" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4687" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="32" />
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

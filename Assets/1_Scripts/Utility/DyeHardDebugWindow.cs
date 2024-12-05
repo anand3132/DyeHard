@@ -43,7 +43,7 @@ namespace RedGaint
             RefreshSpectatableTargets();
             if (spectatableTargets.Count == 0)
             {
-                Debug.LogWarning("No targets available to spectate!");
+                BugsBunny.LogYellow("No targets available to spectate!");
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace RedGaint
             {
                 cinemachineFreeLook.LookAt = targetToSpectate;
                 cinemachineFreeLook.Follow = targetToSpectate;
-                Debug.Log($"Now spectating: {targetToSpectate.name}");
+                BugsBunny.Log3($"Now spectating: {targetToSpectate.name}");
             }
         }
 
@@ -67,12 +67,12 @@ namespace RedGaint
         #endregion
         private void ToggleInvincibility()
         {
-            Debug.Log("Toggling invincibility...");
+            BugsBunny.Log3("Toggling invincibility...");
             // Add your invincibility toggle logic here
         }
         private void SpawnEnemy()
         {
-            Debug.Log("Spawning an enemy...");
+            BugsBunny.Log3("Spawning an enemy...");
             // Add your enemy spawn logic here
         }
     }

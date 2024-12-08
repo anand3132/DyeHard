@@ -43,7 +43,7 @@ namespace RedGaint
                     break;
             }
             
-            SetGunColor(gun,gunColor);
+         //   SetGunColor(gun,gunColor);
         }
         
         public void OnBulletHit(Collider other)

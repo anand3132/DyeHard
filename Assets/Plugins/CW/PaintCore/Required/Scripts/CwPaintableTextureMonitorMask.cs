@@ -8,32 +8,57 @@ namespace PaintCore
 	{
 		/// <summary>If you want this component to accurately count pixels relative to a mask mesh, then specify it here.
 		/// NOTE: For best results this should be the original mesh, NOT the seam-fixed version.</summary>
-		public Mesh MaskMesh { set { maskMesh = value; } get { return maskMesh; } } [UnityEngine.Serialization.FormerlySerializedAs("mesh")] [SerializeField] private Mesh maskMesh;
+		public Mesh MaskMesh
+		{
+			set { maskMesh = value; }
+			get { return maskMesh; }
+		}
+
+		[UnityEngine.Serialization.FormerlySerializedAs("mesh")] [SerializeField]
+		private Mesh maskMesh;
 
 		/// <summary>If you have a <b>MaskMesh</b> set, then this allows you to choose which submesh of it will be used for the mask.</summary>
-		public int MaskSubmesh { set { maskSubmesh = value; } get { return maskSubmesh; } } [SerializeField] private int maskSubmesh;
+		public int MaskSubmesh
+		{
+			set { maskSubmesh = value; }
+			get { return maskSubmesh; }
+		}
+
+		[SerializeField] private int maskSubmesh;
 
 		/// <summary>If you want this component to accurately count pixels relative to a mask texture, then specify it here.</summary>
-		public Texture MaskTexture { set { maskTexture = value; } get { return maskTexture; } } [SerializeField] private Texture maskTexture;
+		public Texture MaskTexture
+		{
+			set { maskTexture = value; }
+			get { return maskTexture; }
+		}
+
+		[SerializeField] private Texture maskTexture;
 
 		/// <summary>This allows you to specify which channel of the <b>MaskTexture</b> will be used to define the mask.</summary>
-		public CwChannel MaskChannel { set { maskChannel = value; } get { return maskChannel; } } [SerializeField] private CwChannel maskChannel = CwChannel.Alpha;
+		public CwChannel MaskChannel
+		{
+			set { maskChannel = value; }
+			get { return maskChannel; }
+		}
+
+		[SerializeField] private CwChannel maskChannel = CwChannel.Alpha;
 
 		/// <summary>The previously counted total amount of pixels.</summary>
-		public int Total { get { return total; } } [SerializeField] protected int total;
+		public int Total
+		{
+			get { return total; }
+		}
 
-		[System.NonSerialized]
-		private CwReader maskReader;
+		[SerializeField] protected int total;
 
-		[SerializeField]
-		protected NativeArray<byte> maskPixels;
+		[System.NonSerialized] private CwReader maskReader;
+
+		[SerializeField] protected NativeArray<byte> maskPixels;
 
 		public CwReader MaskReader
 		{
-			get
-			{
-				return maskReader;
-			}
+			get { return maskReader; }
 		}
 
 		public void MarkMaskReaderAsDirty()
@@ -60,10 +85,18 @@ namespace PaintCore
 			{
 				switch (maskChannel)
 				{
-					case CwChannel.Red  : for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].r; break;
-					case CwChannel.Green: for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].g; break;
-					case CwChannel.Blue : for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].b; break;
-					case CwChannel.Alpha: for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].a; break;
+					case CwChannel.Red:
+						for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].r;
+						break;
+					case CwChannel.Green:
+						for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].g;
+						break;
+					case CwChannel.Blue:
+						for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].b;
+						break;
+					case CwChannel.Alpha:
+						for (var i = 0; i < pixels.Length; i++) maskPixels[i] = pixels[i].a;
+						break;
 				}
 			}
 			else
@@ -117,11 +150,14 @@ namespace PaintCore
 		{
 			base.Update();
 
-			if (maskReader.Requested == false && registeredPaintableTexture != null && registeredPaintableTexture.Activated == true)
+			if (maskReader.Requested == false && registeredPaintableTexture != null &&
+			    registeredPaintableTexture.Activated == true)
 			{
-				if (CwReader.NeedsUpdating(maskReader, maskPixels, registeredPaintableTexture.Current, downsampleSteps) == true)
+				if (CwReader.NeedsUpdating(maskReader, maskPixels, registeredPaintableTexture.Current,
+					    downsampleSteps) == true)
 				{
-					var desc          = registeredPaintableTexture.Current.descriptor; desc.useMipMap = false;
+					var desc = registeredPaintableTexture.Current.descriptor;
+					desc.useMipMap = false;
 					var renderTexture = CwCommon.GetRenderTexture(desc);
 
 					if (maskTexture != null)

@@ -13,35 +13,67 @@ namespace PaintCore
 		public class Contribution
 		{
 			public CwColor Color;
-			public int     Count;
-			public float   Ratio;
-			public byte    R;
-			public byte    G;
-			public byte    B;
-			public byte    A;
+			public int Count;
+			public float Ratio;
+			public byte R;
+			public byte G;
+			public byte B;
+			public byte A;
 
 			public static Stack<Contribution> Pool = new Stack<Contribution>();
 		}
 
 		/// <summary>This stores all active and enabled instances.</summary>
-		public static LinkedList<CwColorCounter> Instances = new LinkedList<CwColorCounter>(); private LinkedListNode<CwColorCounter> instancesNode;
+		public static LinkedList<CwColorCounter> Instances = new LinkedList<CwColorCounter>();
+
+		private LinkedListNode<CwColorCounter> instancesNode;
 
 		/// <summary>The RGBA values must be within this range of a color for it to be counted.</summary>
-		public float Threshold { set { if (threshold != value) { threshold = value; MarkCurrentReaderAsDirty(); } } get { return threshold; } } [Range(0.0f, 1.0f)] [SerializeField] private float threshold = 0.1f;
+		public float Threshold
+		{
+			set
+			{
+				if (threshold != value)
+				{
+					threshold = value;
+					MarkCurrentReaderAsDirty();
+				}
+			}
+			get { return threshold; }
+		}
+
+		[Range(0.0f, 1.0f)] [SerializeField] private float threshold = 0.1f;
 
 		/// <summary>Each color contribution will be stored in this list.</summary>
-		public List<Contribution> Contributions { get { return contributions; } } [System.NonSerialized] private List<Contribution> contributions = new List<Contribution>();
+		public List<Contribution> Contributions
+		{
+			get { return contributions; }
+		}
+
+		[System.NonSerialized] private List<Contribution> contributions = new List<Contribution>();
 
 		/// <summary>The <b>Total</b> of the specified counters.</summary>
 		public static long GetTotal(ICollection<CwColorCounter> counters = null)
 		{
-			var total = 0L; foreach (var counter in counters ?? Instances) { if (counter != null) total += counter.total; } return total;
+			var total = 0L;
+			foreach (var counter in counters ?? Instances)
+			{
+				if (counter != null) total += counter.total;
+			}
+
+			return total;
 		}
 
 		/// <summary>The <b>Count</b> of the specified counters.</summary>
 		public static long GetCount(CwColor color, ICollection<CwColorCounter> counters = null)
 		{
-			var count = 0L; foreach (var counter in counters ?? Instances) { if (counter != null) count += counter.Count(color); } return count;
+			var count = 0L;
+			foreach (var counter in counters ?? Instances)
+			{
+				if (counter != null) count += counter.Count(color);
+			}
+
+			return count;
 		}
 
 		/// <summary>The <b>Ratio</b> of the specified counters.</summary>
@@ -59,7 +91,7 @@ namespace PaintCore
 					if (counter.HasRead == false) return false;
 				}
 			}
-			
+
 			return true;
 		}
 
@@ -68,7 +100,8 @@ namespace PaintCore
 		{
 			get
 			{
-				return MaskReader != null && MaskReader.ReadCount > 0 && CurrentReader != null && CurrentReader.ReadCount > 0;
+				return MaskReader != null && MaskReader.ReadCount > 0 && CurrentReader != null &&
+				       CurrentReader.ReadCount > 0;
 			}
 		}
 
@@ -105,7 +138,8 @@ namespace PaintCore
 
 		protected override void OnDisable()
 		{
-			Instances.Remove(instancesNode); instancesNode = null;
+			Instances.Remove(instancesNode);
+			instancesNode = null;
 
 			base.OnDisable();
 
@@ -114,7 +148,8 @@ namespace PaintCore
 
 		protected override void HandleComplete(int boost)
 		{
-			if (currentPixels.IsCreated == false || maskPixels.IsCreated == false || currentPixels.Length != maskPixels.Length)
+			if (currentPixels.IsCreated == false || maskPixels.IsCreated == false ||
+			    currentPixels.Length != maskPixels.Length)
 			{
 				return;
 			}
@@ -132,13 +167,13 @@ namespace PaintCore
 					total++;
 
 					var currentPixel = currentPixels[i];
-					var bestIndex    = -1;
+					var bestIndex = -1;
 					var bestDistance = (int)threshold32;
 
 					for (var c = 0; c < CwColor.Instances.Count; c++)
 					{
 						var tempColor = contributions[c];
-						var distance  = 0;
+						var distance = 0;
 
 						distance += System.Math.Abs(tempColor.R - currentPixel.r);
 						distance += System.Math.Abs(tempColor.G - currentPixel.g);
@@ -147,7 +182,7 @@ namespace PaintCore
 
 						if (distance <= bestDistance)
 						{
-							bestIndex    = c;
+							bestIndex = c;
 							bestDistance = distance;
 						}
 					}
@@ -184,14 +219,14 @@ namespace PaintCore
 			foreach (var color in CwColor.Instances)
 			{
 				var contribution = Contribution.Pool.Count > 0 ? Contribution.Pool.Pop() : new Contribution();
-				var color32      = (Color32)color.Color;
+				var color32 = (Color32)color.Color;
 
 				contribution.Color = color;
 				contribution.Count = 0;
-				contribution.R     = color32.r;
-				contribution.G     = color32.g;
-				contribution.B     = color32.b;
-				contribution.A     = color32.a;
+				contribution.R = color32.r;
+				contribution.G = color32.g;
+				contribution.B = color32.b;
+				contribution.A = color32.a;
 
 				contributions.Add(contribution);
 			}
@@ -208,7 +243,7 @@ namespace PaintCore
 				var contribution = contributions[i];
 
 				contribution.Count *= scale;
-				contribution.Ratio  = contribution.Count * totalRecip;
+				contribution.Ratio = contribution.Count * totalRecip;
 
 				if (contribution.Color != null)
 				{

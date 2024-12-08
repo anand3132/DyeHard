@@ -10203,7 +10203,6 @@ GameObject:
   - component: {fileID: 5865973797345275490}
   - component: {fileID: 7242703672651453411}
   - component: {fileID: 8482098735189272502}
-  - component: {fileID: 8270307748877880612}
   m_Layer: 0
   m_Name: Collision Particle
   m_TagString: Untagged
@@ -15079,23 +15078,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8270307748877880612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2365544969077779309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81a5c75c78d6364ea8c1a6f121e3a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paintColor: {r: 0.21960784, g: 1, b: 0.29411766, a: 1}
-  minRadius: 1
-  maxRadius: 2
-  strength: 1
-  hardness: 0.01
 --- !u!1 &2686500599737831303
 GameObject:
   m_ObjectHideFlags: 0

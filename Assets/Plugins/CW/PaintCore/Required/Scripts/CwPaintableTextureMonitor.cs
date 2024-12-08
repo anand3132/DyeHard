@@ -8,58 +8,88 @@ namespace PaintCore
 	public abstract class CwPaintableTextureMonitor : MonoBehaviour
 	{
 		/// <summary>This is the paintable texture whose pixels we will count.</summary>
-		public CwPaintableTexture PaintableTexture { set { paintableTexture = value; Register(); } get { return paintableTexture; } } [SerializeField] private CwPaintableTexture paintableTexture;
+		public CwPaintableTexture PaintableTexture
+		{
+			set
+			{
+				paintableTexture = value;
+				Register();
+			}
+			get { return paintableTexture; }
+		}
+
+		[SerializeField] private CwPaintableTexture paintableTexture;
 
 		/// <summary>Should this counter only read when you're not currently painting?
 		/// NOTE: You can control this by manually calling <b>CwPaintableManager.MarkActivelyPainting()</b> in <b>Update</b>.</summary>
-		public bool WaitUntilNotPainting { set { waitUntilNotPainting = value; } get { return waitUntilNotPainting; } } [SerializeField] private bool waitUntilNotPainting;
+		public bool WaitUntilNotPainting
+		{
+			set { waitUntilNotPainting = value; }
+			get { return waitUntilNotPainting; }
+		}
+
+		[SerializeField] private bool waitUntilNotPainting;
 
 		/// <summary>This allows you to specify the minimum delay between when your texture is painted, and when the data is read.
 		/// 0 = As fast as possible.
 		/// 1 = Once a second.</summary>
-		public float Interval { set { interval = value; } get { return interval; } } [SerializeField] private float interval;
+		public float Interval
+		{
+			set { interval = value; }
+			get { return interval; }
+		}
+
+		[SerializeField] private float interval;
 
 		/// <summary>If you disable this, then the texture will be updated immediately, which may cause slowdown.
 		/// NOTE: This isn't supported on all devices.</summary>
-		public bool Async { set { async = value; } get { return async; } } [SerializeField] private bool async = true;
+		public bool Async
+		{
+			set { async = value; }
+			get { return async; }
+		}
+
+		[SerializeField] private bool async = true;
 
 		/// <summary>If you enable this, then the reader will update as soon as it starts. If not, you must manually populate it with default data.</summary>
-		public bool ReadAtStart { set { readAtStart = value; } get { return readAtStart; } } [SerializeField] private bool readAtStart = true;
+		public bool ReadAtStart
+		{
+			set { readAtStart = value; }
+			get { return readAtStart; }
+		}
+
+		[SerializeField] private bool readAtStart = true;
 
 		/// <summary>Testing all the pixels of a texture can be slow, so you can pick how many times the texture is downsampled. One downsample = half width & height or 1/4 of the pixels.
 		/// NOTE: The pixel totals will be multiplied to account for this downsampling.</summary>
-		public int DownsampleSteps { set { downsampleSteps = value; } get { return downsampleSteps; } } [SerializeField] protected int downsampleSteps = 3;
+		public int DownsampleSteps
+		{
+			set { downsampleSteps = value; }
+			get { return downsampleSteps; }
+		}
+
+		[SerializeField] protected int downsampleSteps = 3;
 
 		/// <summary>This event is invoked each time this texture monitor updates its pixel counts.</summary>
 		public event System.Action OnUpdated;
 
-		[SerializeField]
-		protected CwPaintableTexture registeredPaintableTexture;
+		[SerializeField] protected CwPaintableTexture registeredPaintableTexture;
 
-		[SerializeField]
-		private float cooldown;
+		[SerializeField] private float cooldown;
 
-		[System.NonSerialized]
-		private CwReader currentReader;
+		[System.NonSerialized] private CwReader currentReader;
 
-		[SerializeField]
-		protected NativeArray<Color32> currentPixels;
+		[SerializeField] protected NativeArray<Color32> currentPixels;
 
 		/// <summary>This will be true after Register is successfully called.</summary>
 		public bool Registered
 		{
-			get
-			{
-				return registeredPaintableTexture != null;
-			}
+			get { return registeredPaintableTexture != null; }
 		}
 
 		public CwReader CurrentReader
 		{
-			get
-			{
-				return currentReader;
-			}
+			get { return currentReader; }
 		}
 
 		public void MarkCurrentReaderAsDirty()
@@ -157,9 +187,11 @@ namespace PaintCore
 					resume = false;
 				}
 
-				if (resume == true && currentReader.Requested == false && registeredPaintableTexture != null && registeredPaintableTexture.Activated == true)
+				if (resume == true && currentReader.Requested == false && registeredPaintableTexture != null &&
+				    registeredPaintableTexture.Activated == true)
 				{
-					if (CwReader.NeedsUpdating(currentReader, currentPixels, registeredPaintableTexture.Current, downsampleSteps) == true)
+					if (CwReader.NeedsUpdating(currentReader, currentPixels, registeredPaintableTexture.Current,
+						    downsampleSteps) == true)
 					{
 						cooldown = interval;
 

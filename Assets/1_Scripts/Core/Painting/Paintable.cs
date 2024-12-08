@@ -1,48 +1,54 @@
 using UnityEngine;
 
-public class Paintable : MonoBehaviour {
-    const int TEXTURE_SIZE = 1024;
+namespace RedGaint
+{
+    public class Paintable : MonoBehaviour
+    {
+        const int TEXTURE_SIZE = 1024;
 
-    public float extendsIslandOffset = 1;
+        public float extendsIslandOffset = 1;
 
-    RenderTexture extendIslandsRenderTexture;
-    RenderTexture uvIslandsRenderTexture;
-    RenderTexture maskRenderTexture;
-    RenderTexture supportTexture;
-    
-    Renderer rend;
+        RenderTexture extendIslandsRenderTexture;
+        RenderTexture uvIslandsRenderTexture;
+        RenderTexture maskRenderTexture;
+        RenderTexture supportTexture;
 
-    int maskTextureID = Shader.PropertyToID("_MaskTexture");
+        Renderer rend;
 
-    public RenderTexture getMask() => maskRenderTexture;
-    public RenderTexture getUVIslands() => uvIslandsRenderTexture;
-    public RenderTexture getExtend() => extendIslandsRenderTexture;
-    public RenderTexture getSupport() => supportTexture;
-    public Renderer getRenderer() => rend;
+        int maskTextureID = Shader.PropertyToID("_MaskTexture");
 
-    void Start() {
-        maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
-        maskRenderTexture.filterMode = FilterMode.Bilinear;
+        public RenderTexture getMask() => maskRenderTexture;
+        public RenderTexture getUVIslands() => uvIslandsRenderTexture;
+        public RenderTexture getExtend() => extendIslandsRenderTexture;
+        public RenderTexture getSupport() => supportTexture;
+        public Renderer getRenderer() => rend;
 
-        extendIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
-        extendIslandsRenderTexture.filterMode = FilterMode.Bilinear;
+        void Start()
+        {
+            maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+            maskRenderTexture.filterMode = FilterMode.Bilinear;
 
-        uvIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
-        uvIslandsRenderTexture.filterMode = FilterMode.Bilinear;
+            extendIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+            extendIslandsRenderTexture.filterMode = FilterMode.Bilinear;
 
-        supportTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
-        supportTexture.filterMode =  FilterMode.Bilinear;
+            uvIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+            uvIslandsRenderTexture.filterMode = FilterMode.Bilinear;
 
-        rend = GetComponent<Renderer>();
-        rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
+            supportTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+            supportTexture.filterMode = FilterMode.Bilinear;
 
-        PaintManager.instance.initTextures(this);
-    }
+            rend = GetComponent<Renderer>();
+            rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
 
-    void OnDisable(){
-        maskRenderTexture.Release();
-        uvIslandsRenderTexture.Release();
-        extendIslandsRenderTexture.Release();
-        supportTexture.Release();
-    }
-}
+            PaintManager.instance.initTextures(this);
+        }
+
+        void OnDisable()
+        {
+            maskRenderTexture.Release();
+            uvIslandsRenderTexture.Release();
+            extendIslandsRenderTexture.Release();
+            supportTexture.Release();
+        }
+    }//Paintable
+}//RedGaint

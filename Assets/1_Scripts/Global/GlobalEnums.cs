@@ -1,5 +1,6 @@
 
 using UnityEngine;
+
 namespace RedGaint
 {
 
@@ -80,6 +81,32 @@ namespace RedGaint
         }
     }
 
+    public class ColorFillAmount
+    {
+        public Color PlayerColor;  // Color of the player
+        public int FillAmount;     // The amount of fill for that color
+
+        // Constructor to initialize the color and fill amount
+        public ColorFillAmount(Color color)
+        {
+            PlayerColor = color;
+            FillAmount = 0; // Initialize the fill amount to 0
+        }
+
+        // Optionally, add methods to update the fill amount or perform other operations
+        public void AddFillAmount(int amount)
+        {
+            FillAmount += amount;
+        }
+
+        // A method to reset fill amount if needed
+        public void ResetFillAmount()
+        {
+            FillAmount = 0;
+        }
+    }
+
+
     public static class GlobalStaticVariables
     {
         public static Color TeamRedColor { get; private set; }
@@ -105,4 +132,4 @@ namespace RedGaint
         }
     }
 
-}
+}//RedGaint

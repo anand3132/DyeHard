@@ -144,7 +144,7 @@ namespace RedGaint
                 Transform detectedPlayer = DetectPlayer(sightRange, fovAngle);
                 if (detectedPlayer != null)
                 {
-                    BugsBunny.Log3("<color=red>------Played detected : -------------</color>");
+                    BugsBunny.LogRed("------Played detected : -------------");
                     if (!isFollowingPlayer)
                     {
                         StopCoroutine(WanderCoroutine());
@@ -160,7 +160,7 @@ namespace RedGaint
                         isFollowingPlayer = false;
                         currentPlayerTransform = null;
                         StartCoroutine(WanderCoroutine());
-                        BugsBunny.Log3("<color=green>------returning patrol : -------------</color>");
+                        BugsBunny.LogGreen("------returning patrol : -------------");
                     }
                 }
                 // Check for bot's speed and update animation parameters
@@ -202,7 +202,7 @@ namespace RedGaint
         private void HandleBotStuck()
         {
             // If the bot is stuck, stop the animation and reset the path
-            BugsBunny.Log3("<color=yellow>------Bot is stuck, handling it.-------------</color>");
+            BugsBunny.LogYellow("------Bot is stuck, handling it.-------------");
             currentAnimtor.SetFloat("Blend", 0f);  // Stop the walking animation
 
             // Optionally reset the NavMeshAgent's path
@@ -354,7 +354,7 @@ namespace RedGaint
                 if (gameObject.GetComponent<PowerUpBasket>().IsPowerUpAvilable())
                 {
                     gameObject.GetComponent<PowerUpBasket>().TriggerPowerUp();
-                    BugsBunny.Log3("<color=red>Bot is attacking in powerup! please wait...</color>");
+                    BugsBunny.LogRed("Bot is attacking in powerup! please wait...");
                 }
             }
         }

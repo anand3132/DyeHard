@@ -4,110 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b870d7be-f903-4bda-bc2d-fa352659637d" name="Changes" comment="">
+    <list default="true" id="4ca1fcfb-c0fc-4f2a-a50a-7e1c251690c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/Player Animator Controller.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/Player Animator Controller.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/ThiefAvatar.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/Animation/ThiefAvatar.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/CuteGuys-LowpolyCharacters/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/CuteGuys-LowpolyCharacters/Scripts/RotateGuys.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/1_Models/CuteGuys-LowpolyCharacters/Scripts/RotateGuys.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/2_UIElements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Blue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Blue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Yellow.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_Meterials/Yellow.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/Normal_Plain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/Normal_Plain.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCorridoor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCorridoor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableCourtyardFloor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableHighwayFence.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableSlope.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableSlope.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableTower.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/PaintableMaterials/PaintableTower.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/DYE HARD/Materials/Printables/ParticleMaterial 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials/Forest.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials/Forest/Ruin_Water.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Materials/Forest/Ruin_Water.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Shaders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Shaders/Highlands_Water.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Shaders/Highlands_Water.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures/Forest.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures/Forest/Water_Normal.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/Environment/HIGHLANDS - Stylized Environment/Textures/Forest/Water_Normal.bmp.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/Materials/Day04.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/Materials/Day04.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/textures/Day04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/SkyBox/Polygrade/Toon Skyboxes/textures/Day04.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Theaf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Theaf.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bullet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bullet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GunHoister.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GunHoister.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/HealthBarLookAt.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/HealthBarLookAt.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/InputHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/CollisionPainter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/CollisionPainter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/MousePainter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/MousePainter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/Paintable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/Paintable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/SimpleCameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/SimpleCameraController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/SplatGun.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/SplatGun.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/skyboxChanger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/skyboxChanger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DYEHARD.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scenes/SampleScene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scenes/SampleScene/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scenes/SampleScene/SampleScene.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Core/skyboxChanger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/Painting/MousePainter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2plRnZE2pPoM0vCTNclSlQWbHJs" />
+  <component name="ProjectId" id="2prJxBu5BEE37YWEJEa7yajcwyo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.5084388",
-    "git-widget-placeholder": "dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Standalone Player.Start Unity.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2023.2.20f1\Editor\Unity.exe" />
@@ -155,13 +120,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b870d7be-f903-4bda-bc2d-fa352659637d" name="Changes" comment="" />
-      <created>1733338844970</created>
+      <changelist id="4ca1fcfb-c0fc-4f2a-a50a-7e1c251690c9" name="Changes" comment="" />
+      <created>1733518506430</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1733338844970</updated>
-      <workItem from="1733338848016" duration="6988000" />
-      <workItem from="1733419083105" duration="5240000" />
+      <updated>1733518506430</updated>
+      <workItem from="1733518508535" duration="5842000" />
+      <workItem from="1733590786632" duration="3000" />
+      <workItem from="1733590798959" duration="785000" />
+      <workItem from="1733642636523" duration="15306000" />
+      <workItem from="1733667763809" duration="1610000" />
     </task>
     <servers />
   </component>
@@ -182,17 +150,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/HealthBarLookAt.cs</url>
-          <line>115</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\HealthBarLookAt.cs" containingFunctionPresentation="Method 'TakeDamage'">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs</url>
+          <line>78</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\Bot\BotController.cs" containingFunctionPresentation="Method 'InitializeAnimationSettings'">
             <startOffsets>
-              <option value="3850" />
+              <option value="3084" />
             </startOffsets>
             <endOffsets>
-              <option value="3880" />
+              <option value="3126" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

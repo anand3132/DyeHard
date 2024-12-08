@@ -25,6 +25,7 @@ namespace RedGaint
             
             Gun gun= gunHoister.LoadGun(GlobalEnums.GunType.Gun1);
             
+           //need to shift from here------------------------------------#color 
             Color gunColor=Color.white;
             switch (team)
             {
@@ -41,6 +42,7 @@ namespace RedGaint
                     gunColor=Color.green;
                     break;
             }
+            
             SetGunColor(gun,gunColor);
         }
         

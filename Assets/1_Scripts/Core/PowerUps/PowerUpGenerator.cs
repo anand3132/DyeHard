@@ -125,6 +125,13 @@ namespace RedGaint
         {
             if (spawnPositions.Count > 0)
             {
+                // Validate the selectedPowerUpType before proceeding
+                if (!System.Enum.IsDefined(typeof(GlobalEnums.PowerUpType), selectedPowerUpType))
+                {
+                    BugsBunny.LogRed($"PowerUpGenerator: Invalid PowerUpType '{selectedPowerUpType}' selected. Please select a valid power-up type in SingleShot mode.");
+                    return;
+                    // Exit the function to prevent further issues
+                }
                 SpawnNextPowerUp(0, selectedPowerUpType); // Pass the selected type
             }
             else

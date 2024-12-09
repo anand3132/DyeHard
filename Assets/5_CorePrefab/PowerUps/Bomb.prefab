@@ -14685,7 +14685,7 @@ GameObject:
   - component: {fileID: 6972166110639907274}
   - component: {fileID: -3918307310742538617}
   m_Layer: 0
-  m_Name: Ink_Blast
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14807,7 +14807,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   powerUpSettings: {fileID: 11400000, guid: f5dd99050bfd51f49b9fd902617ef823, type: 2}
-  currentSettings: {fileID: 0}
+  currentSettings: {fileID: 11400000, guid: f5dd99050bfd51f49b9fd902617ef823, type: 2}
   powerUpHolder: {fileID: 0}
 --- !u!1001 &5271508777729962250
 PrefabInstance:

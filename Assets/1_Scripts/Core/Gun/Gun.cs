@@ -11,7 +11,7 @@ namespace RedGaint
         public void SetGunColor(Color color)
         {
             currentColor = color;
-            gunNozile.gameObject.GetComponentInChildren<ParticlesController>().paintColor = color;
+            // gunNozile.gameObject.GetComponentInChildren<ParticlesController>().paintColor = color;
         }
 
         public void StartShoot()

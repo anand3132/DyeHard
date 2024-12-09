@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8235614723284181092}
   - component: {fileID: 1550827050585611986}
   m_Layer: 0
-  m_Name: SlowRun
+  m_Name: Sludge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   powerUpSettings: {fileID: 11400000, guid: fe4a6d23e447a8c4dbd495a30da23fd5, type: 2}
-  currentSettings: {fileID: 0}
+  currentSettings: {fileID: 11400000, guid: fe4a6d23e447a8c4dbd495a30da23fd5, type: 2}
   powerUpHolder: {fileID: 0}
 --- !u!1 &2544092988105182423
 GameObject:

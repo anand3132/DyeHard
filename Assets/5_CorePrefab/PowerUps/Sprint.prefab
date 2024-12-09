@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6571030918005425537}
   - component: {fileID: -1745246644444525196}
   m_Layer: 0
-  m_Name: SpeedRun
+  m_Name: Sprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   powerUpSettings: {fileID: 11400000, guid: 7860e744b7139004ab87ce0e3cedb235, type: 2}
-  currentSettings: {fileID: 0}
+  currentSettings: {fileID: 11400000, guid: 7860e744b7139004ab87ce0e3cedb235, type: 2}
   powerUpHolder: {fileID: 0}
 --- !u!1 &4559280511939831437
 GameObject:

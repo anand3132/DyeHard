@@ -5,8 +5,9 @@ namespace RedGaint
     //Class Responsibility : To hold, activate and trigger powerUp...!! It's just a basket to hold power up!!
     public class PowerUpBasket : MonoBehaviour
     {
-        [SerializeField] GameObject  powerUpObjectPrefab;
-        [SerializeField] GameObject currentPowerUp;
+        [Header("Info---")]
+        [SerializeField] private GameObject  powerUpObjectPrefab;
+        [SerializeField] private GameObject currentPowerUp;
         [SerializeField] private bool isPowerUpAvilable = false;
         public bool ActivateCurrentPowerUp(GlobalEnums.PowerUpType powerUpType)
         {

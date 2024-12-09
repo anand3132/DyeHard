@@ -23,7 +23,8 @@ namespace RedGaint
         private InputAction shootAction;
         private InputAction powerUpAction;
         private Vector2 movementInput;
-        
+        private const string RESPAERNEFFECT = "RF_ReSpawrnEffect";
+        private const string DEADTHEFFECT = "RF_DeathEffect";
         private void OnEnable()
         {
             if (playerInput == null)
@@ -107,12 +108,25 @@ namespace RedGaint
         }
 #endregion
 //----------------------------------------------------------------------------------------------------------------------
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+            InitialisePlayerController();
             cam = Camera.main;
             if (cam == null)
                 BugsBunny.LogYellow("No Main Camera found in the scene.");
             SetPlayerTeam(GlobalEnums.GameTeam.TeamBlue);
+            spawnEffect.SetActive(true);
+        }
+        
+        private void InitialisePlayerController()
+        {
+            deadthEffect= Helper.FindDeepChild(transform,DEADTHEFFECT).gameObject;
+            spawnEffect= Helper.FindDeepChild(transform, RESPAERNEFFECT).gameObject;
+            if(deadthEffect)
+                deadthEffect.SetActive(false);
+            if(spawnEffect)
+                spawnEffect.SetActive(false);
         }
         void Update()
         {

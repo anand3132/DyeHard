@@ -13,7 +13,7 @@ namespace RedGaint
         }
         
         #region Spectate
-        public CinemachineFreeLook cinemachineFreeLook;
+        public CinemachineCamera cinemachineFreeLook;
         public BotGenerator botGenerator;
         public PlayerController playerController;
         private int currentIndex = -1;

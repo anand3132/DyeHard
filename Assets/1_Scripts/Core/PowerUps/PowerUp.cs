@@ -73,16 +73,20 @@ namespace RedGaint
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponentInParent<BaseCharacterController>())
+            var baseCharacter = other.GetComponentInParent<BaseCharacterController>();
+            if (baseCharacter != null)
             {
-                BugsBunny.LogBlue(other.GetComponent<BaseCharacterController>().characternID);
-                if(!other.GetComponent<PowerUpBasket>().ActivateCurrentPowerUp(powerUpType))
-                    return;
-                // Trigger the event to notify the generator
-                OnPowerUpConsumed?.Invoke(positionIndex);
-                // Destroy the power-up after collection
-                Destroy(gameObject);
+                BugsBunny.LogBlue(baseCharacter.characternID);
+                var powerUpBasket = other.GetComponentInParent<PowerUpBasket>();
+                if (powerUpBasket != null && powerUpBasket.ActivateCurrentPowerUp(powerUpType))
+                {
+                    // Trigger the event to notify the generator
+                    OnPowerUpConsumed?.Invoke(positionIndex);
+                    // Destroy the power-up after collection
+                    Destroy(gameObject);
+                }
             }
         }
+
     }//PowerUp
 }//RedGaint

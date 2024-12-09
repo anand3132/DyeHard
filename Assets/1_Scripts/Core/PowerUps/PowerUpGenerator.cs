@@ -7,7 +7,7 @@ namespace RedGaint
     public class PowerUpGenerator : MonoBehaviour
     {
         public GlobalEnums.Mode spawnMode;
-        public GlobalEnums.PowerUpType selectedPowerUpType = GlobalEnums.PowerUpType.None;
+        public GlobalEnums.PowerUpType selectedPowerUpType;// = GlobalEnums.PowerUpType.None;
         [Space]
         public List<Material> powerUpMaterials;
         public GameObject powerUpPrefab;

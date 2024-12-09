@@ -30,7 +30,7 @@ namespace RedGaint
 
         public enum PowerUpType
         {
-            None,
+            //None,
             Sprint,
             Shield,
             Sludge,

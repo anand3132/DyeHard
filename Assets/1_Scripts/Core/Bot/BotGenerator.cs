@@ -1,24 +1,27 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace RedGaint {
-    public class BotGenerator : MonoBehaviour
+    public class BotGenerator : Singleton<BotGenerator>
     {
         private CheckPointHandler checkpointHandler;
         private List<Vector3> allSpawnPositions = new List<Vector3>();
         private bool IsGeneratorActive = false;
         public int createBot = 1;
         public List<GameObject> BotList=new List<GameObject>();
+        public List<BotController> ReSpawnList=new List<BotController>();
         public List<GameObject> BotPrefab;
         public GlobalEnums.Mode botSpawnMode;
         public GlobalEnums.Mode botPatrollingMode;
-
+        public bool Debug_pauseBot = false;
         private void Start()
         {
             InitializeGenerator();
         }
+        
         private void InitializeGenerator()
         {
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
@@ -76,6 +79,18 @@ namespace RedGaint {
             }
             allSpawnPositions.Clear();
             IsGeneratorActive = false;
+        }
+
+        public void AddToReSpawnList(BotController currentBot)
+        {
+            if(currentBot == null)
+                return;
+            foreach (var bot in ReSpawnList)
+            {
+                if(bot == currentBot)
+                    return;
+            }
+            ReSpawnList.Add(currentBot);
         }
         
         private List<Vector3> GetModifiedPath(GlobalEnums.Mode mode, List<Vector3> modifiedList)
@@ -145,13 +160,14 @@ namespace RedGaint {
             if (bot == null)
                 return false;
             var currentBotcontroller = bot.GetComponent<BotController>();
+            // Rigidbody rb = bot.GetComponent<Rigidbody>();
             
             List<Vector3> patrollingPath = new List<Vector3> { position };
             
             List<Vector3> tmpPath= GetModifiedPath(GlobalEnums.Mode.Random,checkpointHandler.GetWayPointPositions());
             
             patrollingPath.AddRange(tmpPath);
-            currentBotcontroller.InitialiseBot(patrollingPath,GetNewBotID()).ActivateBot(team);
+            currentBotcontroller.InitialiseBot(patrollingPath,GetNewBotID()).ActivateBot(team,Debug_pauseBot);
             return true;
         }
     }

@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RedGaint
 {
@@ -8,8 +11,12 @@ namespace RedGaint
         protected GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
         public GlobalEnums.GameTeam CurrentTeam => currentTeam;
         protected GunHoister gunHoister;
-        public string characternID;
+        public string characternID="Not Assigned";
         private bool gunstate;
+        [SerializeField] protected GameObject deadthEffect;
+        [SerializeField] protected GameObject spawnEffect;
+
+
         protected virtual void SetGunColor(Gun gun, Color color)
         {
             if(gun)
@@ -19,6 +26,10 @@ namespace RedGaint
                 BugsBunny.LogRed("Cant able to get the Gun to set color");
             }
         }
+
+        protected  virtual void Start() { }
+
+
         protected virtual void SetPlayerTeam(GlobalEnums.GameTeam team)
         {
             currentTeam = team;
@@ -42,7 +53,6 @@ namespace RedGaint
                     gunColor=Color.green;
                     break;
             }
-            
             SetGunColor(gun,gunColor);
         }
         
@@ -57,10 +67,29 @@ namespace RedGaint
             }
         }
 
-        public  virtual bool KillTheActor()
+        public virtual bool KillTheActor()
         {
+            BugsBunny.LogRed("-------------------------KILL THE ACTOR--------------------------------");
+            if (GetComponent<BotController>() != null)
+            {
+                var _bot = GetComponent<BotController>();
+                BotGenerator.instance.AddToReSpawnList(_bot);
+                if(deadthEffect!=null)
+                    deadthEffect.SetActive(true);
+                StartCoroutine(WaitForDeadthEffect(.1f));
+            }
+
+            // if(GetComponent<PlayerController>() !=null)
+
             return true;
         }
+
+        private IEnumerator WaitForDeadthEffect(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            gameObject.SetActive(false);
+        } 
+
         protected virtual void GunState(bool status)
         {
             if (status)
@@ -77,7 +106,7 @@ namespace RedGaint
 
         protected virtual void ReduceHealth(float amount)
         {
-            GetComponent<HealthBarLookAt>().TakeDamage(amount);
+            GetComponent<HealthHandler>().TakeDamage(amount);
         }
 
     }//BaseCharacterController

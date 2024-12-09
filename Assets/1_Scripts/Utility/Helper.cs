@@ -96,6 +96,12 @@ public static class Helper
         return null;
     }
 
+    public static GameObject FindDeepChildObject(Transform aParent, string aName, bool exactMatch = true)
+    {
+        FindDeepChild(aParent, aName , exactMatch);
+        return aParent.gameObject;
+    }
+
     public static Transform FindDeepChild(Transform aParent, string aName, bool exactMatch = true)
     {
         if (aParent == null)

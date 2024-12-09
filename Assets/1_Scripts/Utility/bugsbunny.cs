@@ -14,7 +14,7 @@ namespace RedGaint
             ErrorOnly     // Log errors only
         }
 
-        public static LogLevel CurrentLogLevel = LogLevel.FullLog;
+        public static LogLevel CurrentLogLevel = LogLevel.Three;
 
         public static void Log(string message)
         {

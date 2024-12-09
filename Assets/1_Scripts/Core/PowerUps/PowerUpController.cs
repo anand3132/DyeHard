@@ -22,11 +22,15 @@ namespace RedGaint
       private IEnumerator OnPowerUp(float delay)
       {
          powerUpTriggerEvents?.Invoke();
-         // currentSettings = powerUpHolder.GetComponent<PlayerController>().movementSettings;
-         // if (currentSettings!=null)
+         // if (powerUpType == GlobalEnums.PowerUpType.Sprint)
          // {
-         //    powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
+         //    
          // }
+         currentSettings = powerUpHolder.GetComponent<PlayerController>().movementSettings;
+         if (currentSettings!=null)
+         {
+            powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
+         }
          BugsBunny.Log3($"PowerUp {powerUpType} activated. Destroying in 5 seconds...");
          yield return new WaitForSeconds(delay);
          // if (currentSettings != null)

@@ -43,7 +43,10 @@ namespace RedGaint
         private float minRotationAngle;
         private float maxRotationAngle;
         private float rotationDuration;
-
+        public  bool pauseMovement = false;
+        private const string RESPAERNEFFECT = "RF_ReSpawrnEffect";
+        private const string DEADTHEFFECT = "RF_DeathEffect";
+        
         //[SerializeField] private GlobalEnums.RotationMode rotationMode = GlobalEnums.RotationMode.SineWaveMode;
         public float stuckThreshold = 0.1f;  // Threshold for considering the bot stuck (low velocity)
         private float timeStuck = 0f;
@@ -74,6 +77,12 @@ namespace RedGaint
             rotationDuration=settings.rotationDuration;
         }
 
+        protected override void Start()
+        {
+            base.Start();
+            BugsBunny.LogRed("--- BotController ---");
+        }
+
         private void InitializeAnimationSettings(BotSettings settings)
         {
             currentAnimtor = GetComponent<Animator>();
@@ -84,6 +93,13 @@ namespace RedGaint
         
         public BotController InitialiseBot(List<Vector3> patrollingPath,string botID)
         {
+                deadthEffect= Helper.FindDeepChild(transform,DEADTHEFFECT).gameObject;
+                spawnEffect= Helper.FindDeepChild(transform, RESPAERNEFFECT).gameObject;
+                if(deadthEffect)
+                    deadthEffect.SetActive(false);
+                if(spawnEffect)
+                    spawnEffect.SetActive(false);
+            
             if (botSettings == null)
             {
                 BugsBunny.LogError("Please set bot settings");
@@ -102,7 +118,8 @@ namespace RedGaint
             return this;
         }
 
-        public BotController ActivateBot(GlobalEnums.GameTeam team)
+        
+        public BotController ActivateBot(GlobalEnums.GameTeam team,bool onPause=false)
         {
             if (!isInitialized)
             {
@@ -130,9 +147,18 @@ namespace RedGaint
                 return this; 
             }
             // Activate the bot
-            isBotActive = true;
+            // if(spawnEffect)
+            spawnEffect.SetActive(true);
             SetPlayerTeam(team);
-            StartCoroutine(WanderCoroutine());
+            if (!pauseMovement)
+            {
+                StartCoroutine(WanderCoroutine());
+                isBotActive = true;
+            }
+            else
+            {
+                BugsBunny.LogYellow("Bot is on pause.");
+            }
             BugsBunny.Log3("Bot activated successfully.");
                 
             return this;
@@ -168,16 +194,10 @@ namespace RedGaint
                 UpdateAnimationParameters(speed);
                 // Check if the bot is stuck (via the failsafe)
                 CheckIfBotIsStuck(speed);
-                CheckBotHealth();
             }
         }
 
         private float botHealth = 10f;
-        private void CheckBotHealth()
-        {
-            if (botHealth < 1)
-                KillTheActor();
-        }
 
         // How long to wait before considering the bot stuck
         private void CheckIfBotIsStuck(float speed)
@@ -189,7 +209,8 @@ namespace RedGaint
                 // If the bot has been stuck for more than the time limit, handle it
                 if (timeStuck >= stuckTimeLimit)
                 {
-                    HandleBotStuck();
+                    BugsBunny.LogRed("Bot strucked...");
+                  HandleBotStuck();
                 }
             }
             else
@@ -322,7 +343,7 @@ namespace RedGaint
         private void AttackPlayer()
         {
             BugsBunny.Log3("Bot is attacking the player!");
-            //BotAttack();
+            // BotAttack();
         }
         private void UpdateAnimationParameters(float speed)
         {

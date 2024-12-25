@@ -1,3 +1,4 @@
+using PaintIn3D;
 using UnityEngine;
 
 namespace RedGaint
@@ -11,7 +12,7 @@ namespace RedGaint
         public void SetGunColor(Color color)
         {
             currentColor = color;
-            // gunNozile.gameObject.GetComponentInChildren<ParticlesController>().paintColor = color;
+            gunNozile.gameObject.GetComponentInChildren<CwPaintSphere>().Color = color;
         }
 
         public void StartShoot()

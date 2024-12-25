@@ -31,7 +31,7 @@ namespace RedGaint
             startPosition = transform.position;
             SetPowerUpType(_powerUpType);
             isActive = true;
-            BugsBunny.Log3("PowerUp Initialized");
+            BugsBunny.Log("PowerUp Initialized");
         }
 
         private void SetPowerUpType(GlobalEnums.PowerUpType powerUpType1)

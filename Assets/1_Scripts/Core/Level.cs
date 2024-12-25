@@ -19,18 +19,18 @@ namespace RedGaint
         }
 
         // Method to find and cache paintable objects in the level
-        public void InitializeLevelPaintables() {
-            if (paintableObjects == null) {
-                Debug.LogError("Paintable objects list is not initialized!");
-                return;
-            }
-
-            paintableObjects.Clear();
-            Paintable[] paintables = Object.FindObjectsOfType<Paintable>();
-            foreach (var paintable in paintables) {
-                paintableObjects.Add(paintable.gameObject);
-            }
-        }
+        // public void InitializeLevelPaintables() {
+        //     if (paintableObjects == null) {
+        //         Debug.LogError("Paintable objects list is not initialized!");
+        //         return;
+        //     }
+        //
+        //     paintableObjects.Clear();
+        //     Paintable[] paintables = Object.FindObjectsOfType<Paintable>();
+        //     foreach (var paintable in paintables) {
+        //         paintableObjects.Add(paintable.gameObject);
+        //     }
+        // }
 
         // Get the list of paintable objects
         public List<GameObject> GetPaintableObjects() {

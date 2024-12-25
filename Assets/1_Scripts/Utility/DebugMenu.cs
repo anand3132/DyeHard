@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 namespace RedGaint
 {
-    public class DebugMenu : Singleton<DebugMenu>
+    public class DebugMenu : Singleton<DebugMenu>, IBugsBunny
     {
+        public bool LogThisClass { get; } = false;
         private Canvas debugCanvas;
         private GameObject panel;
         private GameObject toggleButton;
@@ -104,5 +105,6 @@ namespace RedGaint
             isMenuVisible = !isMenuVisible;
             panel.SetActive(isMenuVisible);
         }
+
     }
 }

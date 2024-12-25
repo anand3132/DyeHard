@@ -53,7 +53,7 @@ public class GameLevelManager : MonoBehaviour {
         Debug.Log($"Loading Level {levelId}");
 
         // Initialize paintable objects in the level
-        currentLevel.InitializeLevelPaintables();
+        // currentLevel.InitializeLevelPaintables();
     }
 
     // Unload the current level
@@ -80,24 +80,24 @@ public class GameLevelManager : MonoBehaviour {
         return currentLevel.GetPaintableObjects();
     }
     // Get all RenderTextures from paintable objects in the current level
-    public List<RenderTexture> GetAllRenderTextures() {
-        if (currentLevel == null) {
-            Debug.LogWarning("No level is currently loaded.");
-            return new List<RenderTexture>();
-        }
-
-        List<RenderTexture> renderTextures = new List<RenderTexture>();
-        foreach (var paintableObject in currentLevel.GetPaintableObjects()) {
-            Paintable paintable = paintableObject.GetComponent<Paintable>();
-            if (paintable != null) {
-                renderTextures.Add(paintable.getMask());
-                renderTextures.Add(paintable.getUVIslands());
-                renderTextures.Add(paintable.getExtend());
-                renderTextures.Add(paintable.getSupport());
-            }
-        }
-        return renderTextures;
-    }
+    // public List<RenderTexture> GetAllRenderTextures() {
+    //     if (currentLevel == null) {
+    //         Debug.LogWarning("No level is currently loaded.");
+    //         return new List<RenderTexture>();
+    //     }
+    //
+    //     List<RenderTexture> renderTextures = new List<RenderTexture>();
+    //     foreach (var paintableObject in currentLevel.GetPaintableObjects()) {
+    //         Paintable paintable = paintableObject.GetComponent<Paintable>();
+    //         if (paintable != null) {
+    //             renderTextures.Add(paintable.getMask());
+    //             renderTextures.Add(paintable.getUVIslands());
+    //             renderTextures.Add(paintable.getExtend());
+    //             renderTextures.Add(paintable.getSupport());
+    //         }
+    //     }
+    //     return renderTextures;
+    // }
 }
 
 }

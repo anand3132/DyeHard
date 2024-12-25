@@ -81,30 +81,30 @@ namespace RedGaint
         }
     }
 
-    public class ColorFillAmount
-    {
-        public Color PlayerColor;  // Color of the player
-        public int FillAmount;     // The amount of fill for that color
-
-        // Constructor to initialize the color and fill amount
-        public ColorFillAmount(Color color)
-        {
-            PlayerColor = color;
-            FillAmount = 0; // Initialize the fill amount to 0
-        }
-
-        // Optionally, add methods to update the fill amount or perform other operations
-        public void AddFillAmount(int amount)
-        {
-            FillAmount += amount;
-        }
-
-        // A method to reset fill amount if needed
-        public void ResetFillAmount()
-        {
-            FillAmount = 0;
-        }
-    }
+    // public class ColorFillAmount
+    // {
+    //     public Color PlayerColor;  // Color of the player
+    //     public int FillAmount;     // The amount of fill for that color
+    //
+    //     // Constructor to initialize the color and fill amount
+    //     public ColorFillAmount(Color color)
+    //     {
+    //         PlayerColor = color;
+    //         FillAmount = 0; // Initialize the fill amount to 0
+    //     }
+    //
+    //     // Optionally, add methods to update the fill amount or perform other operations
+    //     public void AddFillAmount(int amount)
+    //     {
+    //         FillAmount += amount;
+    //     }
+    //
+    //     // A method to reset fill amount if needed
+    //     public void ResetFillAmount()
+    //     {
+    //         FillAmount = 0;
+    //     }
+    // }
 
 
     public static class GlobalStaticVariables
@@ -119,7 +119,7 @@ namespace RedGaint
         {
             if (data == null)
             {
-                BugsBunny.LogRed("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.");
+                BugsBunny.LogRed("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.", showLog: true);
                 return;
             }
 
@@ -128,7 +128,7 @@ namespace RedGaint
             BotMaxHealth = data.botMaxHealth;
             PlayerMaxHealth = data.playerMaxHealth;
 
-            BugsBunny.Log3("GlobalStaticVariables: Data loaded successfully.");
+            BugsBunny.Log("GlobalStaticVariables: Data loaded successfully.");
         }
     }
 

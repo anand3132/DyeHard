@@ -1,13 +1,13 @@
+using RedGaint;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour, IBugsBunny
 {
-
     public static bool verbose = false;
     public static bool keepAlive = true;
 
     private static T _instance = null;
-    public static T instance
+    public static T Instance
     {
         get
         {
@@ -25,17 +25,14 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    static public bool isInstanceAlive
-    {
-        get { return _instance != null; }
-    }
+    public static bool IsInstanceAlive => _instance != null;
 
     public virtual void Awake()
     {
         if (_instance != null)
         {
             if (verbose)
-                Debug.Log("SingleAccessPoint, Destroy duplicate instance " + name + " of " + instance.name);
+                Debug.Log($"[Singleton] Destroying duplicate instance of {typeof(T).Name}: {name}");
             Destroy(gameObject);
             return;
         }
@@ -50,19 +47,16 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         if (_instance == null)
         {
             if (verbose)
-                Debug.LogError("SingleAccessPoint<" + typeof(T).Name + "> Instance null in Awake");
+                Debug.LogError($"[Singleton<{typeof(T).Name}>] Instance is null in Awake.");
             return;
         }
 
         if (verbose)
-            Debug.Log("SingleAccessPoint instance found " + instance.GetType().Name);
-
+            Debug.Log($"[Singleton] Instance initialized for {typeof(T).Name}");
     }
-
 }
 
-public class SingletonSimple<T> : MonoBehaviour
-    where T : Component
+public class SingletonSimple<T> : MonoBehaviour where T : Component, IBugsBunny
 {
     private static T _instance;
     public static T Instance
@@ -76,7 +70,7 @@ public class SingletonSimple<T> : MonoBehaviour
                     _instance = objs[0];
                 if (objs.Length > 1)
                 {
-                    Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
+                    Debug.LogError($"[SingletonSimple] More than one {typeof(T).Name} instance found in the scene.");
                 }
                 if (_instance == null)
                 {
@@ -90,8 +84,7 @@ public class SingletonSimple<T> : MonoBehaviour
     }
 }
 
-public class SingletonPersistent<T> : MonoBehaviour
-    where T : Component
+public class SingletonPersistent<T> : MonoBehaviour where T : Component, IBugsBunny
 {
     public static T Instance { get; private set; }
     public virtual void Awake()
@@ -103,12 +96,13 @@ public class SingletonPersistent<T> : MonoBehaviour
         }
         else
         {
+            Debug.Log($"[SingletonPersistent] Destroying duplicate instance of {typeof(T).Name}: {name}");
             Destroy(gameObject);
         }
     }
 }
 
-public class SingletonSafe<T> : MonoBehaviour where T : MonoBehaviour
+public class SingletonSafe<T> : MonoBehaviour where T : MonoBehaviour, IBugsBunny
 {
     private static T instance;
 
@@ -121,7 +115,7 @@ public class SingletonSafe<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (applicationIsQuitting)
             {
-                Debug.LogWarning($"[Singleton] Instance of {typeof(T)} already destroyed (application is quitting). Returning null.");
+                Debug.LogWarning($"[SingletonSafe] Instance of {typeof(T)} already destroyed (application is quitting). Returning null.");
                 return null;
             }
 

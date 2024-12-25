@@ -14,7 +14,7 @@ namespace RedGaint
             if (isPowerUpAvilable)
                 return false;
 
-            powerUpObjectPrefab = PowerUpManager.instance.GetPowerUpPrefab(powerUpType);
+            powerUpObjectPrefab = PowerUpManager.Instance.GetPowerUpPrefab(powerUpType);
             if (powerUpObjectPrefab != null && powerUpObjectPrefab.GetComponent<PowerUpController>().powerUpType == powerUpType)
             {
                 // Instantiate the power-up
@@ -38,8 +38,8 @@ namespace RedGaint
                 // Update UI if the player holds this power-up
                 if (playerController != null)
                 {
-                    InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
-                    InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =
+                    InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
+                    InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().sprite =
                         currentPowerUp.GetComponent<PowerUpController>().powerUpLogo;
                 }
 

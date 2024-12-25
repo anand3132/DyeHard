@@ -5,8 +5,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace RedGaint {
-    public class BotGenerator : Singleton<BotGenerator>
+    public class BotGenerator : Singleton<BotGenerator>, IBugsBunny
     {
+        public bool LogThisClass { get; } = false;
         private CheckPointHandler checkpointHandler;
         private List<Vector3> allSpawnPositions = new List<Vector3>();
         private bool IsGeneratorActive = false;
@@ -27,7 +28,7 @@ namespace RedGaint {
             checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
             if (checkpointHandler == null)
             {
-                BugsBunny.LogRed("BotGenerator: Can't fetch Core Component -> CheckPointHandler");
+                BugsBunny.LogRed("BotGenerator: Can't fetch Core Component -> CheckPointHandler",this);
                 return; 
             }
             else
@@ -38,7 +39,7 @@ namespace RedGaint {
 
             if (BotPrefab.Count == 0)
             {
-                BugsBunny.LogRed("BotGenerator: There is no bot prefab for Bot Generation");
+                BugsBunny.LogRed("BotGenerator: There is no bot prefab for Bot Generation",this);
                 return;
             }
             for (int i = 0; i < createBot; i++)
@@ -74,7 +75,7 @@ namespace RedGaint {
             {
                 if (item != null && item.GetComponent<BotController>().KillTheActor())
                 {
-                    BugsBunny.Log1("ResetGenerator: on bot killing...");
+                    BugsBunny.Log("ResetGenerator: on bot killing...");
                 }
             }
             allSpawnPositions.Clear();
@@ -170,6 +171,7 @@ namespace RedGaint {
             currentBotcontroller.InitialiseBot(patrollingPath,GetNewBotID()).ActivateBot(team,Debug_pauseBot);
             return true;
         }
+
     }
 
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 namespace RedGaint
 {
 
-    public abstract class BaseCharacterController : MonoBehaviour
+    public abstract class BaseCharacterController : MonoBehaviour,IBugsBunny
     {
+        public virtual bool LogThisClass { get; protected set; } = true;
+
         protected GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
         public GlobalEnums.GameTeam CurrentTeam => currentTeam;
         protected GunHoister gunHoister;
@@ -14,14 +16,13 @@ namespace RedGaint
         [SerializeField] protected GameObject deadthEffect;
         [SerializeField] protected GameObject spawnEffect;
 
-
         protected virtual void SetGunColor(Gun gun, Color color)
         {
             if(gun)
                 gun.SetGunColor(color);
             else
             {
-                BugsBunny.LogRed("Cant able to get the Gun to set color");
+                BugsBunny.LogRed("Cant able to get the Gun to set color",LogThisClass);
             }
         }
 
@@ -61,17 +62,17 @@ namespace RedGaint
             if (otherController.CurrentTeam != CurrentTeam)
             {
                 otherController.ReduceHealth(GlobalStaticVariables.HealthHitRation);
-                BugsBunny.LogRed("OnBulletHit: "+otherController.characternID);
+                BugsBunny.LogRed("OnBulletHit: "+otherController.characternID,LogThisClass);
             }
         }
 
         public  virtual bool KillTheActor()
         {
-            BugsBunny.LogRed("-------------------------KILL THE ACTOR--------------------------------");
+            BugsBunny.LogRed("-------------------------KILL THE ACTOR--------------------------------",LogThisClass);
             if (GetComponent<BotController>() != null)
             {
                 var _bot = GetComponent<BotController>();
-                BotGenerator.instance.AddToReSpawnList(_bot);
+                BotGenerator.Instance.AddToReSpawnList(_bot);
                 if(deadthEffect!=null)
                     deadthEffect.SetActive(true);
                 StartCoroutine(WaitForDeadthEffect(.1f));

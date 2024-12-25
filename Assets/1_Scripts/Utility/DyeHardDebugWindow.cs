@@ -7,8 +7,8 @@ namespace RedGaint
     {
         void Start()
         {
-            DebugMenu.instance.AddButton("Spectate", SpectateNextTarget);
-            DebugMenu.instance.AddButton("Toggle Invincibility", ToggleInvincibility);
+            DebugMenu.Instance.AddButton("Spectate", SpectateNextTarget);
+            DebugMenu.Instance.AddButton("Toggle Invincibility", ToggleInvincibility);
             // DebugMenu.instance.AddButton("Spawn Enemy", SpawnEnemy);
         }
         
@@ -55,7 +55,7 @@ namespace RedGaint
             {
                 cinemachineFreeLook.LookAt = targetToSpectate;
                 cinemachineFreeLook.Follow = targetToSpectate;
-                BugsBunny.Log3($"Now spectating: {targetToSpectate.name}");
+                BugsBunny.Log($"Now spectating: {targetToSpectate.name}");
             }
         }
 
@@ -67,12 +67,12 @@ namespace RedGaint
         #endregion
         private void ToggleInvincibility()
         {
-            BugsBunny.Log3("Toggling invincibility...");
+            BugsBunny.Log("Toggling invincibility...");
             // Add your invincibility toggle logic here
         }
         private void SpawnEnemy()
         {
-            BugsBunny.Log3("Spawning an enemy...");
+            BugsBunny.Log("Spawning an enemy...");
             // Add your enemy spawn logic here
         }
     }

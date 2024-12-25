@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace RedGaint
 {
-    public class PowerUpManager : Singleton<PowerUpManager>
+    public class PowerUpManager : Singleton<PowerUpManager>, IBugsBunny
     {
+        public bool LogThisClass { get; } = false;
         public GameObject[] powerUps;
         [CanBeNull]
         public GameObject GetPowerUpPrefab(GlobalEnums.PowerUpType _powerUpType)
@@ -16,8 +17,10 @@ namespace RedGaint
                     return item;
                 }
             }
-            BugsBunny.LogError("Cant able to get the specified powerUp prefab of type :" +_powerUpType.ToString());
+            BugsBunny.LogError("Cant able to get the specified powerUp prefab of type :" +_powerUpType.ToString(), this);
             return null;
         }
+
+        
     }
 }//RedGaint

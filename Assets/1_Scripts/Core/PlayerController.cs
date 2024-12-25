@@ -101,10 +101,10 @@ namespace RedGaint
             if(!GetComponent<PowerUpBasket>().IsPowerUpAvilable())
                 return;
             GetComponent<PowerUpBasket>().TriggerPowerUp();
-            InputHandler.instance.powerUpButtonObject.GetComponent<Image>().color =
-                InputHandler.instance.powerUpBtnDefaultColor;
-            InputHandler.instance.powerUpButtonObject.GetComponent<Image>().sprite =
-                InputHandler.instance.defaultSprite;
+            InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().color =
+                InputHandler.Instance.powerUpBtnDefaultColor;
+            InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().sprite =
+                InputHandler.Instance.defaultSprite;
         }
 #endregion
 //----------------------------------------------------------------------------------------------------------------------

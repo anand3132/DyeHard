@@ -6,20 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="4ca1fcfb-c0fc-4f2a-a50a-7e1c251690c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameLevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameLevelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Gun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Level.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/ModelAssembler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/ModelAssembler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/PaintManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/Paintable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/Paintable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/ParticlesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Painting/ParticlesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/Gun_Asset.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/Gun_Asset.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/Ink_Blast.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/Ink_Blast.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/Shield.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/Shield.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/SlowRun.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/SlowRun.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/SpeedRun.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/Prefabs/SpeedRun.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/GameProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/GameProgressBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/cw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DebugMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DebugMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/DyeHardDebugWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/Singleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/Gun1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/Gun1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +41,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/BaseCharacterController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/BaseCharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0467f5c0e4634b2cacc5f718cb71f056e0948/6b/24639a3b/LinkedList`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/47/c7269f16/LinkedList`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Core/CwColorCounterText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/UI/GameProgressBar.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/CW/PaintIn3D/Extras/Shaders/Solid.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -91,15 +107,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="47216">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="47216" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -121,13 +135,16 @@
       <workItem from="1733642636523" duration="15306000" />
       <workItem from="1733667763809" duration="10220000" />
       <workItem from="1733766560519" duration="229000" />
-      <workItem from="1733769967846" duration="2603000" />
+      <workItem from="1733769967846" duration="4201000" />
+      <workItem from="1734076655080" duration="11787000" />
+      <workItem from="1734424940789" duration="4847000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -141,19 +158,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpManager.cs</url>
-          <line>18</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpManager.cs" containingFunctionPresentation="Method 'GetPowerUpPrefab'">
-            <startOffsets>
-              <option value="525" />
-            </startOffsets>
-            <endOffsets>
-              <option value="628" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
           <line>170</line>
@@ -205,6 +209,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/CwColorCounterText.cs</url>
+          <line>92</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\CwColorCounterText.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="2485" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2559" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/UI/GameProgressBar.cs</url>
+          <line>105</line>
+          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\UI\GameProgressBar.cs" containingFunctionPresentation="Method 'UpdateFillAmount'">
+            <startOffsets>
+              <option value="4003" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4099" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

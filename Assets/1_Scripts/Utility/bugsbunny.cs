@@ -10,15 +10,6 @@ namespace RedGaint
 
     public static class BugsBunny
     {
-        public enum LogLevel
-        {
-            FullLog,      // Log everything
-            PartialLog,   // Log warnings and errors only
-            ErrorOnly     // Log errors only
-        }
-
-        public static LogLevel CurrentLogLevel = LogLevel.FullLog;
-
         public static void Log(
             string message,
             IBugsBunny context = null,
@@ -62,27 +53,27 @@ namespace RedGaint
             }
         }
 
-        public static void LogRed(string message, bool showLog = true, IBugsBunny context = null)
+        public static void LogRed(string message, IBugsBunny context)
         {
-            if (showLog && ShouldLog(context))
+            if ( ShouldLog(context))
                 LogWithColor(message, "red");
         }
 
-        public static void LogGreen(string message, bool showLog = true, IBugsBunny context = null)
+        public static void LogGreen(string message,IBugsBunny context = null)
         {
-            if (showLog && ShouldLog(context))
+            if ( ShouldLog(context))
                 LogWithColor(message, "green");
         }
 
-        public static void LogBlue(string message, bool showLog = true, IBugsBunny context = null)
+        public static void LogBlue(string message,  IBugsBunny context = null)
         {
-            if (showLog && ShouldLog(context))
+            if ( ShouldLog(context))
                 LogWithColor(message, "blue");
         }
 
-        public static void LogYellow(string message, bool showLog = true, IBugsBunny context = null)
+        public static void LogYellow(string message,  IBugsBunny context = null)
         {
-            if (showLog && ShouldLog(context))
+            if ( ShouldLog(context))
                 LogWithColor(message, "yellow");
         }
 
@@ -90,12 +81,20 @@ namespace RedGaint
         {
             UnityEngine.Debug.Log($"<color={color}> {message} </color>");
         }
-
+        // private static bool ShouldLog(IBugsBunny context)
+        // {
+        //     // Log only if the context is null or explicitly allows logging.
+        //     return context != null && context.LogThisClass;
+        // }
         private static bool ShouldLog(IBugsBunny context)
         {
-            return context == null || context.LogThisClass;
+            if (context == null)
+                return false;
+            else
+            {
+              return context.LogThisClass;
+            }
         }
-
         private static void DebugLog(string message, string callerName, string callerFilePath, int callerLineNumber)
         {
             UnityEngine.Debug.Log(FormatMessage(message, callerName, callerFilePath, callerLineNumber));

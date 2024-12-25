@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace RedGaint
 {
-    public class PowerUpGenerator : MonoBehaviour
+    public class PowerUpGenerator : MonoBehaviour,IBugsBunny
     {
+        public bool LogThisClass { get; } = false;
         public GlobalEnums.Mode spawnMode;
         public GlobalEnums.PowerUpType selectedPowerUpType;// = GlobalEnums.PowerUpType.None;
         [Space]
@@ -128,7 +129,7 @@ namespace RedGaint
                 // Validate the selectedPowerUpType before proceeding
                 if (!System.Enum.IsDefined(typeof(GlobalEnums.PowerUpType), selectedPowerUpType))
                 {
-                    BugsBunny.LogRed($"PowerUpGenerator: Invalid PowerUpType '{selectedPowerUpType}' selected. Please select a valid power-up type in SingleShot mode.");
+                    BugsBunny.LogRed($"PowerUpGenerator: Invalid PowerUpType '{selectedPowerUpType}' selected. Please select a valid power-up type in SingleShot mode.",this);
                     return;
                     // Exit the function to prevent further issues
                 }
@@ -305,5 +306,7 @@ namespace RedGaint
                 (availablePositions[i], availablePositions[randomIndex]) = (availablePositions[randomIndex], availablePositions[i]);
             }
         }
+
+        
     }//PowerUpGenerator
 }//RedGaint

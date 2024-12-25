@@ -19,7 +19,7 @@ public class GameLevelManager : MonoBehaviour {
 
     private void Start()
     {
-        LoadLevel("Level/Level1");
+        LoadLevel("Level/Level_1");
     }
 
     // Load a level by LevelID (prefab name)
@@ -37,20 +37,20 @@ public class GameLevelManager : MonoBehaviour {
 
         // Instantiate the level prefab under the levelLoader GameObject
         GameObject levelInstance = Instantiate(levelPrefab, transform);
-        Level levelComponent = levelInstance.GetComponent<Level>();
+        // Level levelComponent = levelInstance.GetComponent<Level>();
 
-        if (levelComponent == null) {
-            Debug.LogError($"Level prefab {levelId} does not contain a Level component.");
-            Destroy(levelInstance);
-            return;
-        }
+        // if (levelComponent == null) {
+        //     Debug.LogError($"Level prefab {levelId} does not contain a Level component.");
+        //     Destroy(levelInstance);
+        //     return;
+        // }
 
-        if (!levels.ContainsKey(levelComponent.LevelId)) {
-            levels[levelComponent.LevelId] = levelComponent;
-        }
-
-        currentLevel = levelComponent;
-        Debug.Log($"Loading Level {levelId}");
+        // if (!levels.ContainsKey(levelComponent.LevelId)) {
+        //     levels[levelComponent.LevelId] = levelComponent;
+        // }
+        //
+        // currentLevel = levelComponent;
+        // Debug.Log($"Loading Level {levelId}");
 
         // Initialize paintable objects in the level
         // currentLevel.InitializeLevelPaintables();
@@ -71,14 +71,14 @@ public class GameLevelManager : MonoBehaviour {
     }
 
     // Get the list of paintable objects in the current level
-    public List<GameObject> GetCurrentLevelPaintables() {
-        if (currentLevel == null) {
-            Debug.LogWarning("No level is currently loaded.");
-            return new List<GameObject>();
-        }
-
-        return currentLevel.GetPaintableObjects();
-    }
+    // public List<GameObject> GetCurrentLevelPaintables() {
+    //     if (currentLevel == null) {
+    //         Debug.LogWarning("No level is currently loaded.");
+    //         return new List<GameObject>();
+    //     }
+    //
+    //     return currentLevel.GetPaintableObjects();
+    // }
     // Get all RenderTextures from paintable objects in the current level
     // public List<RenderTexture> GetAllRenderTextures() {
     //     if (currentLevel == null) {

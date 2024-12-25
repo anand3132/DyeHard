@@ -6,8 +6,7 @@ namespace RedGaint
 
     public abstract class BaseCharacterController : MonoBehaviour,IBugsBunny
     {
-        public virtual bool LogThisClass { get; protected set; } = true;
-
+        public virtual bool LogThisClass { get; set; } = false; 
         protected GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
         public GlobalEnums.GameTeam CurrentTeam => currentTeam;
         protected GunHoister gunHoister;
@@ -22,11 +21,14 @@ namespace RedGaint
                 gun.SetGunColor(color);
             else
             {
-                BugsBunny.LogRed("Cant able to get the Gun to set color",LogThisClass);
+                BugsBunny.LogRed("Cant able to get the Gun to set color",this);
             }
         }
 
-        protected  virtual void Start() { }
+        protected virtual void Start()
+        {
+            BugsBunny.LogRed("--- BaseCharacterController ---",this);
+        }
 
 
         protected virtual void SetPlayerTeam(GlobalEnums.GameTeam team)
@@ -62,13 +64,13 @@ namespace RedGaint
             if (otherController.CurrentTeam != CurrentTeam)
             {
                 otherController.ReduceHealth(GlobalStaticVariables.HealthHitRation);
-                BugsBunny.LogRed("OnBulletHit: "+otherController.characternID,LogThisClass);
+                BugsBunny.LogRed("OnBulletHit: "+otherController.characternID,this);
             }
         }
 
         public  virtual bool KillTheActor()
         {
-            BugsBunny.LogRed("-------------------------KILL THE ACTOR--------------------------------",LogThisClass);
+            BugsBunny.LogRed("-------------------------KILL THE ACTOR--------------------------------",this);
             if (GetComponent<BotController>() != null)
             {
                 var _bot = GetComponent<BotController>();

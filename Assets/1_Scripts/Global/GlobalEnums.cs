@@ -119,7 +119,7 @@ namespace RedGaint
         {
             if (data == null)
             {
-                BugsBunny.LogRed("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.", showLog: true);
+              //  BugsBunny.LogRed("GlobalStaticVariables: ScriptableObject data is null. Please assign the GameDataScriptableObject.",);
                 return;
             }
 
@@ -128,7 +128,7 @@ namespace RedGaint
             BotMaxHealth = data.botMaxHealth;
             PlayerMaxHealth = data.playerMaxHealth;
 
-            BugsBunny.Log("GlobalStaticVariables: Data loaded successfully.");
+           // BugsBunny.Log("GlobalStaticVariables: Data loaded successfully.");
         }
     }
 

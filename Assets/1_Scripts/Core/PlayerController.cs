@@ -8,6 +8,8 @@ namespace RedGaint
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : BaseCharacterController
     {
+        public override bool LogThisClass { get; set; } = true; 
+
         [Header("Movement Settings")]
         public MovementInputSettings movementSettings;
         
@@ -109,12 +111,13 @@ namespace RedGaint
 #endregion
 //----------------------------------------------------------------------------------------------------------------------
         protected override void Start()
-        {
+        {            
+            BugsBunny.LogYellow("--- PlayerController ---",this);
             base.Start();
             InitialisePlayerController();
             cam = Camera.main;
             if (cam == null)
-                BugsBunny.LogYellow("No Main Camera found in the scene.");
+                BugsBunny.LogYellow("No Main Camera found in the scene.",this);
             SetPlayerTeam(GlobalEnums.GameTeam.TeamBlue);
             spawnEffect.SetActive(true);
         }

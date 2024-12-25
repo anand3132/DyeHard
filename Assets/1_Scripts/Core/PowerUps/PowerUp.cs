@@ -5,8 +5,10 @@ using System.Collections.Generic;
 
 namespace RedGaint
 {
-    public class PowerUp : MonoBehaviour
+    public class PowerUp : MonoBehaviour,IBugsBunny
     {
+        public bool LogThisClass { get; } = false;
+
         public event Action<int> OnPowerUpConsumed;
         // public PowerUpBase[] availablePowerUps;
 
@@ -31,7 +33,7 @@ namespace RedGaint
             startPosition = transform.position;
             SetPowerUpType(_powerUpType);
             isActive = true;
-            BugsBunny.Log("PowerUp Initialized");
+            BugsBunny.Log("PowerUp Initialized",this);
         }
 
         private void SetPowerUpType(GlobalEnums.PowerUpType powerUpType1)

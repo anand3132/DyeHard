@@ -8,7 +8,7 @@ namespace RedGaint
 {
     public class BotController : BaseCharacterController
     {
-        public override bool LogThisClass { get; set; } = false; 
+        public override bool LogThisClass { get; set; } = true; 
 
  #region MemberVariables
  
@@ -83,7 +83,6 @@ namespace RedGaint
         protected override void Start()
         {
             base.Start();
-            BugsBunny.LogYellow("--- BotController ---",this);
         }
 
         private void InitializeAnimationSettings(BotSettings settings)
@@ -103,22 +102,22 @@ namespace RedGaint
                 if(spawnEffect)
                     spawnEffect.SetActive(false);
             
-            if (botSettings == null)
-            {
-                BugsBunny.LogError("Please set bot settings",this);
-                return null; 
-            }
+                if (botSettings == null)
+                {
+                    BugsBunny.LogError("Please set bot settings",this);
+                    return null; 
+                }
 
-            characternID = botID;
-            gunHoister = GetComponentInChildren<GunHoister>();
-            botPatrollingPath = patrollingPath;
-            // Initialize bot settings
-            InitialiseBotSettings(botSettings, patrollingPath[0]);
+                characternID = botID;
+                gunHoister = GetComponentInChildren<GunHoister>();
+                botPatrollingPath = patrollingPath;
+                // Initialize bot settings
+                InitialiseBotSettings(botSettings, patrollingPath[0]);
             
-            // Initialize animation settings
-            InitializeAnimationSettings(botSettings);
-            isInitialized = true;
-            return this;
+                // Initialize animation settings
+                InitializeAnimationSettings(botSettings);
+                isInitialized = true;
+                return this;
         }
 
         
@@ -155,51 +154,117 @@ namespace RedGaint
             SetPlayerTeam(team);
             if (!pauseMovement)
             {
-                StartCoroutine(WanderCoroutine());
+                SwitchState(BotCharacterState.Patrolling);
                 isBotActive = true;
             }
             else
             {
                 BugsBunny.LogYellow("Bot is on pause.",this);
             }
-            BugsBunny.Log("Bot activated successfully.",this);
                 
             return this;
         }
-        void Update()
+
+        private Transform detectedPlayer = null;
+        private float followOnTimer = 0f;
+        private void FixedUpdate()
         {
             if (isBotActive)
             {
-                Transform detectedPlayer = DetectPlayer(sightRange, fovAngle);
                 if (detectedPlayer != null)
                 {
-                    BugsBunny.LogRed("------Played detected : -------------",this);
-                    if (!isFollowingPlayer)
-                    {
-                        StopCoroutine(WanderCoroutine());
-                        isFollowingPlayer = true;
-                        currentPlayerTransform = detectedPlayer;
-                        StartCoroutine(FollowPlayerCoroutine());
-                    }
+                    // BugsBunny.LogRed("------Played detected : -------------", this);
+                    
+                   //  if (!isFollowingPlayer)
+                   //  {
+                   // //     StopCoroutine(WanderCoroutine());
+                   //      isFollowingPlayer = true;
+                   //      currentPlayerTransform = detectedPlayer;
+                   //      StartCoroutine(FollowPlayerCoroutine());
+                   //  }
+                   followOnTimer += Time.fixedDeltaTime;
+                   // Debug.Log("FollowTimer: "+followOnTimer);
+                   if (followOnTimer >= GlobalStaticVariables.BotFollowTimer)
+                   {
+                       SwitchState(BotCharacterState.Idle);
+                       detectedPlayer.GetComponent<BaseCharacterController>().ReleaseLocked(this);
+                       detectedPlayer = null;
+                       followOnTimer = 0;
+                       BugsBunny.LogRed("Ending ...................",this);
+                   }
                 }
                 else
                 {
-                    if (isFollowingPlayer)
+                     detectedPlayer= DetectPlayer(sightRange, fovAngle);
+                    if (detectedPlayer)
                     {
-                        isFollowingPlayer = false;
-                        currentPlayerTransform = null;
-                        StartCoroutine(WanderCoroutine());
-                        BugsBunny.LogGreen("------returning patrol : -------------",this);
+                        if (detectedPlayer.GetComponent<BaseCharacterController>().TryTargetLock(this))
+                            SwitchState(BotCharacterState.Following);
+                        else
+                            SwitchState(BotCharacterState.RunAway);
                     }
                 }
+
                 // Check for bot's speed and update animation parameters
                 float speed = currentBotAgent.velocity.magnitude;
                 UpdateAnimationParameters(speed);
-                // Check if the bot is stuck (via the failsafe)
-                CheckIfBotIsStuck(speed);
+                //         // Check if the bot is stuck (via the failsafe)
+                //         CheckIfBotIsStuck(speed);
+                }
             }
+
+        private enum BotCharacterState
+        {
+            None,
+            Idle,
+            Patrolling,
+            Dead,
+            Following,
+            Attacking,
+            RunAway
         }
 
+        private void SwitchState(BotCharacterState newState)
+        {
+            currentState = newState;
+            StateLogic();
+        }
+        
+        private BotCharacterState currentState = BotCharacterState.None;
+        private void StateLogic()
+        {
+            switch (currentState)
+            {
+                case BotCharacterState.RunAway:
+                    isFollowingPlayer = false;
+                    StopCoroutine(FollowPlayerCoroutine());
+                    StopCoroutine(WanderCoroutine());
+                    StartCoroutine(IdleCoroutine(2f, BotCharacterState.Patrolling));
+                    break;
+                case BotCharacterState.Idle:
+                    isFollowingPlayer = false;
+                    StopCoroutine(FollowPlayerCoroutine());
+                    StopCoroutine(WanderCoroutine());
+                    StartCoroutine(IdleCoroutine(2f, BotCharacterState.Patrolling));
+                    break;
+                case BotCharacterState.Patrolling:
+                    detectedPlayer = null;
+                    isFollowingPlayer = false;
+                    StartCoroutine(WanderCoroutine());
+                    break;
+                case BotCharacterState.Dead:
+                    break;
+                case BotCharacterState.Following:
+                    isFollowingPlayer = true;
+                    currentPlayerTransform = detectedPlayer;
+                    StartCoroutine(FollowPlayerCoroutine());
+                    break;
+                case BotCharacterState.Attacking:
+                    break;
+                case BotCharacterState.None:
+                    break;
+            }
+        }
         private float botHealth = 10f;
 
         // How long to wait before considering the bot stuck
@@ -222,7 +287,16 @@ namespace RedGaint
                 timeStuck = 0f;
             }
         }
-        
+
+        public override bool KillTheActor()
+        {
+            BotGenerator.Instance.AddToReSpawnList(this);
+            if (deadthEffect != null)
+                deadthEffect.SetActive(true);
+            StartCoroutine(WaitForDeadthEffect(.1f));
+            return true;
+        }
+
         private void HandleBotStuck()
         {
             // If the bot is stuck, stop the animation and reset the path
@@ -235,7 +309,14 @@ namespace RedGaint
             // Optionally, attempt to replan the path or take other actions
             // currentBotAgent.SetDestination(newDestination); // Recalculate path
         }
-        
+
+        private IEnumerator IdleCoroutine(float time,BotCharacterState switchTo )
+        {
+            currentAnimtor.SetFloat("Blend", 0f);
+            currentBotAgent.ResetPath();
+            yield return new WaitForSeconds(time);
+            SwitchState(switchTo);
+        }
         private IEnumerator WanderCoroutine()
         {
             while (!isFollowingPlayer)
@@ -247,10 +328,15 @@ namespace RedGaint
                 // }
                 Vector3 targetPosition = GetNextPatrolPoint();
                 currentBotAgent.SetDestination(targetPosition);
-                BugsBunny.Log("Bot reached destination : "+currentDestinationIndex,this);
-                BugsBunny.Log("-------------------------------------------------",this);
-
-               yield return new WaitUntil(() => !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
+                // Transform detectedPlayer = DetectPlayer(sightRange, fovAngle);
+                // if (detectedPlayer != null)
+                // { 
+                //     currentPlayerTransform = detectedPlayer;
+                //     StopCoroutine(WanderCoroutine());
+                //     SwitchState(BotCharacterState.Following); 
+                // }
+                //
+                yield return new WaitUntil(() => !currentBotAgent.pathPending && currentBotAgent.remainingDistance <= currentBotAgent.stoppingDistance);
 
                 // Look for player after reaching each way point
                 // :delay to simulate "looking around"
@@ -272,7 +358,6 @@ namespace RedGaint
 
             // Update the index for the next pathnode point (loop back to 0 when we reach the end)
             currentDestinationIndex = (currentDestinationIndex + 1) % botPatrollingPath.Count;
-            BugsBunny.Log("given position : " + nextPathNodePoint,this);
             return nextPathNodePoint;
         }
 
@@ -283,7 +368,6 @@ namespace RedGaint
                 if (currentPlayerTransform != null)
                 {
                     currentBotAgent.SetDestination(currentPlayerTransform.position);
-                    BugsBunny.Log("started Following ...",this);
                     // Attack if within attack range
                     if (Vector3.Distance(transform.position, currentPlayerTransform.position) <= attackRange)
                     {
@@ -345,7 +429,7 @@ namespace RedGaint
         }
         private void AttackPlayer()
         {
-            BugsBunny.Log("Bot is attacking the player!",this);
+            // BugsBunny.Log("Bot is attacking the player!",this);
             // BotAttack();
         }
         private void UpdateAnimationParameters(float speed)

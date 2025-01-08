@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 namespace RedGaint {
     public class BotGenerator : Singleton<BotGenerator>, IBugsBunny
     {
-        public bool LogThisClass { get; } = false;
+        public bool LogThisClass { get; } = true;
         private CheckPointHandler checkpointHandler;
         private List<Vector3> allSpawnPositions = new List<Vector3>();
         private bool IsGeneratorActive = false;
@@ -71,6 +71,8 @@ namespace RedGaint {
 
         public void ResetGenerator()
         {
+            BugsBunny.Log("ResetGenerator: ResetGenerator...");
+
             foreach (var item in BotList)
             {
                 if (item != null && item.GetComponent<BotController>().KillTheActor())

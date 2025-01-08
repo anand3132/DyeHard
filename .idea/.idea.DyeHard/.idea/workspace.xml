@@ -8,20 +8,34 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameLevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameLevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Level.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Gun.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpBasket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/HealthHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/HealthHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Global/GlobalEnums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level1 _updated.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level1 _updated.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level_2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level_2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Settings/GameDataScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Settings/GameDataScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/InkGun/Bubble 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Art/3_PowerUps/InkGun/Bubble 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3_Meterials/ColorBox/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3_Meterials/ColorBox/Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/AmericanFootballer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/AmericanFootballer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/BusinessGuy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/BusinessGuy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/DiscoGuy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/DiscoGuy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/FX.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/FX.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Farmer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Farmer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Guy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Guy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Police.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Police.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/SoccerGuy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/SoccerGuy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Theaf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Bots/Theaf.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/Gun1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/Gun1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/Gun2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/Gun2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/PowerUps/Bomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/PowerUps/Bomb.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Level/Level_1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,9 +53,16 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0467f5c0e4634b2cacc5f718cb71f056e0948/6b/24639a3b/LinkedList`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/47/c7269f16/LinkedList`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1_Scripts/Core/CwColorCounterText.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/UI/GameProgressBar.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/1_Live/2_Glanza/DyeHard/Assets/1_Scripts/Core/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/CW/PaintIn3D/Extras/Shaders/Solid.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@3.0.1/Runtime/Behaviours/CinemachineCamera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@3.0.1/Runtime/Components/CinemachineFollow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@3.0.1/Runtime/Components/CinemachineOrbitalFollow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@3.0.1/Runtime/Core/CameraTarget.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@3.0.1/Runtime/Core/CinemachineVirtualCameraBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@2.0.0/Runtime/UGUI/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -69,6 +90,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -102,15 +124,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20384">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20384" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -135,7 +155,13 @@
       <workItem from="1733769967846" duration="4201000" />
       <workItem from="1734076655080" duration="11787000" />
       <workItem from="1734424940789" duration="4847000" />
-      <workItem from="1735138915598" duration="13099000" />
+      <workItem from="1735138915598" duration="13401000" />
+      <workItem from="1735986654311" duration="13588000" />
+      <workItem from="1736145451146" duration="4826000" />
+      <workItem from="1736234126614" duration="22685000" />
+      <workItem from="1736283219081" duration="1656000" />
+      <workItem from="1736330100714" duration="18000" />
+      <workItem from="1736330137616" duration="2858000" />
     </task>
     <servers />
   </component>
@@ -156,19 +182,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
-          <line>171</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Core\PowerUps\PowerUpGenerator.cs" containingFunctionPresentation="Method 'SpawnNextPowerUp'">
-            <startOffsets>
-              <option value="5642" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5709" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/1_Scripts/Core/PowerUps/PowerUpGenerator.cs</url>
           <line>191</line>
@@ -234,46 +247,11 @@
           </properties>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs</url>
-          <line>94</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\bugsbunny.cs" containingFunctionPresentation="Method 'ShouldLog'">
-            <startOffsets>
-              <option value="3239" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3267" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs</url>
-          <line>90</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\bugsbunny.cs" containingFunctionPresentation="Method 'ShouldLog'">
-            <startOffsets>
-              <option value="3143" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3163" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/1_Scripts/Utility/bugsbunny.cs</url>
-          <line>57</line>
-          <properties documentPath="E:\1_Live\2_Glanza\DyeHard\Assets\1_Scripts\Utility\bugsbunny.cs" containingFunctionPresentation="Method 'LogRed'">
-            <startOffsets>
-              <option value="2030" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2054" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

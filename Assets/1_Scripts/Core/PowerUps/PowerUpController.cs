@@ -23,6 +23,10 @@ namespace RedGaint
          StartCoroutine(OnPowerUp(10f));
       }
 
+      public void ResetPowerUpController()
+      {
+         
+      }
       private IEnumerator OnPowerUp(float delay)
       {
          powerUpTriggerEvents?.Invoke();

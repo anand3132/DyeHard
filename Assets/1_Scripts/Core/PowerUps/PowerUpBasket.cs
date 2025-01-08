@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 namespace RedGaint
@@ -50,6 +51,16 @@ namespace RedGaint
             return false;
         }
 
+        public void ResetPowerUp()
+        {
+            // if (isPowerUpAvilable)
+            // {
+                powerUpObjectPrefab = null;
+                if(currentPowerUp)
+                    Destroy(currentPowerUp);
+                isPowerUpAvilable = false;
+            // }
+        }
         public bool IsPowerUpAvilable()=>isPowerUpAvilable;
         public bool TriggerPowerUp()
         {
@@ -67,5 +78,9 @@ namespace RedGaint
             return false;
         }
 
+        private void OnDisable()
+        {
+            ResetPowerUp();
+        }
     }
 }

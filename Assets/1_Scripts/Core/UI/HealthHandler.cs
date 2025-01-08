@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Cinemachine;
@@ -20,14 +21,16 @@ namespace RedGaint
         public Transform healthBar;
         private bool isBlinking = false;
         private const string HEALTHBAR = "RF_HealthBar";
+        private const string HEALTHTRIGGER = "RF_HealthTrigger";
 
-        void Start()
+        public Transform healthTrigger;
+        public  void InitializeHealthSystem()
         {
             // Initialize health
             currentHealth = maxHealth;
             
             healthBar=Helper.FindDeepChild(transform, HEALTHBAR);
-                      
+            healthTrigger=Helper.FindDeepChild(transform, HEALTHTRIGGER);
             // Find the slider and fill image components
             healthBarSlider = GetComponentInChildren<Slider>();
             if (healthBarSlider == null)
@@ -56,6 +59,12 @@ namespace RedGaint
             {
                 BugsBunny.LogYellow("No CinemachineBrain found on the main camera.");
             }
+        }
+
+        public void ResetHealth()
+        {
+            currentHealth=maxHealth;
+            Debug.Log("CurrentHealth= "+currentHealth);
         }
 
         void Update()

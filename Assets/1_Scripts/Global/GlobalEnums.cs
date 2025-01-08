@@ -112,6 +112,8 @@ namespace RedGaint
         public static Color TeamRedColor { get; private set; }
         public static float GameSectionTime { get; private set; }
         public static float BotMaxHealth { get; private set; }
+        public static float BotFollowTimer { get; private set; }
+
         public static float PlayerMaxHealth { get; private set; }
         public static readonly float HealthHitRation = 20f;
 
@@ -127,8 +129,8 @@ namespace RedGaint
             GameSectionTime = data.gameSectionTime;
             BotMaxHealth = data.botMaxHealth;
             PlayerMaxHealth = data.playerMaxHealth;
-
-           // BugsBunny.Log("GlobalStaticVariables: Data loaded successfully.");
+            BotFollowTimer = data.botMaxFollowTime;
+            // BugsBunny.Log("GlobalStaticVariables: Data loaded successfully.");
         }
     }
 

@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+
 namespace RedGaint
 {
 
     public abstract class BaseCharacterController : MonoBehaviour,IBugsBunny
     {
+        private BaseCharacterController targetLockBy = null;
         public virtual bool LogThisClass { get; set; } = false; 
         protected GlobalEnums.GameTeam currentTeam=GlobalEnums.GameTeam.None;
         public GlobalEnums.GameTeam CurrentTeam => currentTeam;
@@ -25,9 +28,38 @@ namespace RedGaint
             }
         }
 
+        public void ResetAll()
+        {
+            gameObject.GetComponent<PowerUpController>().ResetPowerUpController();
+            gameObject.GetComponent<PowerUpBasket>().ResetPowerUp();
+            gameObject.GetComponent<HealthHandler>().ResetHealth();
+            BugsBunny.LogRed("Resetting the player.......",this);
+        }
+
+        public bool TryTargetLock(BaseCharacterController lockTarget)
+        {
+            if(targetLockBy==null)
+                targetLockBy = lockTarget;
+            return targetLockBy != null;
+        }
+
+        public bool IsTargetLocked()
+        {
+            return targetLockBy != null;
+        }
+        public bool ReleaseLocked(BaseCharacterController lockTarget)
+        {
+            if (targetLockBy == lockTarget)
+            {
+                targetLockBy = null;
+                return true;
+            }
+            return false;
+        }
+
         protected virtual void Start()
         {
-            BugsBunny.LogRed("--- BaseCharacterController ---",this);
+            GetComponent<HealthHandler>().InitializeHealthSystem();
         }
 
 
@@ -68,24 +100,9 @@ namespace RedGaint
             }
         }
 
-        public  virtual bool KillTheActor()
-        {
-            BugsBunny.LogRed("-------------------------KILL THE ACTOR--------------------------------",this);
-            if (GetComponent<BotController>() != null)
-            {
-                var _bot = GetComponent<BotController>();
-                BotGenerator.Instance.AddToReSpawnList(_bot);
-                if(deadthEffect!=null)
-                    deadthEffect.SetActive(true);
-                StartCoroutine(WaitForDeadthEffect(.1f));
-            }
+        public abstract  bool KillTheActor();
 
-            // if(GetComponent<PlayerController>() !=null)
-
-            return true;
-        }
-
-        private IEnumerator WaitForDeadthEffect(float seconds)
+        protected IEnumerator WaitForDeadthEffect(float seconds)
         {
             yield return new WaitForSeconds(seconds);
             gameObject.SetActive(false);

@@ -147,7 +147,15 @@ namespace RedGaint
         {
             return false;
         }
-        
+
+        public override bool KillTheActor()
+        {
+            if (deadthEffect != null)
+                deadthEffect.SetActive(true);
+            StartCoroutine(WaitForDeadthEffect(.1f));
+            return true;
+        }
+
         void PlayerMoveAndRotation()
         {
             var forward = cam.transform.forward;

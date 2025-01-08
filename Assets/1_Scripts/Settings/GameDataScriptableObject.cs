@@ -9,5 +9,7 @@ namespace RedGaint
         public float gameSectionTime = 300f;
         public float botMaxHealth = 100f;
         public float playerMaxHealth = 100f;
+        public float botMaxFollowTime = 1f;
+
     }
 }

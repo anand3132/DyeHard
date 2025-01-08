@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characternID: Not Assigned
-  destroyEffect: {fileID: 0}
+  deadthEffect: {fileID: 0}
   spawnEffect: {fileID: 0}
   botSettings: {fileID: 11400000, guid: 241e6568bfcf05c43b2977dab76b0cf0, type: 2}
   animationspeedOffset: 0
@@ -666,6 +666,7 @@ MonoBehaviour:
   sightRange: 20
   fovAngle: 45
   attackRange: 3
+  pauseMovement: 0
   stuckThreshold: 0.1
   stuckTimeLimit: 2
   startBotSurvilanceAfter: 1
@@ -754,6 +755,7 @@ MonoBehaviour:
   lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
   blinkSpeed: 2
   healthBar: {fileID: 0}
+  healthTrigger: {fileID: 0}
 --- !u!1 &4876145053714634553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1337,54 @@ PrefabInstance:
     - target: {fileID: 5042859574878963199, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592655362433906688, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.028891746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592655362433906688, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0058847875
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592655362433906688, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.97945434
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592655362433906688, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.1994992
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859175602013140867, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.028891746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859175602013140867, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0058847875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859175602013140867, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.97945434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859175602013140867, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.1994992
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967601457279510782, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.028891746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967601457279510782, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0058847875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967601457279510782, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.97945434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967601457279510782, guid: b6ba3604f8006184ea3a7ddc8c544568, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.1994992
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

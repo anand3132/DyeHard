@@ -146,7 +146,7 @@ namespace RedGaint {
         public static GlobalEnums.GameTeam GetRandomTeam()
         {
             Array teams = Enum.GetValues(typeof(GlobalEnums.GameTeam));
-            return (GlobalEnums.GameTeam)teams.GetValue(UnityEngine.Random.Range(0, teams.Length));
+            return (GlobalEnums.GameTeam)teams.GetValue(UnityEngine.Random.Range(1, teams.Length));
         }
 
         //has to replace later just a place holder

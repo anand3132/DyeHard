@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace RedGaint
 {
-    public class GameCoreElements : Singleton<GameCoreElements>,IBugsBunny
+    public class GamePlayManager : Singleton<GamePlayManager>,IBugsBunny
     {
         public bool LogThisClass { get; } = false;
 
@@ -69,7 +69,6 @@ namespace RedGaint
                 currentPlayer.GetComponent<BaseCharacterController>().ResetAll();
             }
             StartCoroutine(RespwanMainPlayerCoroutine(1f));
-
         }
 
         private IEnumerator RespwanMainPlayerCoroutine(float seconds = 1f)

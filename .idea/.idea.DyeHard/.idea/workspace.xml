@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4ca1fcfb-c0fc-4f2a-a50a-7e1c251690c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/BaseCharacterController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GamePlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/GameCoreElements.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/GamePlayManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/GameCoreComponents.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/GameCoreComponents.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/TeamManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/TeamManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/4_SOFiles/PlayerInputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/8_Utility/Joystick Pack/Examples/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/8_Utility/Joystick Pack/Examples/Ground.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,15 +99,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="26996">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="26996" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -139,7 +136,12 @@
       <workItem from="1736234126614" duration="22685000" />
       <workItem from="1736283219081" duration="1656000" />
       <workItem from="1736330100714" duration="18000" />
-      <workItem from="1736330137616" duration="9919000" />
+      <workItem from="1736330137616" duration="17224000" />
+      <workItem from="1736410838382" duration="1194000" />
+      <workItem from="1736430531757" duration="3000" />
+      <workItem from="1736430542190" duration="44000" />
+      <workItem from="1736432573912" duration="4729000" />
+      <workItem from="1736582025576" duration="2867000" />
     </task>
     <servers />
   </component>

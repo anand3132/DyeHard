@@ -158,15 +158,13 @@ namespace RedGaint {
         private bool GenerateNewBot(Vector3 position,GlobalEnums.GameTeam team, out GameObject bot)
         {
             bot = GameObject.Instantiate(BotPrefab[Random.Range(0,BotPrefab.Count)], transform);
-            
-            bot.SetActive(true);
             if (bot == null)
                 return false;
+            
+            bot.SetActive(true);
             var currentBotcontroller = bot.GetComponent<BotController>();
             // Rigidbody rb = bot.GetComponent<Rigidbody>();
-            
             List<Vector3> patrollingPath = new List<Vector3> { position };
-            
             List<Vector3> tmpPath= GetModifiedPath(GlobalEnums.Mode.Random,checkpointHandler.GetWayPointPositions());
             
             patrollingPath.AddRange(tmpPath);

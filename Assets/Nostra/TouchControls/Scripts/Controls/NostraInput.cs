@@ -532,7 +532,7 @@ namespace nostra.input
                 }
             }
 
-         //   Debug.LogError ( "Button: " + buttonName + " not found!" );
+            Debug.LogError ( "Button: " + buttonName + " not found!" );
             return false;
         }
 

@@ -6,15 +6,6 @@
             "id": "5e489e95-4335-428d-b49f-7056a1158b57",
             "actions": [
                 {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "6fa8556b-ccdf-47a1-ac91-2c9bcee70790",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Move",
                     "type": "Value",
                     "id": "59fc016f-34f0-4282-951a-0c25efe3f490",
@@ -33,27 +24,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Look",
-                    "type": "PassThrough",
-                    "id": "050e6b7a-efe2-4df9-8314-14a652ff619f",
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "d9a57ef0-7d00-469d-b739-ed58daf7596c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "9df7c632-130e-482a-b90c-8e8ac1eaf476",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "b7e473bb-578a-498b-8f66-60fb2f4779d3",
@@ -188,12 +168,12 @@
                 },
                 {
                     "name": "",
-                    "id": "f78e9fc6-7e54-4185-af6f-e284be617965",
+                    "id": "c20cb781-0603-4aef-b305-dbd831c89f3f",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

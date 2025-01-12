@@ -197,6 +197,7 @@ namespace RedGaint
             if (deadthEffect != null)
                 deadthEffect.SetActive(true);
             StartCoroutine(WaitForDeadthEffect(.1f));
+            GamePlayManager.Instance.OnPlayerDeadth();
             return true;
         }
 

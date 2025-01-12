@@ -10,6 +10,8 @@ namespace RedGaint
         [SerializeField] private GameObject  powerUpObjectPrefab;
         [SerializeField] private GameObject currentPowerUp;
         [SerializeField] private bool isPowerUpAvilable = false;
+        [SerializeField] private GlobalEnums.PowerUpType currentpowerType;
+        public GlobalEnums.PowerUpType CurrentPowerUpType=>currentpowerType;
         public bool ActivateCurrentPowerUp(GlobalEnums.PowerUpType powerUpType)
         {
             if (isPowerUpAvilable)
@@ -21,7 +23,7 @@ namespace RedGaint
                 // Instantiate the power-up
                 currentPowerUp = Instantiate(powerUpObjectPrefab, transform.position, Quaternion.identity);
                 currentPowerUp.transform.parent = transform;
-
+                currentpowerType = powerUpType;
                 // Rotate the power-up towards the player's forward direction
                 var playerController = GetComponent<PlayerController>();
                 if (playerController != null)
@@ -34,6 +36,11 @@ namespace RedGaint
                     currentPowerUp.transform.rotation = Quaternion.identity; // Default rotation
                 }
 
+                if (powerUpType == GlobalEnums.PowerUpType.Bomb)
+                {
+                    currentPowerUp.GetComponent<BombTrigger>()
+                        .SetBombFor(GetComponent<BaseCharacterController>().CurrentTeam);
+                }
                 currentPowerUp.GetComponent<PowerUpController>().powerUpHolder = gameObject;
 
                 // Update UI if the player holds this power-up

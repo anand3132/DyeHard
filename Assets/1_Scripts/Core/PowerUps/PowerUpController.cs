@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace RedGaint
 {
-   //This class which deliver the power to the one who hold it ..!!
+   //This class which deliver the power to the one who hold it ..!!both powerups and players hold this class 
    public class PowerUpController : MonoBehaviour,IBugsBunny
    {
       public virtual bool LogThisClass { get; } = false;
@@ -34,11 +34,11 @@ namespace RedGaint
          // {
          //    
          // }
-         currentSettings = powerUpHolder.GetComponent<PlayerController>().movementSettings;
-         if (currentSettings!=null)
-         {
-            powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
-         }
+         // currentSettings = powerUpHolder.GetComponent<PlayerController>().movementSettings;
+         // if (currentSettings!=null)
+         // {
+         //    powerUpHolder.GetComponent<PlayerController>().movementSettings = powerUpSettings;
+         // }
          BugsBunny.Log($"PowerUp {powerUpType} activated. Destroying in 5 seconds...",this);
          yield return new WaitForSeconds(delay);
          // if (currentSettings != null)
@@ -48,7 +48,7 @@ namespace RedGaint
 
          powerUpHolder = null;
          // Destroy this GameObject after the delay
-         Destroy(gameObject);
+        Destroy(gameObject);
       }
 
    }

@@ -17,7 +17,16 @@ namespace RedGaint
         {
             return currentPlayer;
         }
+        public void OnPlayerDeadth()
+        {
+            StartCoroutine(WaitforRespawn(1f));
+        }
 
+        IEnumerator WaitforRespawn(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            RespwanMainPlayer();
+        }
         public void ChangeCameraTarget(Transform followTarget) 
         {
             if (cinemachineCamera != null)
@@ -56,7 +65,7 @@ namespace RedGaint
         public Transform playerRespwanPosition;
         public GameObject mainPlayerPrefab;
         private GameObject currentPlayer;
-        public void RespwanMainPlayer()
+        private void RespwanMainPlayer()
         {
             if (currentPlayer == null)
             {

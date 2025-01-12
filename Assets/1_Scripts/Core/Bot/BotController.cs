@@ -231,12 +231,25 @@ namespace RedGaint
         }
         
         private BotCharacterState currentState = BotCharacterState.None;
+
+        private void DropBomb()
+        {
+            PowerUpBasket pBasket = gameObject.GetComponent<PowerUpBasket>();
+            if (pBasket.IsPowerUpAvilable())
+            {
+                if (pBasket.CurrentPowerUpType == GlobalEnums.PowerUpType.Bomb)
+                {
+                    gameObject.GetComponent<PowerUpBasket>().TriggerPowerUp();
+                }
+            }
+        }
         private void StateLogic()
         {
             switch (currentState)
             {
                 case BotCharacterState.RunAway:
                     isFollowingPlayer = false;
+                    DropBomb();
                     StopCoroutine(FollowPlayerCoroutine());
                     StopCoroutine(WanderCoroutine());
                     StartCoroutine(IdleCoroutine(2f, BotCharacterState.Patrolling));
@@ -429,6 +442,7 @@ namespace RedGaint
         }
         private void AttackPlayer()
         {
+            DropBomb();
             // BugsBunny.Log("Bot is attacking the player!",this);
             // BotAttack();
         }

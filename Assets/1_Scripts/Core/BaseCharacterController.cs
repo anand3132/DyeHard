@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 
 namespace RedGaint
 {
-
     public abstract class BaseCharacterController : MonoBehaviour,IBugsBunny
     {
         private BaseCharacterController targetLockBy = null;

@@ -9,6 +9,10 @@ namespace RedGaint
         {
             DebugMenu.Instance.AddButton("Spectate", SpectateNextTarget);
             DebugMenu.Instance.AddButton("Toggle Invincibility", ToggleInvincibility);
+            DebugMenu.Instance.AddButton("AddPowerUp", AddPowerUp);
+            DebugMenu.Instance.AddButton("SpawnBot", SpawnEnemy);
+
+
             // DebugMenu.instance.AddButton("Spawn Enemy", SpawnEnemy);
         }
         
@@ -75,5 +79,10 @@ namespace RedGaint
             BugsBunny.Log("Spawning an enemy...");
             // Add your enemy spawn logic here
         }
-    }
-}
+        private void AddPowerUp()
+        {
+            var powerUpBasket = GamePlayManager.Instance.GetPlayer().GetComponent<PowerUpBasket>();
+            powerUpBasket.ActivateCurrentPowerUp(GlobalEnums.PowerUpType.Bomb);
+        }//AddPowerUp
+    }//DyeHardDebugWindow
+}//RedGaint

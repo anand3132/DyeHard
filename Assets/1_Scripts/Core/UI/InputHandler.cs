@@ -9,6 +9,7 @@ namespace RedGaint
         public Sprite defaultSprite;
         public Color  powerUpBtnDefaultColor;
         public GameObject powerUpButtonObject;
-        public Slider GameProgressBar;
+        public GameObject GameProgressBar;
+        
     }
 }//RedGaint

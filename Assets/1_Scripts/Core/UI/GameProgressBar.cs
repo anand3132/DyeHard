@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using CW.Common;
 using PaintCore;
@@ -9,11 +11,12 @@ namespace RedGaint
 {
     public class GameProgressBar : MonoBehaviour
     {
-        public GameObject FillArea;
-        public GameObject Fill;
-        public int FillAmount;
+        public GameObject fillArea;
+        public GameObject fill;
+        // public int FillAmount;
 
-        public GameObject colorParent;
+        public GameObject spacer;
+        // public GameObject colorParent;
 
         // [SerializeField] private List<Color> playerColors; // List of player colors to track
         private CwColorCounter cwColorCounter;
@@ -23,10 +26,16 @@ namespace RedGaint
         private LinkedList<ColorObject> trackingColorLists = new LinkedList<ColorObject>();
         [SerializeField] private List<CwColorCounter> counters;
 
-        void Start()
+        private IEnumerator InitializeGameProgressBar()
         {
-            InitialiseGameBar();
+            yield return new WaitForSeconds(1f); 
+            OnGameBarInit();
             InvokeRepeating(nameof(UpdateFillAmount), 0f, 0.5f);
+        }
+
+        private void Start()
+        {
+            StartCoroutine(InitializeGameProgressBar());
         }
 
         private void OnDestroy()
@@ -34,28 +43,48 @@ namespace RedGaint
             // Stop the repeating invocation when the object is destroyed
             CancelInvoke(nameof(UpdateFillAmount));
         }
-
-        private void InitialiseGameBar()
+        public  void ClearGameProgressBar()
         {
-            foreach (CwColor colorcomponent in colorParent.GetComponentsInChildren<CwColor>())
+            if (fillArea != null)
             {
-                trackingColorLists.AddLast(new ColorObject(colorcomponent));
-            }
+                // Iterate through all children of FillArea
+                for (int i = fillArea.transform.childCount - 1; i >= 0; i--)
+                {
+                    // Get the child object
+                    Transform child = fillArea.transform.GetChild(i);
 
+                    // Destroy the child GameObject
+                    Destroy(child.gameObject);
+                }
+
+                Debug.Log("All children under FillArea have been removed.");
+            }
+            else
+            {
+                Debug.LogWarning("FillArea reference is not assigned.");
+            }
+        }
+        private void OnGameBarInit()
+        {
+            Dictionary<GlobalEnums.GameTeam,TeamData> currentTeamData = TeamManager.Instance.GetAllTeamData();
+            foreach (KeyValuePair<GlobalEnums.GameTeam, TeamData> teamData in currentTeamData)
+            {
+                CwColor item = teamData.Value.TeamColorComponent;
+                trackingColorLists.AddLast(new ColorObject(item));
+            }
             // Instantiate Fill objects for each player color
             foreach (ColorObject colorObject in trackingColorLists)
             {
+                GameObject currentfill = Instantiate(fill, fillArea.transform);
+                currentfill.gameObject.name = colorObject.PlayerColor.ToString();
 
-                GameObject fill = Instantiate(Fill, FillArea.transform);
-                fill.gameObject.name = colorObject.PlayerColor.ToString();
-
-                Image fillImage = fill.GetComponent<Image>();
+                Image fillImage = currentfill.GetComponent<Image>();
                 if (fillImage != null)
                 {
                     fillImage.color = colorObject.PlayerColor.Color;
                 }
 
-                colorObject.setFillObject(fill.GetComponent<LayoutElement>());
+                colorObject.setFillObject(currentfill.GetComponent<LayoutElement>());
             }
         }
 

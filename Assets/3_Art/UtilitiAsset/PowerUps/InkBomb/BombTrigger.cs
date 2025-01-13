@@ -27,7 +27,7 @@ public class BombTrigger : MonoBehaviour
 
     public void SetBombFor(GlobalEnums.GameTeam team)
     {
-        TeamData tData = TeamManager.GetTeamData(team);
+        TeamData tData = TeamManager.Instance.GetTeamData(team);
         Color bombcolor = tData.TeamColor;
        sphereInk.GetComponent<CwPaintDecal>().Color = bombcolor; 
     }

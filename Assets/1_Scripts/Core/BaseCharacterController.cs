@@ -86,7 +86,7 @@ namespace RedGaint
                     break;
             }
             Debug.Log("Getting team color : "+team+"  gun color : "+gunColor);
-            TeamManager.RegisterTeam(team, gunColor, "Team_"+gunColor);
+            TeamManager.Instance.RegisterTeam(team, gunColor, "Team_"+gunColor);
             SetGunColor(gun,gunColor);
         }
         

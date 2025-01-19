@@ -79,10 +79,12 @@ namespace RedGaint
             BugsBunny.Log("Spawning an enemy...");
             // Add your enemy spawn logic here
         }
+
+        public GlobalEnums.PowerUpType addPowerUpType;
         private void AddPowerUp()
         {
             var powerUpBasket = GamePlayManager.Instance.GetPlayer().GetComponent<PowerUpBasket>();
-            powerUpBasket.ActivateCurrentPowerUp(GlobalEnums.PowerUpType.Bomb);
+            powerUpBasket.ActivateCurrentPowerUp(addPowerUpType);
         }//AddPowerUp
     }//DyeHardDebugWindow
 }//RedGaint

@@ -12,7 +12,7 @@ namespace RedGaint
         {
             foreach (var item in powerUps)
             {
-                if (item.GetComponent<PowerUpController>().powerUpType == _powerUpType)
+                if (item.GetComponent<PowerUpHandle>().powerUpType == _powerUpType)
                 {
                     return item;
                 }

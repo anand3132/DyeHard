@@ -19,7 +19,7 @@ namespace RedGaint
 
 
 
-        public bool blockRotationPlayer { get; internal set; }
+        // public bool blockRotationPlayer { get; internal set; }
 
         // Add other settings like Input axes or other properties you want to expose
     }

@@ -115,7 +115,7 @@ namespace RedGaint
         public static float BotFollowTimer { get; private set; }
 
         public static float PlayerMaxHealth { get; private set; }
-        public static readonly float HealthHitRation = 30f;
+        public static readonly float HealthHitRation = 10f;
 
         public static void LoadFromScriptableObject(GolbalGameData data)
         {

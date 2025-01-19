@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6571030918005425537}
   - component: {fileID: -1745246644444525196}
+  - component: {fileID: 880280327880954858}
   m_Layer: 0
   m_Name: Sprint
   m_TagString: Untagged
@@ -51,10 +52,33 @@ MonoBehaviour:
   powerUpLogo: {fileID: 21300000, guid: 75878be35f08f1541bfef3bcbe9e4095, type: 3}
   powerUpTriggerEvents:
     m_PersistentCalls:
-      m_Calls: []
-  powerUpSettings: {fileID: 11400000, guid: 7860e744b7139004ab87ce0e3cedb235, type: 2}
-  currentSettings: {fileID: 11400000, guid: 7860e744b7139004ab87ce0e3cedb235, type: 2}
-  powerUpHolder: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 880280327880954858}
+        m_TargetAssemblyTypeName: SprintTrigger, Assembly-CSharp
+        m_MethodName: TriggerSpeedRun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &880280327880954858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831574836308108192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08fe9a475068664fa2be5dfa904d667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpritDuration: 10
+  SpritSpeed: 15
 --- !u!1 &4559280511939831437
 GameObject:
   m_ObjectHideFlags: 0

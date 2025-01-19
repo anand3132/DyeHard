@@ -1001,7 +1001,7 @@ RectTransform:
   m_Father: {fileID: 1606038212145166096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1434,7 +1434,6 @@ GameObject:
   - component: {fileID: 5178011400284432448}
   - component: {fileID: 4751352760404668479}
   - component: {fileID: 6017829740723928323}
-  - component: {fileID: 3314785135554824819}
   - component: {fileID: 7039872128914462263}
   - component: {fileID: 3021653028034979895}
   m_Layer: 7
@@ -1443,7 +1442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4855628509323203849
 Transform:
   m_ObjectHideFlags: 0
@@ -1571,26 +1570,6 @@ MonoBehaviour:
   deadthEffect: {fileID: 0}
   spawnEffect: {fileID: 0}
   movementSettings: {fileID: 11400000, guid: 58c7b97a7e8b0a348b3c3973f67f5a51, type: 2}
---- !u!114 &3314785135554824819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5958436263578102271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639a41c4c16dc4844bb1f0a936b74e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpType: 0
-  powerUpLogo: {fileID: 0}
-  powerUpTriggerEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  powerUpSettings: {fileID: 0}
-  currentSettings: {fileID: 0}
-  powerUpHolder: {fileID: 0}
 --- !u!114 &7039872128914462263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2029,7 +2008,7 @@ RectTransform:
   m_Father: {fileID: 7543590242992270791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

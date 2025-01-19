@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,9 +10,8 @@ namespace RedGaint
     public class PlayerController : BaseCharacterController
     {
         public override bool LogThisClass { get; set; } = true; 
-
         [Header("Movement Settings")]
-        public MovementInputSettings movementSettings;
+      public MovementInputSettings movementSettings;
         
         private Animator anim;
         private Camera cam;
@@ -22,7 +22,6 @@ namespace RedGaint
         
         private PlayerInput playerInput;
         private InputAction moveAction;
-        // private InputAction shootAction;
         private InputAction powerUpAction;
         private InputAction rotateAction;
         private Vector2 movementInput;
@@ -36,45 +35,26 @@ namespace RedGaint
                 playerInput = GetComponent<PlayerInput>();
             
             moveAction.Enable();
-            // shootAction.Enable();
             powerUpAction.Enable();
             rotateAction.Enable();
             moveAction.performed += OnMove;
             moveAction.canceled += OnMoveEnd;
-            
-            // shootAction.started += OnShootStarted;
-            // shootAction.performed += OnShoot;
-            // shootAction.canceled += OnShootEnd;
-            
             powerUpAction.started += OnPowerUp;
-            
             rotateAction.started += OnRotate;
             rotateAction.performed += OnRotate;
             rotateAction.canceled += OnRotateEnd;
-            
-
         }
-
-
-
         private void OnDisable()
         {
             moveAction.performed -= OnMove;
             moveAction.canceled -= OnMoveEnd;
-            
-            // shootAction.started -= OnShootStarted;
-            // shootAction.performed -= OnShoot;
-            // shootAction.canceled -= OnShootEnd;
-            
             powerUpAction.started -= OnPowerUp;
-            
             rotateAction.started -= OnRotate;
             rotateAction.performed -= OnRotate;
             rotateAction.canceled -= OnRotateEnd;
             powerUpAction.Disable(); 
             moveAction.Disable();
             rotateAction.Disable();
-            // shootAction.Disable();
         }
 
 
@@ -84,26 +64,24 @@ namespace RedGaint
             if (playerInput == null)
                 playerInput = GetComponent<PlayerInput>();
             moveAction = playerInput.actions["Move"];
-            // shootAction = playerInput.actions["Shoot"];
             powerUpAction = playerInput.actions["PowerUp"];
             rotateAction = playerInput.actions["Rotate"];
             characternID = "Player";
             anim = GetComponent<Animator>();
             controller = GetComponent<CharacterController>();
             gunHoister = GetComponentInChildren<GunHoister>();
-            
         }
         
 #region UICalls
         //Input Events- UI --------------------------------------------------
         private void OnMove(InputAction.CallbackContext context)
         {
-            canMove = true;
+            // canMove = true;
             movementInput = context.ReadValue<Vector2>();
         }
         private void OnMoveEnd(InputAction.CallbackContext context)
         {
-            canMove = false;
+            // canMove = false;
             movementInput = context.ReadValue<Vector2>();
         }
 
@@ -111,7 +89,7 @@ namespace RedGaint
         {
             GunState(true);
             anim.SetBool("OnShooting", true);
-            canRotate = true;
+            // canRotate = true;
             rotateInput = context.ReadValue<Vector2>();
         }
 
@@ -119,28 +97,15 @@ namespace RedGaint
         {
             GunState(false);
             anim.SetBool("OnShooting", false);
-            canRotate = false;
+            // canRotate = false;
             rotateInput = context.ReadValue<Vector2>();        }
 
-        private void OnShootStarted(InputAction.CallbackContext context)
-        {
-            GunState(true);
-        }
-
-        // private void OnShoot(InputAction.CallbackContext context)
+        // private void OnShootStarted(InputAction.CallbackContext context)
         // {
-        //     if (context.performed)
-        //     {
-        //         anim.SetBool("OnShooting", true);
-        //         // shootingSystem.Shoot(true);
-        //     }
+        //     GunState(true);
         // }
-        // private void OnShootEnd(InputAction.CallbackContext obj)
-        // {
-        //     anim.SetBool("OnShooting", false);
-        //     GunState(false);
-        // }
-
+        
+//      OnPowerupButton pressed On inputhandler
         private void OnPowerUp(InputAction.CallbackContext context)
         {
             if(!GetComponent<PowerUpBasket>().IsPowerUpAvilable())
@@ -164,7 +129,20 @@ namespace RedGaint
             SetPlayerTeam(GlobalEnums.GameTeam.TeamBlue);
             spawnEffect.SetActive(true);
         }
+
+        public override void OnPowerUpTriggered(GlobalEnums.PowerUpType triggeredPowerUp, float duration, float speedOffset)
+        {
+            currentMovementSpeed = speedOffset;
+            StartCoroutine(sprit(duration, speedOffset));
+        }
+
         
+        IEnumerator sprit(float duration, float speed)
+        {
+            yield return new WaitForSeconds(duration);
+            currentMovementSpeed = movementSettings.movementSpeed;
+        }
+
         private void InitialisePlayerController()
         {
             deadthEffect= Helper.FindDeepChild(transform,DEADTHEFFECT).gameObject;
@@ -173,6 +151,7 @@ namespace RedGaint
                 deadthEffect.SetActive(false);
             if(spawnEffect)
                 spawnEffect.SetActive(false);
+            currentMovementSpeed = movementSettings.movementSpeed;
         }
         void Update()
         {
@@ -184,14 +163,7 @@ namespace RedGaint
             else
                 verticalVel -= 1;
             controller.Move(new Vector3(0, verticalVel * .2f * Time.deltaTime, 0));
-            
         }
-
-        private bool isPlayerHealthy()
-        {
-            return false;
-        }
-
         public override bool KillTheActor()
         {
             if (deadthEffect != null)
@@ -201,6 +173,7 @@ namespace RedGaint
             return true;
         }
 
+        private float currentMovementSpeed = 0;
         void PlayerMoveAndRotation()
         {
             var forward = cam.transform.forward;
@@ -213,16 +186,16 @@ namespace RedGaint
             right.Normalize();
 
             desiredMoveDirection = forward * movementInput.y + right * movementInput.x;
-
-            if (!movementSettings.blockRotationPlayer)
-            {
+            //
+            // if (!movementSettings.blockRotationPlayer)
+            // {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), movementSettings.desiredRotationSpeed);
-                controller.Move(desiredMoveDirection * Time.deltaTime * movementSettings.movementSpeed);
-            }
-            else
-            {
-                controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) * Time.deltaTime * movementSettings.movementSpeed);
-            }
+                controller.Move(desiredMoveDirection *(Time.deltaTime * currentMovementSpeed));
+            // }
+            // else
+            // {
+            //     controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) *( Time.deltaTime * currentMovementSpeed));
+            // }
         }
         void RotatePlayer()
         {
@@ -237,8 +210,8 @@ namespace RedGaint
             }
         }
 
-        private bool canMove = false;
-        private bool canRotate = false;
+        // private bool canMove = false;
+        // private bool canRotate = false;
         void InputMagnitude()
         {
             // if(!canMove)

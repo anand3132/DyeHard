@@ -29,7 +29,7 @@ namespace RedGaint
 
         public void ResetAll()
         {
-            gameObject.GetComponent<PowerUpController>().ResetPowerUpController();
+            // gameObject.GetComponent<PowerUpHandle>().ResetPowerUpHandle();
             gameObject.GetComponent<PowerUpBasket>().ResetPowerUp();
             gameObject.GetComponent<HealthHandler>().ResetHealth();
             BugsBunny.LogRed("Resetting the player.......",this);
@@ -89,7 +89,8 @@ namespace RedGaint
             TeamManager.Instance.RegisterTeam(team, gunColor, "Team_"+gunColor);
             SetGunColor(gun,gunColor);
         }
-        
+
+        public abstract void OnPowerUpTriggered(GlobalEnums.PowerUpType triggeredPowerUp,float duration,float speedOffset);
         public void OnBulletHit(Collider other)
         {
             if(!gunstate)return;

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 namespace RedGaint
@@ -18,7 +17,7 @@ namespace RedGaint
                 return false;
 
             powerUpObjectPrefab = PowerUpManager.Instance.GetPowerUpPrefab(powerUpType);
-            if (powerUpObjectPrefab != null && powerUpObjectPrefab.GetComponent<PowerUpController>().powerUpType == powerUpType)
+            if (powerUpObjectPrefab != null && powerUpObjectPrefab.GetComponent<PowerUpHandle>().powerUpType == powerUpType)
             {
                 // Instantiate the power-up
                 currentPowerUp = Instantiate(powerUpObjectPrefab, transform.position, Quaternion.identity);
@@ -41,14 +40,14 @@ namespace RedGaint
                     currentPowerUp.GetComponent<BombTrigger>()
                         .SetBombFor(GetComponent<BaseCharacterController>().CurrentTeam);
                 }
-                currentPowerUp.GetComponent<PowerUpController>().powerUpHolder = gameObject;
+                // currentPowerUp.GetComponent<PowerUpHandle>().powerUpHolder = gameObject;
 
                 // Update UI if the player holds this power-up
                 if (playerController != null)
                 {
                     InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
                     InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().sprite =
-                        currentPowerUp.GetComponent<PowerUpController>().powerUpLogo;
+                        currentPowerUp.GetComponent<PowerUpHandle>().powerUpLogo;
                 }
 
                 currentPowerUp.SetActive(false);
@@ -57,7 +56,6 @@ namespace RedGaint
             }
             return false;
         }
-
         public void ResetPowerUp()
         {
             // if (isPowerUpAvilable)
@@ -74,9 +72,8 @@ namespace RedGaint
             if (isPowerUpAvilable)
             {
                 currentPowerUp.SetActive(true);
-                currentPowerUp.GetComponent<PowerUpController>().TriggerPowerUp();
-                //powerUp destruction is handled by powerUp controller
-                
+                currentPowerUp.GetComponent<PowerUpHandle>().TriggerPowerUp();
+                //powerUp destruction is handled by powerUpHandle itself
                 currentPowerUp = null;
                 powerUpObjectPrefab = null;
                 isPowerUpAvilable = false;
@@ -84,7 +81,6 @@ namespace RedGaint
             }
             return false;
         }
-
         private void OnDisable()
         {
             ResetPowerUp();

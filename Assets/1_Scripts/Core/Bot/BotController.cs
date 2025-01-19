@@ -72,6 +72,7 @@ namespace RedGaint
             
             currentBotAgent = GetComponent<NavMeshAgent>();
             currentBotAgent.speed = settings.movementSpeed;
+            
             sightRange= settings.sightRange;
             fovAngle= settings.fovAngle;
             attackRange = settings.attackRange;
@@ -83,6 +84,16 @@ namespace RedGaint
         protected override void Start()
         {
             base.Start();
+        }
+
+        public override void OnPowerUpTriggered(GlobalEnums.PowerUpType triggeredPowerUp, float duration, float speedOffset)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void InitiateSpeedPoweup(float speed)
+        {
+            currentBotAgent.speed = speed;
         }
 
         private void InitializeAnimationSettings(BotSettings settings)

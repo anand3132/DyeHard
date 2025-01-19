@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Cinemachine;
@@ -7,30 +8,30 @@ namespace RedGaint
 {
     public class HealthHandler : MonoBehaviour
     {
-        private Camera activeCamera;
-        private Slider healthBarSlider;
-        private Image healthBarFill;
+         private Camera activeCamera;
+         private Slider healthBarSlider;
+         private Image healthBarFill;
 
         [Header("Health Settings")] public float maxHealth =GlobalStaticVariables.PlayerMaxHealth;
-        public float currentHealth;
+        private float currentHealth;
 
         [Header("Blink Settings")] public Color fullHealthColor = Color.green;
         public Color halfHealthColor = Color.yellow;
         public Color lowHealthColor = Color.red;
-        public float blinkSpeed = 2f; 
-        public Transform healthBar;
-        private bool isBlinking = false;
+        [Space]
+        [Range(.5f,15f)]
+        public float blinkSpeed = 5f; 
+        
+        private  Transform healthBar;
+        private bool canBlink = false;
         private const string HEALTHBAR = "RF_HealthBar";
-        private const string HEALTHTRIGGER = "RF_HealthTrigger";
-
-        public Transform healthTrigger;
+        private bool canTakeDamage = true;
         public  void InitializeHealthSystem()
         {
             // Initialize health
             currentHealth = maxHealth;
             
             healthBar=Helper.FindDeepChild(transform, HEALTHBAR);
-            healthTrigger=Helper.FindDeepChild(transform, HEALTHTRIGGER);
             // Find the slider and fill image components
             healthBarSlider = GetComponentInChildren<Slider>();
             if (healthBarSlider == null)
@@ -64,7 +65,7 @@ namespace RedGaint
         public void ResetHealth()
         {
             currentHealth=maxHealth;
-            Debug.Log("CurrentHealth= "+currentHealth);
+            UpdateHealthBar();
         }
 
         void Update()
@@ -76,7 +77,17 @@ namespace RedGaint
                 direction.y = 0; // Keep the health bar upright
                 healthBar.rotation = Quaternion.LookRotation(-direction);
             }
+
+            if (canBlink)
+            {
+                // Blink the health bar fill color
+                float alpha = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed)); // Calculate alpha using sine wave
+                Color blinkColor = healthBarFill.color;
+                blinkColor.a = alpha; // Set alpha for the blink effect
+                healthBarFill.color = blinkColor; // Apply the color to the health bar fill
+            }
         }
+
 
         /// <summary>
         /// Updates the health bar slider value and color based on current health.
@@ -87,7 +98,6 @@ namespace RedGaint
             {
                 healthBarSlider.value = currentHealth / maxHealth;
             }
-
             UpdateHealthBarColor();
         }
 
@@ -96,30 +106,29 @@ namespace RedGaint
         /// </summary>
         private void UpdateHealthBarColor()
         {
+            canBlink = false;
             if (healthBarFill != null)
             {
-                if (currentHealth / maxHealth > 0.8f)
+                if (currentHealth / maxHealth > 0.9f)
                 {
                     healthBarFill.color = fullHealthColor;
-                    StopBlinking();
                 }
-                else if (currentHealth / maxHealth > 0.7f)
+                else if (currentHealth / maxHealth > 0.8f)
                 {
                     healthBarFill.color = halfHealthColor;
-                    StopBlinking();
                 }
-                else if (currentHealth / maxHealth > 0.4f)
+                else if (currentHealth / maxHealth > 0.6f)
                 {
                     healthBarFill.color = lowHealthColor;
-                    StopBlinking();
                 }
-                else if (currentHealth / maxHealth < 0.3f)
+                else if (currentHealth / maxHealth < 0.4f)
                 {
                     healthBarFill.color = lowHealthColor;
-                    StartBlinking();
+                    canBlink = true;
                 }
             }
         }
+
 
         /// <summary>
         /// Reduces the health by a given amount and updates the health bar.
@@ -127,6 +136,8 @@ namespace RedGaint
         /// <param name="damageAmount">Amount of damage taken.</param>
         public void TakeDamage(float damageAmount)
         {
+            if(!canTakeDamage)
+                return;
             currentHealth -= damageAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             UpdateHealthBar();
@@ -153,49 +164,28 @@ namespace RedGaint
         /// </summary>
         private void OnDeath()
         {
-            StopBlinking();
+            UpdateHealthBar();
             GetComponent<BaseCharacterController>().KillTheActor();
             // Add death handling logic here (e.g., disable the health bar, trigger animations, etc.)
         }
 
-        /// <summary>
-        /// Starts the blinking effect on the health bar when health is critically low.
-        /// </summary>
-        private void StartBlinking()
+        public void OnPowerUpImpact(GlobalEnums.PowerUpType powerUpType,float duration=0f)
         {
-            if (!isBlinking)
+            if (powerUpType==GlobalEnums.PowerUpType.Shield)
             {
-                isBlinking = true;
-                StartCoroutine(BlinkHealthBar());
+                Heal(GlobalStaticVariables.PlayerMaxHealth);
+                StartCoroutine(Freeeze(duration));
             }
         }
 
-        /// <summary>
-        /// Stops the blinking effect on the health bar.
-        /// </summary>
-        private void StopBlinking()
+        private float powerOffsettime = 2f;
+        IEnumerator Freeeze(float seconds)
         {
-            isBlinking = false;
-            StopAllCoroutines();
-            if (healthBarFill != null)
-            {
-                healthBarFill.color = lowHealthColor;
-            }
+            canTakeDamage = false;
+            yield return new WaitForSeconds(seconds);
+            canTakeDamage = true;
         }
-
-        /// <summary>
-        /// Coroutine to blink the health bar fill color.
-        /// </summary>
-        private System.Collections.IEnumerator BlinkHealthBar()
-        {
-            while (isBlinking)
-            {
-                healthBarFill.color = Color.clear; // Transparent
-                yield return new WaitForSeconds(1f / blinkSpeed);
-                healthBarFill.color = lowHealthColor; // Low health color
-                yield return new WaitForSeconds(1f / blinkSpeed);
-            }
-        }
+        
 
         /// <summary>
         /// Updates the active camera when switching Cinemachine cameras.

@@ -25,22 +25,27 @@ namespace RedGaint
         // Use LinkedList to track the color fill amounts
         private LinkedList<ColorObject> trackingColorLists = new LinkedList<ColorObject>();
         [SerializeField] private List<CwColorCounter> counters;
-
-        private IEnumerator InitializeGameProgressBar()
+        private Action gamebarInitCallback;
+        private void  InitializeGameProgressBar()
         {
-            yield return new WaitForSeconds(1f); 
+          //  yield return new WaitForSeconds(.1f);
+            TeamManager.Instance.RegisterTeamNotification(gamebarInitCallback);
             OnGameBarInit();
             InvokeRepeating(nameof(UpdateFillAmount), 0f, 0.5f);
         }
 
+        
         private void Start()
         {
-            StartCoroutine(InitializeGameProgressBar());
+            gamebarInitCallback += OnGameBarInit;
+            InitializeGameProgressBar();
+          //  StartCoroutine(InitializeGameProgressBar());
         }
 
         private void OnDestroy()
         {
             // Stop the repeating invocation when the object is destroyed
+            gamebarInitCallback -= OnGameBarInit;
             CancelInvoke(nameof(UpdateFillAmount));
         }
         public  void ClearGameProgressBar()
@@ -66,6 +71,7 @@ namespace RedGaint
         }
         private void OnGameBarInit()
         {
+            ClearGameProgressBar();
             Dictionary<GlobalEnums.GameTeam,TeamData> currentTeamData = TeamManager.Instance.GetAllTeamData();
             foreach (KeyValuePair<GlobalEnums.GameTeam, TeamData> teamData in currentTeamData)
             {

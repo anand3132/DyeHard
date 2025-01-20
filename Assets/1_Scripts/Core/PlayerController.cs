@@ -186,17 +186,19 @@ namespace RedGaint
             right.Normalize();
 
             desiredMoveDirection = forward * movementInput.y + right * movementInput.x;
-            //
-            // if (!movementSettings.blockRotationPlayer)
-            // {
+            
+            if (dontTurnAround)
+            {
+                controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) *( Time.deltaTime * currentMovementSpeed));
+            }
+            else
+            {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), movementSettings.desiredRotationSpeed);
                 controller.Move(desiredMoveDirection *(Time.deltaTime * currentMovementSpeed));
-            // }
-            // else
-            // {
-            //     controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) *( Time.deltaTime * currentMovementSpeed));
-            // }
+            }
         }
+        
+        public bool dontTurnAround = true;
         void RotatePlayer()
         {
             float rotationSpeed =45f;

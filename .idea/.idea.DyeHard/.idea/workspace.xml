@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4ca1fcfb-c0fc-4f2a-a50a-7e1c251690c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DyeHard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Gun/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/TeamManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/TeamManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/GameProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/UI/GameProgressBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/LiquidColor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/Gun/LiquidColor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5_CorePrefab/RF_Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1_Scripts/Core/Bot/BotGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scenes/DyeHard_New.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +146,7 @@
       <workItem from="1736762171763" duration="7963000" />
       <workItem from="1736780225451" duration="6861000" />
       <workItem from="1737305633674" duration="1512000" />
-      <workItem from="1737350955368" duration="6772000" />
+      <workItem from="1737350955368" duration="8398000" />
     </task>
     <servers />
   </component>

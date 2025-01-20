@@ -18,6 +18,8 @@ namespace RedGaint {
         public GlobalEnums.Mode botSpawnMode;
         public GlobalEnums.Mode botPatrollingMode;
         public bool Debug_pauseBot = false;
+        public static string RF_CHECKHANDLER = "RF_CheckHandler";
+
         private void Start()
         {
             InitializeGenerator();
@@ -25,7 +27,7 @@ namespace RedGaint {
         
         private void InitializeGenerator()
         {
-            checkpointHandler = transform.root.GetComponentInChildren<CheckPointHandler>();
+            checkpointHandler=FindFirstObjectByType<CheckPointHandler>();
             if (checkpointHandler == null)
             {
                 BugsBunny.LogRed("BotGenerator: Can't fetch Core Component -> CheckPointHandler",this);

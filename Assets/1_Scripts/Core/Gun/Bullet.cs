@@ -21,5 +21,5 @@ public class Bullet : MonoBehaviour,IBugsBunny
         }
     }
 
-    public bool LogThisClass { get; }=true;
+    public bool LogThisClass { get; }=false;
 }

@@ -5,7 +5,6 @@ using CW.Common;
 using PaintCore;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace RedGaint
 {
@@ -59,16 +58,21 @@ namespace RedGaint
                     Transform child = fillArea.transform.GetChild(i);
 
                     // Destroy the child GameObject
+                    BugsBunny.Log("Destroying : "+child.name);
                     Destroy(child.gameObject);
-                }
 
-                Debug.Log("All children under FillArea have been removed.");
+
+                }
+                BugsBunny.Log("All children under FillArea have been removed.");
             }
             else
             {
-                Debug.LogWarning("FillArea reference is not assigned.");
+                BugsBunny.LogYellow("FillArea reference is not assigned.");
             }
+            trackingColorLists.Clear();
+            counters.Clear();
         }
+
         private void OnGameBarInit()
         {
             ClearGameProgressBar();

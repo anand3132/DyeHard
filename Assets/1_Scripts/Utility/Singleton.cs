@@ -41,6 +41,10 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour, IBugsBunny
 
         if (keepAlive)
         {
+            if (transform.parent != null)
+            {
+                transform.SetParent(null); // Detach from parent to become a root GameObject
+            }
             DontDestroyOnLoad(gameObject);
         }
 
@@ -54,6 +58,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour, IBugsBunny
         if (verbose)
             Debug.Log($"[Singleton] Instance initialized for {typeof(T).Name}");
     }
+
 }
 
 public class SingletonSimple<T> : MonoBehaviour where T : Component, IBugsBunny

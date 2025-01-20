@@ -35,6 +35,8 @@ namespace RedGaint
 
     public class TeamManager : Singleton<TeamManager>, IBugsBunny
     {
+        public bool LogThisClass { get; } = false;
+
         [SerializeField] private Dictionary<GlobalEnums.GameTeam, TeamData> teams = new Dictionary<GlobalEnums.GameTeam, TeamData>();
         private HashSet<string> globalMembers = new HashSet<string>();
 
@@ -179,6 +181,5 @@ namespace RedGaint
             BugsBunny.Log("All teams and members cleared.", this);
         }
 
-        public bool LogThisClass { get; } = true;
     } //TeamManager
 } //RedGaint

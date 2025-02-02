@@ -65,6 +65,7 @@ namespace RedGaint
         public void ResetHealth()
         {
             currentHealth=maxHealth;
+            canTakeDamage = true;
             UpdateHealthBar();
         }
 
@@ -174,6 +175,7 @@ namespace RedGaint
             if (powerUpType==GlobalEnums.PowerUpType.Shield)
             {
                 Heal(GlobalStaticVariables.PlayerMaxHealth);
+                canTakeDamage = false;
                 StartCoroutine(Freeeze(duration));
             }
         }
@@ -181,7 +183,6 @@ namespace RedGaint
         private float powerOffsettime = 2f;
         IEnumerator Freeeze(float seconds)
         {
-            canTakeDamage = false;
             yield return new WaitForSeconds(seconds);
             canTakeDamage = true;
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 namespace RedGaint
@@ -6,11 +7,18 @@ namespace RedGaint
     public class PowerUpBasket : MonoBehaviour
     {
         [Header("Info---")]
-        [SerializeField] private GameObject  powerUpObjectPrefab;
-        [SerializeField] private GameObject currentPowerUp;
-        [SerializeField] private bool isPowerUpAvilable = false;
+         private GameObject  powerUpObjectPrefab;
+         private GameObject currentPowerUp;
+         private bool isPowerUpAvilable = false;
         [SerializeField] private GlobalEnums.PowerUpType currentpowerType;
         public GlobalEnums.PowerUpType CurrentPowerUpType=>currentpowerType;
+        private static string POWERUPHOOK = "RF_PowerUps";
+        public  Transform powerUphook;
+        private void Awake()
+        {
+            powerUphook = Helper.FindDeepChild<Transform>(transform, POWERUPHOOK);
+        }
+
         public bool ActivateCurrentPowerUp(GlobalEnums.PowerUpType powerUpType)
         {
             if (isPowerUpAvilable)
@@ -20,8 +28,8 @@ namespace RedGaint
             if (powerUpObjectPrefab != null && powerUpObjectPrefab.GetComponent<PowerUpHandle>().powerUpType == powerUpType)
             {
                 // Instantiate the power-up
-                currentPowerUp = Instantiate(powerUpObjectPrefab, transform.position, Quaternion.identity);
-                currentPowerUp.transform.parent = transform;
+                currentPowerUp = Instantiate(powerUpObjectPrefab, powerUphook.position, Quaternion.identity,powerUphook);
+                currentPowerUp.transform.parent = powerUphook;
                 currentpowerType = powerUpType;
                 // Rotate the power-up towards the player's forward direction
                 var playerController = GetComponent<PlayerController>();
@@ -45,9 +53,7 @@ namespace RedGaint
                 // Update UI if the player holds this power-up
                 if (playerController != null)
                 {
-                    InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().color = Color.white;
-                    InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().sprite =
-                        currentPowerUp.GetComponent<PowerUpHandle>().powerUpLogo;
+                    InputHandler.Instance.SetPowerUpIcon(currentPowerUp.GetComponent<PowerUpHandle>().powerUpLogo);
                 }
 
                 currentPowerUp.SetActive(false);
@@ -56,16 +62,24 @@ namespace RedGaint
             }
             return false;
         }
+
         public void ResetPowerUp()
         {
-            // if (isPowerUpAvilable)
-            // {
-                powerUpObjectPrefab = null;
-                if(currentPowerUp)
-                    Destroy(currentPowerUp);
-                isPowerUpAvilable = false;
-            // }
+            if(GetComponent<PlayerController>())
+                InputHandler.Instance.SetPowerUpIcon();
+            if (powerUphook != null)
+            {
+                foreach (Transform child in powerUphook)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            powerUpObjectPrefab = null;
+            currentPowerUp=null;
+            isPowerUpAvilable = false;
+            
         }
+
         public bool IsPowerUpAvilable()=>isPowerUpAvilable;
         public bool TriggerPowerUp()
         {

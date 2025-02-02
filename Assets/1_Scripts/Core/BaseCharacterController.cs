@@ -29,7 +29,6 @@ namespace RedGaint
 
         public void ResetAll()
         {
-            // gameObject.GetComponent<PowerUpHandle>().ResetPowerUpHandle();
             gameObject.GetComponent<PowerUpBasket>().ResetPowerUp();
             gameObject.GetComponent<HealthHandler>().ResetHealth();
             BugsBunny.LogRed("Resetting the player.......",this);

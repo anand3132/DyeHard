@@ -16,7 +16,6 @@ namespace RedGaint
 
         private void Awake()
         {
-            // Ensure the initialization happens early
             CreateDebugCanvas();
             CreateToggleButton();
             CreateDebugMenu();
@@ -34,10 +33,16 @@ namespace RedGaint
         private void CreateDebugMenu()
         {
             panel = new GameObject("Panel");
-            panel.transform.SetParent(debugCanvas.transform);
+            panel.transform.SetParent(debugCanvas.transform,false);
             RectTransform panelRect = panel.AddComponent<RectTransform>();
+            
+            panelRect.anchorMin = new Vector2(0, 0); // Bottom-Left
+            panelRect.anchorMax = new Vector2(0, 0); // Bottom-Left
+            
+            panelRect.pivot = new Vector2(0, 0); // Set pivot to bottom-left to align properly
             panelRect.sizeDelta = new Vector2(400, 600);
-            panelRect.anchoredPosition = new Vector2(-200, -100);
+            panelRect.anchoredPosition = new Vector2(0, 0);
+            
             panel.AddComponent<Image>().color = new Color(0, 0, 0, 0.5f);
             panel.SetActive(false);
         }

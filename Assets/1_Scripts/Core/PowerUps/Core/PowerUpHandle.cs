@@ -15,11 +15,19 @@ namespace RedGaint
       {
          StartCoroutine(OnPowerUp(10f));
       }
+      public bool isActive = false;
       private IEnumerator OnPowerUp(float delay)
       {
+         isActive = true;
          powerUpTriggerEvents?.Invoke();
          yield return new WaitForSeconds(delay);
          Destroy(gameObject);
+      }
+
+      private void OnDestroy()
+      {
+         if (isActive)
+            Debug.Log("PowerUp Destroyed---------->>----------------------"+gameObject.name);
       }
    }
 

@@ -26,6 +26,7 @@ namespace RedGaint
         private InputAction rotateAction;
         private Vector2 movementInput;
         private Vector2 rotateInput;
+        public bool dontTurnAround ;
 
         private const string RESPAERNEFFECT = "RF_ReSpawrnEffect";
         private const string DEADTHEFFECT = "RF_DeathEffect";
@@ -111,10 +112,7 @@ namespace RedGaint
             if(!GetComponent<PowerUpBasket>().IsPowerUpAvilable())
                 return;
             GetComponent<PowerUpBasket>().TriggerPowerUp();
-            InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().color =
-                InputHandler.Instance.powerUpBtnDefaultColor;
-            InputHandler.Instance.powerUpButtonObject.GetComponent<Image>().sprite =
-                InputHandler.Instance.defaultSprite;
+            InputHandler.Instance.SetPowerUpIcon();
         }
 #endregion
 //----------------------------------------------------------------------------------------------------------------------
@@ -132,12 +130,15 @@ namespace RedGaint
 
         public override void OnPowerUpTriggered(GlobalEnums.PowerUpType triggeredPowerUp, float duration, float speedOffset)
         {
-            currentMovementSpeed = speedOffset;
-            StartCoroutine(sprit(duration, speedOffset));
+            if (triggeredPowerUp == GlobalEnums.PowerUpType.Sprint)
+            {
+                currentMovementSpeed = speedOffset;
+                StartCoroutine(sprint(duration, speedOffset));
+            }
         }
 
         
-        IEnumerator sprit(float duration, float speed)
+        IEnumerator sprint(float duration, float speed)
         {
             yield return new WaitForSeconds(duration);
             currentMovementSpeed = movementSettings.movementSpeed;
@@ -168,11 +169,15 @@ namespace RedGaint
         {
             if (deadthEffect != null)
                 deadthEffect.SetActive(true);
+            
+            currentMovementSpeed = movementSettings.movementSpeed;
             StartCoroutine(WaitForDeadthEffect(.1f));
             GamePlayManager.Instance.OnPlayerDeadth();
             return true;
         }
 
+        #region PlayerMovement
+        
         private float currentMovementSpeed = 0;
         void PlayerMoveAndRotation()
         {
@@ -189,16 +194,14 @@ namespace RedGaint
             
             if (dontTurnAround)
             {
-                controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) *( Time.deltaTime * currentMovementSpeed));
-            }
-            else
-            {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), movementSettings.desiredRotationSpeed);
                 controller.Move(desiredMoveDirection *(Time.deltaTime * currentMovementSpeed));
             }
+            else
+            {
+                controller.Move((transform.forward * movementInput.y + transform.right * movementInput.x) *( Time.deltaTime * currentMovementSpeed));
+            }
         }
-        
-        public bool dontTurnAround = true;
         void RotatePlayer()
         {
             float rotationSpeed =45f;
@@ -211,9 +214,6 @@ namespace RedGaint
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, (movementSettings.desiredRotationSpeed * rotationSpeed) * Time.deltaTime);
             }
         }
-
-        // private bool canMove = false;
-        // private bool canRotate = false;
         void InputMagnitude()
         {
             // if(!canMove)
@@ -233,5 +233,7 @@ namespace RedGaint
                 anim.SetFloat("Y", movementInput.y, movementSettings.stopAnimTime / 3, Time.deltaTime);
             }
         }
+        
+        #endregion
     }
 }//RedGaint

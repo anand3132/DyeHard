@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 6450654519649326060}
   - component: {fileID: 8973752997722175103}
   - component: {fileID: 37455426074958413}
+  - component: {fileID: 7777774667903881322}
   m_Layer: 0
   m_Name: start
   m_TagString: Untagged
@@ -139,7 +140,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -241,13 +242,34 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 8973752997722175103}
-  cooldown: -229.72879
+  cooldown: -249.90761
   maskMesh: {fileID: -1470391202872572035, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
   maskChannel: 3
   total: 0
   threshold: 0.1
+--- !u!65 &7777774667903881322
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359958509983455313}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14, y: 14.000004, z: 16.931232}
+  m_Center: {x: 0, y: 0, z: 1.8369658}
 --- !u!1 &387934616520082005
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +703,7 @@ GameObject:
   - component: {fileID: 2768843410490279864}
   - component: {fileID: 6048880005929450990}
   m_Layer: 0
-  m_Name: slope (1)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,7 +895,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 2768843410490279864}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -896,7 +918,7 @@ GameObject:
   - component: {fileID: 4089340206420762259}
   - component: {fileID: 8960726264382900379}
   m_Layer: 0
-  m_Name: side area (1)
+  m_Name: side area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1088,7 +1110,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 4089340206420762259}
-  cooldown: -215.42274
+  cooldown: -217.8101
   maskMesh: {fileID: 1866642337175606967, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -1298,8 +1320,9 @@ GameObject:
   - component: {fileID: 464932880875420965}
   - component: {fileID: 8888160848625011894}
   - component: {fileID: 5805267997412571166}
+  - component: {fileID: 5443459621470398132}
   m_Layer: 0
-  m_Name: start (1)
+  m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1389,7 +1412,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -1491,13 +1514,34 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 8888160848625011894}
-  cooldown: -233.58047
+  cooldown: -250.58774
   maskMesh: {fileID: -1470391202872572035, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
   maskChannel: 3
   total: 0
   threshold: 0.1
+--- !u!65 &5443459621470398132
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552189400073409555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14, y: 14.000004, z: 16.931232}
+  m_Center: {x: 0, y: 0, z: 1.8369658}
 --- !u!1 &3679725495022797332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1750,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 39892022234758400}
-  cooldown: -221.996
+  cooldown: -224.38336
   maskMesh: {fileID: 1866642337175606967, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -2109,7 +2153,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 6756028805878910453}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -2131,8 +2175,9 @@ GameObject:
   - component: {fileID: 322532291723861342}
   - component: {fileID: 6786027619753859061}
   - component: {fileID: 5022360090525488609}
+  - component: {fileID: 5713319143717448615}
   m_Layer: 0
-  m_Name: start (2)
+  m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2222,7 +2267,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -2324,13 +2369,34 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 6786027619753859061}
-  cooldown: -225.97438
+  cooldown: -250.18747
   maskMesh: {fileID: -1470391202872572035, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
   maskChannel: 3
   total: 0
   threshold: 0.1
+--- !u!65 &5713319143717448615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882314433957708117}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14, y: 14.000004, z: 16.931232}
+  m_Center: {x: 0, y: 0, z: 1.8369658}
 --- !u!1 &5034796973197249472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,7 +2413,7 @@ GameObject:
   - component: {fileID: 7446852295071742754}
   - component: {fileID: 7278162053020126401}
   m_Layer: 0
-  m_Name: slope (2)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2539,7 +2605,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 7446852295071742754}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -2562,7 +2628,7 @@ GameObject:
   - component: {fileID: 4904396751934937969}
   - component: {fileID: 3062606234416324414}
   m_Layer: 0
-  m_Name: slope (3)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2754,7 +2820,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 4904396751934937969}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -2777,7 +2843,7 @@ GameObject:
   - component: {fileID: 6161301762595093191}
   - component: {fileID: 657169249268033077}
   m_Layer: 0
-  m_Name: side area (1)
+  m_Name: side area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2969,7 +3035,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 6161301762595093191}
-  cooldown: -210.62195
+  cooldown: -213.00931
   maskMesh: {fileID: 1866642337175606967, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -3184,7 +3250,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 3649213622385263761}
-  cooldown: -601.60706
+  cooldown: -603.9944
   maskMesh: {fileID: 6625178819176365573, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -3207,7 +3273,7 @@ GameObject:
   - component: {fileID: 1175336961012373458}
   - component: {fileID: 1970545292152687312}
   m_Layer: 0
-  m_Name: slope (5)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3399,7 +3465,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 1175336961012373458}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -3422,7 +3488,7 @@ GameObject:
   - component: {fileID: 4823544906139775885}
   - component: {fileID: 3126035773930702691}
   m_Layer: 0
-  m_Name: slope (1)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3614,7 +3680,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 4823544906139775885}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -3636,8 +3702,9 @@ GameObject:
   - component: {fileID: 7813672440872018670}
   - component: {fileID: 6798754601480286490}
   - component: {fileID: 8780800435497410174}
+  - component: {fileID: 6876941886328253676}
   m_Layer: 0
-  m_Name: start (1)
+  m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3727,7 +3794,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -3829,13 +3896,34 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 6798754601480286490}
-  cooldown: -265.35553
+  cooldown: -272.32526
   maskMesh: {fileID: -1470391202872572035, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
   maskChannel: 3
   total: 0
   threshold: 0.1
+--- !u!65 &6876941886328253676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371285971676323026}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14, y: 13.999999, z: 16.931229}
+  m_Center: {x: 0, y: 0, z: 1.8369653}
 --- !u!1 &6657068079551512067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,7 +4161,7 @@ GameObject:
   - component: {fileID: 7709111574248943940}
   - component: {fileID: 7442293317397736543}
   m_Layer: 0
-  m_Name: slope (4)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4265,7 +4353,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 7709111574248943940}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -4288,7 +4376,7 @@ GameObject:
   - component: {fileID: 2197434843368233184}
   - component: {fileID: 3029899100205724790}
   m_Layer: 0
-  m_Name: slope (1)
+  m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4480,7 +4568,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 2197434843368233184}
-  cooldown: -116.13627
+  cooldown: -118.523674
   maskMesh: {fileID: -4219061740922156954, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}
@@ -4503,7 +4591,7 @@ GameObject:
   - component: {fileID: 8390446690686498164}
   - component: {fileID: 2273550456888561282}
   m_Layer: 0
-  m_Name: side area (1)
+  m_Name: side area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4695,7 +4783,7 @@ MonoBehaviour:
   readAtStart: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 8390446690686498164}
-  cooldown: -206.40738
+  cooldown: -208.79474
   maskMesh: {fileID: 1866642337175606967, guid: 6ce91aa282639c041aaf4f38dce12bc6, type: 3}
   maskSubmesh: 0
   maskTexture: {fileID: 0}

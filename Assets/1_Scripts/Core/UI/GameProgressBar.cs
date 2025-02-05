@@ -13,7 +13,7 @@ namespace RedGaint
         public GameObject fillArea;
         public GameObject fill;
         // public int FillAmount;
-
+        private GameObject currentSpacer;
         public GameObject spacer;
         // public GameObject colorParent;
 
@@ -96,6 +96,9 @@ namespace RedGaint
 
                 colorObject.setFillObject(currentfill.GetComponent<LayoutElement>());
             }
+            currentSpacer = Instantiate(spacer, fillArea.transform);
+            currentSpacer.SetActive(true);
+
         }
 
         private void UpdateFillAmount()

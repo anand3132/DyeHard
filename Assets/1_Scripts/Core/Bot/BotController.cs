@@ -15,7 +15,8 @@ namespace RedGaint
         //public        
         //Controlls
         public BotSettings botSettings;
-        
+
+        public Vector3 botRewpwanPosition;
         //Animation Parameter
         //[Header("Animation Smoothing")]
         private float startAnimTime;
@@ -69,7 +70,7 @@ namespace RedGaint
                 botRoot = gameObject.transform;
             
             botRoot.transform.position = spawnOrigin;
-            
+            botRewpwanPosition = spawnOrigin;
             currentBotAgent = GetComponent<NavMeshAgent>();
             currentBotAgent.speed = settings.movementSpeed;
             
@@ -131,7 +132,10 @@ namespace RedGaint
                 return this;
         }
 
-        
+        public void ReActivateBot()
+        {
+            SwitchState(BotCharacterState.Patrolling);
+        }
         public BotController ActivateBot(GlobalEnums.GameTeam team,bool onPause=false)
         {
             if (!isInitialized)
@@ -461,9 +465,21 @@ namespace RedGaint
         {
             float adjustedSpeed = speed * animationspeedOffset;
             if (adjustedSpeed > 0.1f)
+            { 
+                currentAnimtor.SetBool("OnShooting", true);
                 currentAnimtor.SetFloat("Blend", adjustedSpeed, startAnimTime, Time.deltaTime);//Run
+                // currentAnimtor.SetFloat("X",  currentBotAgent.velocity.x, botSettings.startAnimTime / 3, Time.deltaTime);
+                // currentAnimtor.SetFloat("Y",  currentBotAgent.velocity.y, botSettings.startAnimTime / 3, Time.deltaTime);
+                
+
+            }
             else
-                currentAnimtor.SetFloat("Blend", adjustedSpeed, stopAnimTime, Time.deltaTime);//Idle
+            {
+                currentAnimtor.SetBool("OnShooting", false);
+                currentAnimtor.SetFloat("Blend", adjustedSpeed, stopAnimTime, Time.deltaTime); //Idle
+                // currentAnimtor.SetFloat("X",  currentBotAgent.velocity.x, botSettings.stopAnimTime / 3, Time.deltaTime);
+                // currentAnimtor.SetFloat("Y",  currentBotAgent.velocity.y, botSettings.stopAnimTime / 3, Time.deltaTime);
+            }
         }
         public void BotAttack(Vector4 direction)
         {

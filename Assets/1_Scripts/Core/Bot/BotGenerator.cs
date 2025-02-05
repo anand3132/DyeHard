@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace RedGaint {
         public GlobalEnums.Mode botPatrollingMode;
         public bool Debug_pauseBot = false;
         public static string RF_CHECKHANDLER = "RF_CheckHandler";
+        public bool respawnBots;
 
         private void Start()
         {
@@ -90,15 +92,37 @@ namespace RedGaint {
         {
             if(currentBot == null)
                 return;
+            // foreach (var bot in ReSpawnList)
+            // {
+            //     if(bot == currentBot)
+            //         return;
+            // }
+            currentBot.ResetAll();
+            ReSpawnList.Add(currentBot);
+            if (respawnBots && !botsOnRespwan)
+                StartCoroutine(RespawnBots(2f));
+        }
+
+        private bool botsOnRespwan;
+        private IEnumerator RespawnBots(float seconds)
+        {
+            botsOnRespwan = true;
+            yield return new WaitForSeconds(seconds);
             foreach (var bot in ReSpawnList)
             {
-                if(bot == currentBot)
-                    return;
+                bot.transform.position = bot.botRewpwanPosition;
+                bot.transform.rotation =Quaternion.identity;
+                bot.gameObject.SetActive(true);
+                bot.ReActivateBot();
             }
-            ReSpawnList.Add(currentBot);
-        }
-        
-        private List<Vector3> GetModifiedPath(GlobalEnums.Mode mode, List<Vector3> modifiedList)
+            ReSpawnList.Clear();
+            botsOnRespwan = false;
+            
+            BugsBunny.Log("RespawnBots: RespawnBots...");
+            
+        } 
+
+    private List<Vector3> GetModifiedPath(GlobalEnums.Mode mode, List<Vector3> modifiedList)
         {
             switch (mode)
             {

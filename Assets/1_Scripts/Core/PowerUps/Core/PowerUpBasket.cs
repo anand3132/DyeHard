@@ -65,8 +65,8 @@ namespace RedGaint
 
         public void ResetPowerUp()
         {
-            if(GetComponent<PlayerController>())
-                InputHandler.Instance.SetPowerUpIcon();
+            // if(GetComponent<PlayerController>())
+            //     InputHandler.Instance.SetPowerUpIcon();
             if (powerUphook != null)
             {
                 foreach (Transform child in powerUphook)

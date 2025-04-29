@@ -1,0 +1,167 @@
+/*-------------------------------Shared component styling ---------------------------------------*/
+
+/* Button styling (common for both screens) */
+.menu-button {
+    width: 525px;
+    height: 80px;
+    background-color: #333333;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition-duration: 0.3s;
+    transition-property: background-color, scale;
+}
+
+.menu-button:hover {
+    background-color: #555555;
+    scale: 1.05;
+}
+
+.menu-button:active {
+    background-color: #777777;
+    scale: 0.95;
+}
+
+/* Button text styling */
+.menu-button .button-text {
+    font-size: 48px;
+    color: #ffffff;
+    unity-text-align: center;
+}
+
+/* Social button styling */
+.social-button {
+    width: 525px;
+    height: 80px;
+    background-color: #333333;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition-duration: 0.3s;
+    transition-property: background-color, scale;
+}
+
+.social-button:hover {
+    background-color: #555555;
+    scale: 1.05;
+}
+
+.social-button:active {
+    background-color: #777777;
+    scale: 0.95;
+}
+
+/* Social button text styling */
+.social-button .button-text {
+    font-size: 48px;
+    color: #ffffff;
+    unity-text-align: center;
+}
+
+/* Status label (for errors or info messages) */
+.status-label {
+    font-size: 28px;
+    color: #ff0000;
+    margin-top: 20px;
+    unity-text-align: center;
+}
+
+/* Title styling (increased font size by 20%) */
+.main-title {
+    font-size: 86px; /* Increased by 20% from 72px */
+    color: white;
+    margin-bottom: 72px; /* Adjusted margin to match the increased size */
+    unity-text-align: center;
+}
+
+/*-------------------------------Login screen styling ---------------------------------------*/
+
+/* Root container (background for login and main menu) */
+.background {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e; /* Dark background */
+}
+
+/* Form container (for login and account creation) */
+.form-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Input fields styling */
+.input-field {
+    width: 525px;
+    height: 50px;
+    margin-bottom: 30px;
+    background-color: #333333;
+    color: #000000;
+    border-radius: 10px;
+    font-size: 28px;
+    padding-left: 15px;
+    border: none;
+}
+
+.input-field:focus {
+    outline-color: #4d90fe;
+}
+
+/*-------------------------------Main Menu styling ---------------------------------------*/
+
+/* Main menu container styling */
+.main-menu-container {
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Button container styling */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px; /* Increased the gap between buttons by 20% */
+}
+
+/* Main Menu Button styling (increased size by 20%) */
+.menu-button {
+    width: 525px; /* Ensures consistency with social buttons */
+    height: 80px; /* Ensures consistency with social buttons */
+    background-color: #333333;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.3s;
+    transition-property: background-color, scale;
+}
+
+/* Button text styling (increased font size by 20%) */
+.button-text {
+    font-size: 48px; /* Increased by 20% from 24px */
+    color: #ffffff;
+    unity-text-align: center;
+}
+
+/* Button hover effect */
+.menu-button:hover {
+    background-color: #555555;
+    scale: 1.05;
+}
+
+/* Button active effect */
+.menu-button:active {
+    background-color: #777777;
+    scale: 0.95;
+}

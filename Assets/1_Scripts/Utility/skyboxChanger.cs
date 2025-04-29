@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RedGaint
+namespace RedGaint.Utility
 {
     public class SkyboxChanger : MonoBehaviour
     {

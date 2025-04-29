@@ -1,0 +1,42 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" 
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <!-- Only import this screen's custom stylesheet -->
+    <Style src="project://database/Assets/UI Toolkit/CharacterSelectionStyle.uss" />
+
+    <!-- Root container (e.g., character preview area) -->
+    <ui:VisualElement name="Profile" style="flex-grow: 1;" />
+
+    <!-- Bottom UI area -->
+    <ui:VisualElement class="character-selection-layout">
+
+        <!-- Character Name -->
+        <ui:Label name="modelNameLabel" text="ModelName" class="main-title" />
+
+        <!-- Previous / Next buttons -->
+        <ui:VisualElement class="navigation-buttons">
+            <ui:Button name="previousButton" class="menu-button small">
+                <ui:Label text="Previous" class="button-text" />
+            </ui:Button>
+            <ui:Button name="nextButton" class="menu-button small">
+                <ui:Label text="Next" class="button-text" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <!-- Main Menu / Start -->
+        <ui:VisualElement class="button-container">
+            <ui:Button name="mainMenuButton" class="menu-button medium">
+                <ui:Label text="Main Menu" class="button-text" />
+            </ui:Button>
+            <ui:Button name="startMultiplayerButton" class="menu-button medium green">
+                <ui:Label text="Start" class="button-text" />
+            </ui:Button>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

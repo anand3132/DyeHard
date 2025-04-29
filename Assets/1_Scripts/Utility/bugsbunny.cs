@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Diagnostics;
 
-namespace RedGaint
+namespace RedGaint.Utility
 {
     public interface IBugsBunny
     {

@@ -1,7 +1,7 @@
 using RedGaint;
 using UnityEngine;
 
-namespace RedGaint
+namespace RedGaint.Utility
 {
     public class ModelTurntable : MonoBehaviour
     {

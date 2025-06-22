@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/DyHardGamePlay/2_scenes/DyeHard_Singleplayer.unity
+    path: Assets/5_GameCore/DyeHard/2_scenes/DyeHard_New.unity
     guid: ea4cc66b96ef2db45bc8727156e5af45
   - enabled: 1
     path: Assets/2_Scenes/BootStrap.unity
@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/2_Scenes/MetagameScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/5_GameCore/DyeHard/2_scenes/GameBootStrap.unity
+    guid: 1ca4b1d8d01a7bd48933741a776f2acc
+  - enabled: 1
+    path: Assets/5_GameCore/DyeHard/2_scenes/TestScene.unity
+    guid: dfd33ce21f7552a4b8372bef870a4cc3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a58e1bf51d0897446ab99b1135a9e063, type: 2}
   m_UseUCBPForAssetBundles: 0

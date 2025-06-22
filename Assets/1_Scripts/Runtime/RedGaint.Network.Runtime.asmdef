@@ -7,7 +7,6 @@
         "Unity.Services.Authentication",
         "Unity.Services.Core.Environments",
         "Unity.Networking.Transport",
-        "Cinemachine",
         "Unity.Multiplayer.Samples.Utilities.ClientAuthority",
         "Unity.InputSystem",
         "StarterAssets",
@@ -22,7 +21,8 @@
         "Unity.ResourceManager",
         "Unity.Services.CloudCode",
         "Unity.Services.CloudCode.GeneratedBindings",
-        "RedGaint.Utility"
+        "RedGaint.Utility",
+        "Unity.Cinemachine"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
